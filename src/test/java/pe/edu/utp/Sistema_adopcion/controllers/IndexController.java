@@ -13,4 +13,5 @@ public class IndexController {
         model.addAttribute("titulo", "Sistema de adopción de gatos");
         return "index";  // Retorna la plantilla index.html ubicada en /templates
     }
+    
 }
