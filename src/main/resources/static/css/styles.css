@@ -102,6 +102,62 @@ h2.title span {
     z-index: 1;
 }
 
+/*  Parte del Main - Quienes somos */ 
+.about-us {
+    background-color: #A7AED9; /* color de fondo */
+    font-family: 'Baloo 2', sans-serif;
+}
+
+.about-us h2 {
+    color: var(--primary-color-color); /* color del título */
+    font-weight: bold;
+}
+
+.about-us p {
+    color: var(--secondary-color); /* color del texto */
+    font-size: 1.2rem;
+}
+
+.about-us img {
+    max-width: 70%;
+    border-radius: 8px;
+}
+
+.about-us .row .col-md-3 p {
+    color: #EEDCEC; /* color de los subtítulos de las secciones */
+    font-weight: bold;
+}
+
+.about-us .btn-donar {
+    background-color: #B1BF49;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.about-us .btn-voluntario {
+    background-color: #C5E4D4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.about-us .icon {
+    width: 50px; /*tamaño de las imágenes */
+    height: 50px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.about-us .col-md-3 p {
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
 /* Header End css */
 
 @media (max-width: 768px) {
