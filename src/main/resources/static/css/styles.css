@@ -7,6 +7,8 @@
     --background-color-secondary: #d5e6eb;
     --text-color: #676666;
     --font-family: "Poppins", sans-serif;
+    --title-color: #D9910D; /* Color de los títulos */
+    --text-color: #676666; /* Color de texto */
 }
 
 * {
@@ -16,15 +18,38 @@
 }
 
 /* Tipografía base */
-html {
+/*body {
+    width: 100%;
     font-size: 16px;
     line-height: 1.5;
     font-family: var(--font-family);
+    background-color: var(--background-color-secondary) ;
+}*/
+
+body {
+    font-family: var(--font-family);
     background-color: var(--background-color-secondary);
+    font-size: 16px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--title-color);
+    font-family: var(--font-family);
 }
 
+h2.title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--title-color);
+}
 
-/* Botones css Start */
+h2.title span {
+    color: var(--primary-color);
+}
+
 
 /* Botones css End */
 
@@ -57,7 +82,7 @@ html {
     font-weight: bold  ;
 }
 
-/* ccuando el boton de nav-bar esta activo debe cambiar de forma */
+/* cuando el boton de nav-bar esta activo debe cambiar de forma */
 
 .nav-link.active,
 .nav-link:hover{
@@ -88,3 +113,5 @@ html {
         padding: 3px 5px;
     }
 }
+
+
