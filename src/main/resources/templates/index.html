@@ -4,7 +4,7 @@
 
     <head>
 
-        <title th:text="${titulo}">Sistema de adopción de gatos</title>
+        <title th:text="${titulo}">Adopta un Miau</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +20,7 @@
     </head>
     <body> 
         <!-- Header Start -->
-        <header>
+        <header class="bg-white">
             <div class="container header-main">
                 <nav class="navbar navbar-expand-lg navbar-light bg-white position-relative">
                     <a class="navbar-brand" href="#">
@@ -133,41 +133,108 @@
             </div>
         </div>
         <!-- Header End -->
-        
-                <main>
-            <section class="about-us">
-                <div class="container text-center py-5">
-                    <h2>Quiénes somos y por qué existimos</h2>
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <img src="img/gatitos_ayuda.png" alt="" class="img-fluid rounded">
+
+        <main class="py-4">
+            <!-- Sección Adopta -->
+            <section id="adopta">
+                <div class="contenedor container">
+                    <h2 class="title">Un Compañero Espera <span>por Ti</span></h2>
+                    <div class="row justify-content-center">
+                        <!-- Primera sección -->
+                        <div class="col-md-4 d-flex flex-column align-items-center">
+                            <img src="/img/adoptante1.jpg" alt="Adoptante feliz con su gato" class="img-fluid" style="max-width: 75%;">
+                            <p class="text-center mt-2">"Adopté a mi gato y ha llenado mi vida de alegría. Gracias a Miau por hacer todo esto posible." - María</p>
                         </div>
-                        <div class="col-md-6">
-                            <p>Somos una asociación sin fines de lucro que busca construir un mundo mejor para los gatos a través de iniciativas sostenibles.</p>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://static.wixstatic.com/media/f4b088_22d5fe177d9547f18af38a88961e16a2~mv2.png/v1/fill/w_73,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/casa%20de%20perroo-01.png" alt="Adopción responsable icono" class="icon">
-                                    <p>Adopción responsable</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="https://static.wixstatic.com/media/f4b088_4fdcac6febe443209a2542b568f06bbf~mv2.png/v1/fill/w_73,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/plato%20de%20comidaa-01.png" alt="Donaciones icono" class="icon">
-                                    <p>Donaciones agua y comida</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="https://static.wixstatic.com/media/f4b088_98cbafdbe61b40eba4a52da280443e02~mv2.png/v1/fill/w_73,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/esterilizaci%C3%B3nn-01.png" alt="Salud y esterilización icono" class="icon">
-                                    <p>Salud y esterilización</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="https://static.wixstatic.com/media/f4b088_0e732db7e3d743689de676fe0390889e~mv2.png/v1/fill/w_73,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/libroo-01.png" alt="Educación y cuidados icono" class="icon">
-                                    <p>Educación y cuidados</p>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <a href="#" class="btn btn-donar">DONAR</a>
-                                <a href="#" class="btn btn-voluntario">SER VOLUNTARIO</a>
-                            </div>
+                        <!-- Segunda sección -->
+                        <div class="col-md-4 d-flex flex-column align-items-center">
+                            <img src="/img/adoptante2.jpg" alt="Adoptante feliz con su gato" class="img-fluid" style="max-width: 75%;">
+                            <p class="text-center mt-2">"Adoptar a un gatito fue la mejor decisión que tomé. ¡Es tan cariñoso!" - Juan</p>
+                        </div>
+                        <!-- Tercera sección -->
+                        <div class="col-md-4 d-flex flex-column align-items-center">
+                            <img src="/img/adoptante3.jpg" alt="Adoptante feliz con su gato" class="img-fluid" style="max-width: 75%;">
+                            <p class="text-center mt-2">"Gracias a Miau, encontré el compañero perfecto. Mi gatito es muy juguetón y amoroso." - Ana</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+
+            <!-- Sección ¿Por qué adoptar un Miau? -->
+            <section id="adoptar-mascota" class="py-4">
+                <div class="contenedor container">
+                    <h2 class="title center">¿Por qué adoptar <span>un Miau?</span></h2>
+                    <ul class="center">
+                        <li>Es un compañero fiel que siempre estará a tu lado.</li>
+                        <li>Es un gato sano y esterilizado, listo para recibir amor.</li>
+                        <li>Todos nuestros gatos tienen un microchip identificador.</li>
+                        <li>Te entregamos un kit inicial con productos para cuidar a tu nuevo Miau.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Sección Donaciones -->
+            <section id="donaciones" class="py-4">
+                <div class="contenedor container">
+                    <h2>Nos ayudas con tu donativo</h2>
+                    <p>
+                        En Miau, nos dedicamos a rescatar y cuidar gatos en situación de calle o abandono. Tu donación nos
+                        permite ofrecerles atención médica, alimento y refugio mientras esperan encontrar una familia
+                        amorosa. Con tu apoyo, podemos seguir salvando vidas y haciendo una diferencia.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección Patrocinadores -->
+            <section id="patrocinadores" class="py-4">
+                <div class="contenedor container">
+                    <h2 class="title center"><span>Miau</span> no sería posible sin:</h2>
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <img src="/img/veterinaria1.jpg" alt="logo patrocinador" width="15%" class="mx-2">
+                        <img src="/img/veterinaria2.jpg" alt="logo patrocinador" width="15%" class="mx-2">
+                        <img src="/img/veterinaria3.jpg" alt="logo patrocinador" width="15%" class="mx-2">
+                        <img src="/img/veterinaria4.jpg" alt="logo patrocinador" width="15%" class="mx-2">
+                        <img src="/img/veterinaria1.jpg" alt="logo patrocinador" width="15%" class="mx-2">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Testimonios -->
+            <section id="testimonios" class="py-4">
+                <div class="contenedor container">
+                    <h2 class="title">Historias de <span>Adopción</span></h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>"Adopté a mi gato y ha llenado mi vida de alegría. Gracias a Miau por hacer todo esto
+                                posible." - María</p>
+                            <img src="/img/historia1.jpg" alt="Adoptante feliz" class="img-fluid" width="70%">
+                        </div>
+                        <div class="col-md-6">
+                            <p>"Adoptar a un gatito fue la mejor decisión que tomé. ¡Es tan cariñoso!" - Juan</p>
+                            <img src="/img/historia2.jpg" alt="Adoptante feliz" class="img-fluid" width="70%">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Voluntariado -->
+            <section id="voluntariado" class="py-4">
+                <div class="contenedor container">
+                    <h2 class="title">Únete como <span>Voluntario</span></h2>
+                    <p>¿Te gustaría ayudarnos a cuidar de nuestros gatos en espera de ser adoptados? Llena el formulario para
+                        ser parte del equipo de voluntarios.</p>
+                    <form action="#" method="POST">
+                        <div class="mb-3">
+                            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" name="email" class="form-control" placeholder="Tu correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="mensaje" class="form-control" placeholder="¿Cómo te gustaría ayudar?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom">Enviar</button>
+                    </form>
                 </div>
             </section>
         </main>
@@ -175,7 +242,7 @@
 
         <footer class="bg-dark text-light py-4">
             <div class="container">
-                <div class="row">
+                <div class="row footer-text">
                     <!-- Logo Section -->
                     <div class="col-md-3">
                         <img src="img/logo.png" alt="Logo" class="img-fluid" width="120px">
@@ -215,20 +282,21 @@
                 </div>
 
                 <!-- Copyright Section -->
-                <div class="text-center mt-3">
+                <div class="text-center mt-3 footer-text">
                     <p class="mb-0">© 2024 Sistema de Adopción de Gatos. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
 
 
-    <!-- Bootstrap Icons CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+        <!-- Bootstrap Icons CDN -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
 
-</body>   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    </body>   
 
 </html>

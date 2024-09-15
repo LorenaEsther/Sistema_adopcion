@@ -28,7 +28,7 @@
 
 body {
     font-family: var(--font-family);
-    background-color: var(--background-color-secondary);
+    background-color: var(--background-color-secondary) !important;
     font-size: 16px;
     color: var(--text-color);
     line-height: 1.6;
@@ -36,7 +36,7 @@ body {
 /* Títulos */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
-    color: var(--title-color);
+    color: #919CD9 !important;
     font-family: var(--font-family);
 }
 
@@ -47,7 +47,7 @@ h2.title {
 }
 
 h2.title span {
-    color: var(--primary-color);
+    color: #EA939C;
 }
 
 
@@ -88,7 +88,7 @@ h2.title span {
 .nav-link:hover{
     position: relative;
     display: inline-block;
-    color: var(--background-color) !important;
+    color: var(--background-color);
     font-weight: bold;
     background-color: transparent;
     background-image: url('/img/arrow_bg.png');
@@ -102,7 +102,7 @@ h2.title span {
     z-index: 1;
 }
 
-/*  Parte del Main - Quienes somos */ 
+/*  Parte del Main - Quienes somos */
 .about-us {
     background-color: #A7AED9; /* color de fondo */
     font-family: 'Baloo 2', sans-serif;
@@ -157,6 +157,24 @@ h2.title span {
     font-weight: bold;
     color: var(--secondary-color);
 }
+
+.btn-custom {
+    background-color: #EA939C;
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+}
+
+.btn-custom:hover {
+    background-color: #D17C84; /* Color al pasar el mouse */
+    color: white;
+}
+
+/*Footer */
+
+.footer-text {
+    font-size: 0.875rem; /* Puedes ajustar el valor según lo que necesites */
+}
+
 
 /* Header End css */
 
