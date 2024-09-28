@@ -36,8 +36,9 @@
                                 <a class="nav-link active" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="adopta.html">Adopta</a>
+                                <a class="nav-link" th:href="@{/adopta}">Adopta</a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Donaciones</a>
                             </li>
@@ -56,13 +57,15 @@
                                 <a class="nav-link" href="#">MiauShop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="intranet/login.html">Intranet</a>
+                                <a class="nav-link" th:href="@{/login}">Intranet</a>
                             </li>  
 
                         </ul>
                         <div class="d-flex align-items-center"> 
-                            <a class="btn" href="#">Dona Aquí <i class="bi bi-heart"></i>
-                            </a>
+                            <button class="btn boton" type="button">
+                                Dona Aquí 
+                                <img src="img/donate.png" alt="Corazón" class="icono" />
+                            </button>
                         </div>
 
                     </div>
@@ -137,110 +140,148 @@
         </div>
         <!-- Header End -->
 
-        <main class="py-4">
-            <!-- Sección Adopta -->
-            <section id="adopta">
-                <div class="contenedor container">
-                    <h2 class="title">Un Compañero Espera <span>por Ti</span></h2>
-                    <div class="row justify-content-center">
-                        <!-- Primera sección -->
-                        <div class="col-md-4 d-flex flex-column align-items-center">
-                            <img src="/img/adoptante1.jpg" alt="Adoptante feliz con su gato" class="img-fluid" style="max-width: 75%;">
-                            <p class="text-center mt-2">"Adopté a mi gato y ha llenado mi vida de alegría. Gracias a Miau por hacer todo esto posible." - María</p>
+        <!-- Sección Adopta -->
+        <section class="my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="/img/adoptante1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Un Nuevo Amigo, Un Nuevo Comienzo</h5>
+                                <p class="card-text">"Adoptar a un gatito fue la mejor decisión que tomé. ¡Es tan cariñoso!" - Juan</p>
+                            </div>
                         </div>
-                        <!-- Segunda sección -->
-                        <div class="col-md-4 d-flex flex-column align-items-center">
-                            <img src="/img/adoptante2.jpg" alt="Adoptante feliz con su gato" class="img-fluid" style="max-width: 75%;">
-                            <p class="text-center mt-2">"Adoptar a un gatito fue la mejor decisión que tomé. ¡Es tan cariñoso!" - Juan</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="/img/adoptante2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">El Amor Se Multiplica: Dos Almas, Un Hogar</h5>
+                                <p class="card-text">"Adopté a mi gato y ha llenado mi vida de alegría. Gracias a Miau por hacer todo esto posible." - María</p>
+                            </div>
                         </div>
-                        <!-- Tercera sección -->
-                        <div class="col-md-4 d-flex flex-column align-items-center">
-                            <img src="/img/adoptante3.jpg" alt="Adoptante feliz con su gato" class="img-fluid" style="max-width: 75%;">
-                            <p class="text-center mt-2">"Gracias a Miau, encontré el compañero perfecto. Mi gatito es muy juguetón y amoroso." - Ana</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="/img/adoptante3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">El Compañero Ideal: Juguetón y Amoroso</h5>
+                                <p class="card-text">"Gracias a Miau, encontré el compañero perfecto. Mi gatito es muy juguetón y amoroso." - Ana</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+
+        <!-- Separador -->
+        <div class="separator"></div>
 
 
-            <!-- Sección ¿Por qué adoptar un Miau? -->
-            <section id="adoptar-mascota" class="py-4">
-                <div class="contenedor container">
-                    <h2 class="title center">¿Por qué adoptar <span>un Miau?</span></h2>
-                    <ul class="center">
-                        <li>Es un compañero fiel que siempre estará a tu lado.</li>
-                        <li>Es un gato sano y esterilizado, listo para recibir amor.</li>
-                        <li>Todos nuestros gatos tienen un microchip identificador.</li>
-                        <li>Te entregamos un kit inicial con productos para cuidar a tu nuevo Miau.</li>
-                    </ul>
-                </div>
-            </section>
 
-            <!-- Sección Donaciones -->
-            <section id="donaciones" class="py-4">
-                <div class="contenedor container">
-                    <h2>Nos ayudas con tu donativo</h2>
+        <!-- Sección 1: Quiénes somos y por qué existimos -->
+        <div class="container section" id="quienes-somos">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-start">
+                    <h2>¿Quiénes somos y por qué existimos?</h2>
                     <p>
-                        En Miau, nos dedicamos a rescatar y cuidar gatos en situación de calle o abandono. Tu donación nos
-                        permite ofrecerles atención médica, alimento y refugio mientras esperan encontrar una familia
-                        amorosa. Con tu apoyo, podemos seguir salvando vidas y haciendo una diferencia.
+                        En Gatos en Necesidad, nuestra misión es rescatar, cuidar y encontrar hogares para gatos en
+                        situación de abandono. Creemos que cada gato merece una segunda oportunidad y un lugar donde ser
+                        amado. Nuestro compromiso va más allá de la simple protección; trabajamos para educar a la
+                        comunidad sobre la importancia de la adopción y el cuidado responsable.
                     </p>
                 </div>
-            </section>
-
-            <!-- Sección Patrocinadores -->
-            <section id="patrocinadores" class="py-4">
-                <div class="contenedor container">
-                    <h2 class="title center"><span>Miau</span> no sería posible sin:</h2>
-                    <div class="d-flex justify-content-center flex-wrap">
-                        <img src="/img/veterinaria1.jpg" alt="logo patrocinador" width="15%" class="mx-2">
-                        <img src="/img/veterinaria2.jpg" alt="logo patrocinador" width="15%" class="mx-2">
-                        <img src="/img/veterinaria3.jpg" alt="logo patrocinador" width="15%" class="mx-2">
-                        <img src="/img/veterinaria4.jpg" alt="logo patrocinador" width="15%" class="mx-2">
-                        <img src="/img/veterinaria1.jpg" alt="logo patrocinador" width="15%" class="mx-2">
-                    </div>
+                <div class="col-md-6 image-right">
+                    <img src="https://placekitten.com/600/300" alt="Gatos felices" class="img-fluid rounded">
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Sección Testimonios -->
-            <section id="testimonios" class="py-4">
-                <div class="contenedor container">
-                    <h2 class="title">Historias de <span>Adopción</span></h2>
+
+        <!-- Sección 2: Dona aquí con carrusel de imágenes -->
+        <div class="container section" id="dona-aqui">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>Dona Aquí</h2>
+                    <p>
+                        Tu ayuda puede marcar la diferencia en la vida de muchos gatos. Con tu donación, proporcionamos
+                        alimento, atención veterinaria y refugio a aquellos que más lo necesitan. Cada pequeña
+                        contribución suma y permite que sigamos brindando el amor y cuidado que merecen.
+                    </p>
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://placekitten.com/800/400" class="d-block w-100" alt="Gato 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://placekitten.com/801/400" class="d-block w-100" alt="Gato 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://placekitten.com/802/400" class="d-block w-100" alt="Gato 3">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                    <button class="btn donation-button btn-lg mt-3">¡Dona Ahora!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 3: Los humanos detrás de Miau -->
+        <div class="container section" id="equipo">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>Los humanos detrás de Miau</h2>
+                    <p>
+                        Nuestro equipo está compuesto por amantes de los gatos que dedican su tiempo y esfuerzo para
+                        mejorar la vida de estos adorables felinos. Desde rescatistas hasta voluntarios, cada uno de
+                        nosotros aporta su pasión y habilidades para crear un impacto positivo en nuestra comunidad.
+                    </p>
                     <div class="row">
-                        <div class="col-md-6">
-                            <p>"Adopté a mi gato y ha llenado mi vida de alegría. Gracias a Miau por hacer todo esto
-                                posible." - María</p>
-                            <img src="/img/historia1.jpg" alt="Adoptante feliz" class="img-fluid" width="70%">
+                        <div class="col-md-4 team-card">
+                            <div class="card">
+                                <img src="https://placekitten.com/200/200" alt="Miembro del equipo" class="card-img-top rounded-circle mx-auto" style="width: 50%; margin-top: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">María</h5>
+                                    <p class="card-text">Rescatista y Coordinadora de Adopciones</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <p>"Adoptar a un gatito fue la mejor decisión que tomé. ¡Es tan cariñoso!" - Juan</p>
-                            <img src="/img/historia2.jpg" alt="Adoptante feliz" class="img-fluid" width="70%">
+                        <div class="col-md-4 team-card">
+                            <div class="card">
+                                <img src="https://placekitten.com/201/200" alt="Miembro del equipo" class="card-img-top rounded-circle mx-auto" style="width: 50%; margin-top: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Juan</h5>
+                                    <p class="card-text">Veterinario Voluntario</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 team-card">
+                            <div class="card">
+                                <img src="https://placekitten.com/202/200" alt="Miembro del equipo" class="card-img-top rounded-circle mx-auto" style="width: 50%; margin-top: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Laura</h5>
+                                    <p class="card-text">Coordinadora de Voluntarios</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Sección Voluntariado -->
-            <section id="voluntariado" class="py-4">
-                <div class="contenedor container">
-                    <h2 class="title">Únete como <span>Voluntario</span></h2>
-                    <p>¿Te gustaría ayudarnos a cuidar de nuestros gatos en espera de ser adoptados? Llena el formulario para
-                        ser parte del equipo de voluntarios.</p>
-                    <form action="#" method="POST">
-                        <div class="mb-3">
-                            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Tu correo electrónico">
-                        </div>
-                        <div class="mb-3">
-                            <textarea name="mensaje" class="form-control" placeholder="¿Cómo te gustaría ayudar?"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-custom">Enviar</button>
-                    </form>
-                </div>
-            </section>
-        </main>
 
 
         <footer class="bg-dark text-light py-4">
@@ -299,6 +340,13 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                integrity="sha384-oBqDVmMz4fnFO9gyb2KjXhYb6/vp4z5QXxwMxB3b6qDgAnFqUuZY7zW7Ck2jU9i" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+                integrity="sha384-4gDqWx5/NeS4xWz4pu71fMOdaGHJ64eW/6DkMl0b+ItfMkdVdb8y6T7R9VqjFqR" crossorigin="anonymous">
+        </script>   
 
     </body>   
 

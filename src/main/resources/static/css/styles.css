@@ -9,6 +9,7 @@
     --font-family: "Poppins", sans-serif;
     --title-color: #D9910D; /* Color de los títulos */
     --text-color: #676666; /* Color de texto */
+    --buttom-color: #B1BF49; /*Color de boton*/
 }
 
 * {
@@ -129,7 +130,7 @@ h2.title span {
 }
 
 .about-us .btn-donar {
-    background-color: #B1BF49;
+    background-color: #B1BF49 !important;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -173,6 +174,33 @@ h2.title span {
 
 .footer-text {
     font-size: 0.875rem; /* Puedes ajustar el valor según lo que necesites */
+}
+/* Aumentar la especificidad para evitar conflictos con Bootstrap */
+.header-main .boton {
+    background-color: var(--buttom-color) !important;
+    color: white !important; /* Color de texto blanco */
+    border: none !important; /* Sin borde */
+    padding: 10px 20px !important; /* Tamaño del botón */
+    border-radius: 5px !important; /* Bordes redondeados */
+    font-size: 1rem !important; /* Asegurarse del tamaño correcto de la fuente */
+    display: inline-block !important; /* Asegurar que sea un bloque en línea */
+    text-align: center !important; /* Alinear el texto al centro */
+    transition: background-color 0.3s ease !important; /* Efecto de transición suave */
+}
+
+/* Al pasar el mouse */
+.header-main .boton:hover {
+    background-color: #D17C84 !important; /* Un cambio de color más oscuro al hacer hover */
+}
+
+.card {
+    height: 100%; /* Permitir que todas las tarjetas tengan la misma altura */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espaciado uniforme entre los elementos */
 }
 
 
