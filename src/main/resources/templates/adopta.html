@@ -1,150 +1,156 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/adopta.css">
-  <title>Adopta un Gatito</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="${titulo}">adopta</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- boostrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/adopta.css">
+    </head>
+    <body>
 
-    <header class="bg-white">
-        <div class="container header-main">
-            <div class="header-shape"></div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-white position-relative">
-                <a class="navbar-brand" href="#">
-                    <img src="img/logo.png" alt="Logo" class="img-fluid" width="105px" >
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-modile" aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <header class="bg-white">
+            <div class="container header-main">
+                <div class="header-shape"></div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-white position-relative">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/logo.png" alt="Logo" class="img-fluid" width="105px" >
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-modile" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link active" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Adopta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Donaciones</a>
-                        </li>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/adopta}">Adopta</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Miaus en Casa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Consultas</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Donaciones</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">MiauShop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="intranet/login.html">Intranet</a>
-                        </li>  
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Miaus en Casa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Consultas</a>
+                            </li>
 
-                    </ul>
-                    <div class="d-flex align-items-center"> 
-                        <a class="btn" href="#">Dona Aquí <i class="bi bi-heart"></i>
-                        </a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">MiauShop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="intranet/login.html">Intranet</a>
+                            </li>  
+
+                        </ul>
+                        <div class="d-flex align-items-center"> 
+                            <a class="btn" href="#">Dona Aquí <i class="bi bi-heart"></i>
+                            </a>
+                        </div>
+
                     </div>
 
-                </div>
+                </nav>
+            </div>
 
-            </nav>
-        </div>
-       
-    </header>
+        </header>
 
-    <section id="adopta" class="adopta-section">
-        <h1>Conoce a Nuestros Gatos Miau en Adopción</h1>
-        <p>Estos gatitos Miau están esperando un hogar lleno de amor. ¡Anímate a conocerlos!</p>
-    
-        <div class="container">
-            <div class="row"> 
-                <div class="col-md-4"> 
-                    <div class="gato-card">
-                        <img src="img/gato1.jpg" alt="Gato 1">
-                        <div class="gato-info">
-                            <h3>Michi</h3>
-                            <p>Edad: 2 años</p>
-                            <p>Un gato muy cariñoso y juguetón.</p>
-                            <button class="adoptar-btn">Adoptar</button>
+        <section id="adopta" class="adopta-section">
+            <h1>Conoce a Nuestros Gatos Miau en Adopción</h1>
+            <p>Estos gatitos Miau están esperando un hogar lleno de amor. ¡Anímate a conocerlos!</p>
+
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-md-4"> 
+                        <div class="gato-card">
+                            <img src="img/gato1.jpg" alt="Gato 1">
+                            <div class="gato-info">
+                                <h3>Michi</h3>
+                                <p>Edad: 2 años</p>
+                                <p>Un gato muy cariñoso y juguetón.</p>
+                                <button class="adoptar-btn">Adoptar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-    
-                <div class="col-md-4">
-                    <div class="gato-card">
-                        <img src="img/gato2.jpg" alt="Gato 2">
-                        <div class="gato-info">
-                            <h3>Luna</h3>
-                            <p>Edad: 1 año</p>
-                            <p>Gata tranquila, ideal para un hogar relajado.</p>
-                            <button class="adoptar-btn">Adoptar</button>
+
+                    <div class="col-md-4">
+                        <div class="gato-card">
+                            <img src="img/gato2.jpg" alt="Gato 2">
+                            <div class="gato-info">
+                                <h3>Luna</h3>
+                                <p>Edad: 1 año</p>
+                                <p>Gata tranquila, ideal para un hogar relajado.</p>
+                                <button class="adoptar-btn">Adoptar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-    
-                <div class="col-md-4">
-                    <div class="gato-card">
-                        <img src="img/gato3.jpg" alt="Gato 3">
-                        <div class="gato-info">
-                            <h3>Tiger</h3>
-                            <p>Edad: 4 meses</p>
-                            <p>Independiente y curioso, le encanta explorar.</p>
-                            <button class="adoptar-btn">Adoptar</button>
+
+                    <div class="col-md-4">
+                        <div class="gato-card">
+                            <img src="img/gato3.jpg" alt="Gato 3">
+                            <div class="gato-info">
+                                <h3>Tiger</h3>
+                                <p>Edad: 4 meses</p>
+                                <p>Independiente y curioso, le encanta explorar.</p>
+                                <button class="adoptar-btn">Adoptar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-    
-                <div class="col-md-4">
-                    <div class="gato-card">
-                        <img src="img/gato4.jpg" alt="Gato 4">
-                        <div class="gato-info">
-                            <h3>Pelusa</h3>
-                            <p>Edad: 5 años</p>
-                            <p>Gato independiente y cariñoso a su manera.</p>
-                            <button class="adoptar-btn">Adoptar</button>
+
+                    <div class="col-md-4">
+                        <div class="gato-card">
+                            <img src="img/gato4.jpg" alt="Gato 4">
+                            <div class="gato-info">
+                                <h3>Pelusa</h3>
+                                <p>Edad: 5 años</p>
+                                <p>Gato independiente y cariñoso a su manera.</p>
+                                <button class="adoptar-btn">Adoptar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-    
-                <div class="col-md-4">
-                    <div class="gato-card">
-                        <img src="img/gato5.jpg" alt="Gato 5">
-                        <div class="gato-info">
-                            <h3>Bigotes</h3>
-                            <p>Edad: 4 meses</p>
-                            <p>Una gatita muy sociable y juguetona.</p>
-                            <button class="adoptar-btn">Adoptar</button>
+
+                    <div class="col-md-4">
+                        <div class="gato-card">
+                            <img src="img/gato5.jpg" alt="Gato 5">
+                            <div class="gato-info">
+                                <h3>Bigotes</h3>
+                                <p>Edad: 4 meses</p>
+                                <p>Una gatita muy sociable y juguetona.</p>
+                                <button class="adoptar-btn">Adoptar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-    
-                <div class="col-md-4">
-                    <div class="gato-card">
-                        <img src="img/gato6.jpg" alt="Gato 6">
-                        <div class="gato-info">
-                            <h3>Rayo</h3>
-                            <p>Edad: 1 año</p>
-                            <p>Gato muy activo y curioso.</p>
-                            <button class="adoptar-btn">Adoptar</button>
+
+                    <div class="col-md-4">
+                        <div class="gato-card">
+                            <img src="img/gato6.jpg" alt="Gato 6">
+                            <div class="gato-info">
+                                <h3>Rayo</h3>
+                                <p>Edad: 1 año</p>
+                                <p>Gato muy activo y curioso.</p>
+                                <button class="adoptar-btn">Adoptar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div> 
-        </div> 
-    </section>
-    
-    
+        </section>
+
+
 
 
         <footer class="bg-dark text-light py-4">
