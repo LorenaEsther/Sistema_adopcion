@@ -94,6 +94,11 @@ h2.title span {
     z-index: 1;
 }
 
+.img-class {
+    width: 1100px;
+    height: auto;
+  }
+
 /* Adopta Section */
 .adopta-section {
     text-align: center;
@@ -180,6 +185,7 @@ h2.title span {
 .footer-text {
     font-size: 0.875rem;
 }
+
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
