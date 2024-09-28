@@ -60,7 +60,6 @@ h2.title span {
     background-repeat: repeat-x;
     background-position: center;
     background-size: cover;
-
 }
 
 /* Navegación */
@@ -118,7 +117,7 @@ h2.title span {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 40px; 
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -131,6 +130,8 @@ h2.title span {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 280px;
     transition: transform 0.3s ease-in-out;
+    margin: 20px; 
+    padding: 15px; 
 }
 
 .gato-card:hover {
