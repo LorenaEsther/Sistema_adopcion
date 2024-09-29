@@ -180,18 +180,14 @@ h2.title span {
     background-color: var(--buttom-color) !important;
     color: white !important; /* Color de texto blanco */
     border: none !important; /* Sin borde */
-    padding: 10px 20px !important; /* Tamaño del botón */
-    border-radius: 5px !important; /* Bordes redondeados */
+    padding: 5px 12px !important; /* Tamaño del botón */
+    border-radius: 30px !important; /* Bordes redondeados */
     font-size: 1rem !important; /* Asegurarse del tamaño correcto de la fuente */
     display: inline-block !important; /* Asegurar que sea un bloque en línea */
     text-align: center !important; /* Alinear el texto al centro */
     transition: background-color 0.3s ease !important; /* Efecto de transición suave */
 }
 
-/* Al pasar el mouse */
-.header-main .boton:hover {
-    background-color: #D17C84 !important; /* Un cambio de color más oscuro al hacer hover */
-}
 
 .card {
     height: 100%; /* Permitir que todas las tarjetas tengan la misma altura */

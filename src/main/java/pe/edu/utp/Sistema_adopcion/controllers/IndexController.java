@@ -13,17 +13,42 @@ public class IndexController {
         model.addAttribute("titulo", "Sistema de adopción de gatos");
         return "index";  // Retorna la plantilla index.html ubicada en /templates
     }
-    
-    @GetMapping ("/adopta")
-    public String adopta (Model model){
+
+    @GetMapping("/adopta")
+    public String adopta(Model model) {
         model.addAttribute("titulo", "Adopta un gatito");
         return "adopta";
     }
-    
-    @GetMapping ("/login")
-    public String login (Model model){
-        model.addAttribute("titulo", "login");
-        return "login";
+
+
+    @GetMapping("/donaciones")
+    public String donaciones(Model model) {
+        model.addAttribute("titulo", "Donaciones");
+        return "donaciones";
     }
-    
+
+    @GetMapping("/miaus-en-casa")
+    public String miausEnCasa(Model model) {
+        model.addAttribute("titulo", "Miaus en Casa");
+        return "miaus-en-casa";
+    }
+
+    @GetMapping("/consultas")
+    public String consultas(Model model) {
+        model.addAttribute("titulo", "Consultas");
+        return "consultas";
+    }
+
+    @GetMapping("/nosotros")
+    public String nosotros(Model model) {
+        model.addAttribute("titulo", "Nosotros");
+        return "nosotros";
+    }
+
+    @GetMapping("/miaushop")
+    public String miaushop(Model model) {
+        model.addAttribute("titulo", "MiauShop");
+        return "miaushop";
+    }
+
 }

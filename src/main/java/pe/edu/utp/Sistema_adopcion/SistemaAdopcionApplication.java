@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SistemaAdopcionApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SistemaAdopcionApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SistemaAdopcionApplication.class, args);
+    }
 
 }
