@@ -16,14 +16,19 @@ public class IndexController {
     
     @GetMapping ("/adopta")
     public String adopta (Model model){
-        model.addAttribute("titulo", "Adopta un gatito");
+        model.addAttribute("titulo", "Lista de felinos | Adopta Miu");
         return "adopta";
     }
     
     @GetMapping ("/login")
     public String login (Model model){
-        model.addAttribute("titulo", "login");
+        model.addAttribute("titulo", "Logeo | Adopta Miu");
         return "login";
     }
     
+    @GetMapping ("/consulta")
+    public String consulta (Model model){
+        model.addAttribute("titulo", "Preguntas Frecuentes | Adopta Miu");
+        return "consulta";
+    }
 }
