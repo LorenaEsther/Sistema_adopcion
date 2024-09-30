@@ -14,6 +14,7 @@ public class IndexController {
         return "index";  // Retorna la plantilla index.html ubicada en /templates
     }
 
+
     @GetMapping("/adopta")
     public String adopta(Model model) {
         model.addAttribute("titulo", "Adopta un gatito");
