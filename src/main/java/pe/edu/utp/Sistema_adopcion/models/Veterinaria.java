@@ -1,11 +1,10 @@
 package pe.edu.utp.Sistema_adopcion.models;
 
 import jakarta.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "Personas")
-public class Personas {
+@Table(name = "Veterinarias")
+public class Veterinaria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,25 +12,22 @@ public class Personas {
 
     private String nombre;
 
-    private String telefono;
-
     private String direccion;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechaRegistro;
+    private String telefono;
 
-    // Constructors
-    public Personas() {
-    }
+    // Constructors, Getters, and Setters
 
-    public Personas(String nombre, String telefono, String direccion) {
+    public Veterinaria(int id, String nombre, String direccion, String telefono) {
+        this.id = id;
         this.nombre = nombre;
-        this.telefono = telefono;
         this.direccion = direccion;
-        this.fechaRegistro = new Date();
+        this.telefono = telefono;
     }
 
-    // Getters and Setters
+    public Veterinaria() {
+    }
+
     public int getId() {
         return id;
     }
@@ -48,14 +44,6 @@ public class Personas {
         this.nombre = nombre;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -64,11 +52,12 @@ public class Personas {
         this.direccion = direccion;
     }
 
-    public Date getFechaRegistro() {
-        return fechaRegistro;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
+    
 }

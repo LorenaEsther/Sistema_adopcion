@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 import pe.edu.utp.Sistema_adopcion.models.Usuarios;
 
 @Repository
-public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
-    // Puedes añadir métodos personalizados si es necesario
+public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
+
+    // Método personalizado para encontrar un usuario por su correo electrónico
+    Usuarios findByEmail(String email);
 }
