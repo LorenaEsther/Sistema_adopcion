@@ -44,7 +44,7 @@ h2.title span {
 }
 
 /* Header Start */
-/* Estilo para las nubes */
+/* Estilo para las nubes 
 .header-main {
     position: sticky;
     z-index: 3;
@@ -60,9 +60,9 @@ h2.title span {
     background-repeat: repeat-x;
     background-position: center;
     background-size: cover;
-}
+}*/
 
-/* Navegación */
+/* Navegación 
 .navbar-nav {
     gap: 1rem;
 }
@@ -73,9 +73,9 @@ h2.title span {
     font-family: var(--font-family) !important;
     font-size: 13px;
     font-weight: bold;
-}
+}*/
 
-/* Efecto hover y active en los enlaces de navegación */
+/* Efecto hover y active en los enlaces de navegación 
 .nav-link.active,
 .nav-link:hover {
     position: relative;
@@ -92,7 +92,7 @@ h2.title span {
     max-width: 100%;
     transition: opacity 0.3s linear, transform 0.3s linear;
     z-index: 1;
-}
+}*/
 
 .img-class {
     width: 1100px;

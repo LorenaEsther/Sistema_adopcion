@@ -54,7 +54,7 @@ h2.title span {
 /* Botones css End */
 
 /* Header Start */
-/* Creamos shape para poner las nubesdebajo */
+/* Creamos shape para poner las nubesdebajo 
 .header-main{
     position: sticky;
     z-index: 3;
@@ -69,20 +69,20 @@ h2.title span {
     background-repeat: repeat;
     background-position: center;
 }
-/* agregamos espaciado */
+/* agregamos espaciado 
 .navbar-nav{
     gap: 1rem;
-}
-/* Modificamos nav-link */
+}*/
+/* Modificamos nav-link 
 .nav-link{
     padding: 5px 10px !important;
     display: inline-block !important;
     font-family: var(--font-family) !important;
     font-size: 13px;
     font-weight: bold  ;
-}
+}*/
 
-/* cuando el boton de nav-bar esta activo debe cambiar de forma */
+/* cuando el boton de nav-bar esta activo debe cambiar de forma 
 
 .nav-link.active,
 .nav-link:hover{
@@ -100,7 +100,7 @@ h2.title span {
     max-width: 100%;
     transition: opacity 0.3s linear, transform 0.3s linear;
     z-index: 1;
-}
+}*/
 
 /*  Parte del Main - Quienes somos */
 .about-us {
