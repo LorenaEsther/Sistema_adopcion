@@ -27,7 +27,7 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" th:href="@{/}">Home</a>
+                                    <a class="nav-link" th:href="@{/}">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" th:href="@{/adopta}">Adopta</a>
@@ -62,6 +62,8 @@
                 </div>
                 <div class="header-shape"></div>
             </header>
+            <!-- Custom JS -->
+            <script th:src="@{/js/navbar.js}"></script>
         </div>
 
         <!-- Bootstrap JavaScript bundle (includes Popper.js) -->
