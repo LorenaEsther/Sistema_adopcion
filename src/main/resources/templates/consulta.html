@@ -14,61 +14,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     </head>    
     <body>
-        <header class="bg-white">
-            <div class="container header-main">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white position-relative">
-                    <a class="navbar-brand" href="#">
-                        <img src="img/logo.png" alt="Logo" class="img-fluid" width="105px" >
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-modile" aria-controls="offcanvasNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/adopta}">Adopta</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Donaciones</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Miaus en Casa</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/consulta}">Consultas</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">MiauShop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/login}">Intranet</a>
-                            </li>  
-
-                        </ul>
-                        <div class="d-flex align-items-center"> 
-                            <button class="btn boton" type="button">
-                                Dona Aquí 
-                                <img src="img/donate.png" alt="Corazón" class="icono" />
-                            </button>
-                        </div>
-
-                    </div>
-
-                </nav>
-            </div>
-            <div class="header-shape"></div>
-        </header>
-
+        <!-- Header -->
+        <header th:replace="~{Plantilla/header :: header}"></header>
 
         <main>
             <div class="container">
@@ -140,53 +87,8 @@
             </div>
         </main>
 
-        <footer class="bg-dark text-light py-4">
-            <div class="container">
-                <div class="row footer-text">
-                    <!-- Logo Section -->
-                    <div class="col-md-3">
-                        <img src="img/logo.png" alt="Logo" class="img-fluid" width="120px">
-                    </div>
+        <footer th:replace="~{Plantilla/footer :: footer}"></footer>
 
-                    <!-- Síguenos en Section -->
-                    <div class="col-md-3">
-                        <h5>Síguenos en</h5>
-                        <ul class="list-unstyled d-flex">
-                            <li>
-                                <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Contáctanos Section -->
-                    <div class="col-md-3">
-                        <h5>Contáctanos</h5>
-                        <p>Email: contacto@adopciongatos.com</p>
-                        <p>Teléfono: +51 923 456 890</p>
-                    </div>
-
-                    <!-- Términos y Condiciones Section -->
-                    <div class="col-md-3">
-                        <h5>Términos y Condiciones</h5>
-                        <a href="#" class="text-light">Ver Términos y Condiciones</a>
-                    </div>
-                </div>
-
-                <!-- Copyright Section -->
-                <div class="text-center mt-3 footer-text">
-                    <p class="mb-0">© 2024 Sistema de Adopción de Gatos. Todos los derechos reservados.</p>
-                </div>
-            </div>
-        </footer>       
         <script src="js/consulta.js"></script>
     </body>    
 </html>

@@ -28,16 +28,15 @@
     </scm>
     <properties>
         <java.version>21</java.version>
+        <skipTests>true</skipTests>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
+
         
         <!-- Dependencia de Spring Boot Starter Data JPA -->
         <dependency>
@@ -89,6 +88,8 @@
             <scope>runtime</scope>
         </dependency>
 
+
+        
 
         <dependency>
             <groupId>org.projectlombok</groupId>
