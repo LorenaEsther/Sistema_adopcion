@@ -12,7 +12,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/", "/login", "/pruebalogin","/pruebaregistrate", "/adopta", "/donaciones", "/miaus-en-casa", "/consultas", "/nosotros", "/miaushop", "/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/", "/login", "/pruebalogin","/pruebaregistrate", "/adopta", "/donaciones", "/miaus-en-casa", "/consultas", "/nosotros", "/miaushop", "/adminorueba", "/css/**", "/js/**", "/img/**").permitAll()
                 .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
