@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+
+        <title th:text="${titulo}">Adopta un Miau</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/consulta.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    </head>    
+    <body>
+        <!-- Header -->
+        <header th:replace="~{Plantilla/header :: header}"></header>
+
+        <main>
+            <div class="container">
+                <div class="title-consult">
+                    <h1>PREGUNTAS FRECUENTES</h1>
+                    <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                </div>
+                <nav class="navegation-consult">
+                    <a href="#" class="active" id="pr-selection">Adopta Miu</a>
+                    <a href="#" id="sc-selection">Club Miu</a>
+                    <a href="#" id="th-selection">Adopta</a>
+                </nav>                
+                <div class="ask-principal">
+                    <div class="zone one-section">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    ¿Qué es AdoptaMiu? 
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>    
+                                <div class="faq-answer">
+                                    AdoptaMiu es una asociación sin fines de lucro dedicada a la promoción de la adopción responsable de felinos. Nos enfocamos en concientizar sobre la situación de los gatos en estado de abandono y trabajamos en proyectos que mejoren su calidad de vida. Nuestro objetivo es construir un mundo donde cada gato tenga un hogar lleno de amor, brindándoles una segunda oportunidad y ayudando a las personas a encontrar a su compañero felino ideal
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ¿Cómo se sostiene económicamente AdoptaMiu?
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                AdoptaMiu comenzó sus actividades gracias a aportes privados y donaciones de personas comprometidas con la causa, lo que permitió establecer los primeros rescates y campañas de adopción. Actualmente, AdoptaMiu se auto sostiene a través de la venta de productos relacionados con el bienestar felino, donaciones recurrentes de sus seguidores, y alianzas con empresas y marcas solidarias. Estos ingresos permiten cubrir los costos operativos (rescate, atención veterinaria, sueldos, difusión, etc.) y posibilitan que la organización amplíe su impacto, mejorando las condiciones de vida de cada vez más gatos en situación de abandono.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ¿Qué es un Miu?
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Un Miu es un gato rescatado del abandono o de situaciones de maltrato que ha sido rehabilitado con dedicación y cuidado. Cada Miu tiene una historia única, lo que lo hace especial.Antes de ser puesto en adopción, cada Miu pasa por un proceso de recuperación física y emocional. Se asegura que hayan recibido sus vacunas, hayan sido desparasitados, esterilizados y que su estado de salud general haya sido evaluado mediante exámenes veterinarios completos. 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zone two-section hidden">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ¿Qué es el Club Miu?
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                El Club Miu es un programa que te permite ayudar a refugios de gatos mientras disfrutas de beneficios exclusivos. Al apadrinar a un Miu en un albergue, vives la experiencia de ser padrino y contribuyes directamente al bienestar de felinos en necesidad.Al unirte al Club Miu, tanto tú como tu gato obtendrán acceso a descuentos especiales en veterinarias, tiendas de mascotas, servicios de cuidado, alimentación y más. A través de tu apoyo, estarás ayudando a que más gatos encuentren un hogar amoroso mientras disfrutas de beneficios pensados para ti y tu compañero felino.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ¿Cuál es el proceso de adopción que tiene AdoptaMiu?
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Para adoptar un Miu, primero deberás pasar por una entrevista con nuestro equipo, donde evaluaremos tu compatibilidad con el felino. Después de esto, tendrás la oportunidad de visitar el refugio o la casa temporal donde se encuentra el Miu que mejor se ajuste a tu estilo de vida. Finalmente, firmarás un compromiso de seguimiento para asegurar que el Miu se adapte correctamente a su nuevo hogar.Puedes obtener más detalles revisando los perfiles de los Mius disponibles para adopción en nuestra página web.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zone three-section hidden">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ¿Cómo puedo adoptar un Miu?
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Puedes postular para adoptar un Miu a través de nuestra página web, donde encontrarás un formulario para completar con tus datos.Nuestro equipo te guiará en el proceso para encontrar el Miu que mejor se adapte a ti y a tu hogar, asegurando que tanto tú como tu nuevo compañero felino tengan una experiencia feliz y gratificante.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ¿Cuál es el proceso de adopción que tiene AdoptaMiu?
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Para adoptar un Miu, deberás seguir estos pasos: primero, tendrás una entrevista con nosotros para conocerte mejor y asegurarnos de que estás listo para recibir a un nuevo miembro felino en tu familia. Después de la entrevista, podrás visitar el refugio o la casa temporal donde reside el Miu que podría ser el ideal para ti. Finalmente, firmarás un compromiso de seguimiento para garantizar que el gato se adapte bien a su nuevo hogar y continúe recibiendo los cuidados necesarios.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ¿Por qué hay un pago por adopción?
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                El monto se distribuye en varios conceptos esenciales: una parte va al refugio para que más Mius puedan ser rescatados y preparados para la adopción. La otra parte cubre los costos del examen veterinario, vacunación, desparasitación, esterilización y el traslado del Miu a su nuevo hogar. Además, recibirás un Kit de adopción con productos básicos para la llegada de tu nuevo compañero felino.
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </main>
+
+        <footer th:replace="~{Plantilla/footer :: footer}"></footer>
+
+        <script src="js/consulta.js"></script>
+    </body>    
+</html>

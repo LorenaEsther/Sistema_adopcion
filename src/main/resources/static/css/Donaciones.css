@@ -9,7 +9,6 @@
     --font-family: "Poppins", sans-serif;
     --title-color: #D9910D; /* Color de los títulos */
     --text-color: #676666; /* Color de texto */
-    --buttom-color: #B1BF49; /*Color de boton*/
 }
 
 * {
@@ -55,7 +54,7 @@ h2.title span {
 /* Botones css End */
 
 /* Header Start */
-/* Creamos shape para poner las nubesdebajo */
+/* Creamos shape para poner las nubesdebajo 
 .header-main{
     position: sticky;
     z-index: 3;
@@ -70,20 +69,20 @@ h2.title span {
     background-repeat: repeat;
     background-position: center;
 }
-/* agregamos espaciado */
+/* agregamos espaciado 
 .navbar-nav{
     gap: 1rem;
-}
-/* Modificamos nav-link */
+}*/
+/* Modificamos nav-link 
 .nav-link{
     padding: 5px 10px !important;
     display: inline-block !important;
     font-family: var(--font-family) !important;
     font-size: 13px;
     font-weight: bold  ;
-}
+}*/
 
-/* cuando el boton de nav-bar esta activo debe cambiar de forma */
+/* cuando el boton de nav-bar esta activo debe cambiar de forma 
 
 .nav-link.active,
 .nav-link:hover{
@@ -101,7 +100,7 @@ h2.title span {
     max-width: 100%;
     transition: opacity 0.3s linear, transform 0.3s linear;
     z-index: 1;
-}
+}*/
 
 /*  Parte del Main - Quienes somos */
 .about-us {
@@ -130,7 +129,7 @@ h2.title span {
 }
 
 .about-us .btn-donar {
-    background-color: #B1BF49 !important;
+    background-color: #B1BF49;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -170,33 +169,44 @@ h2.title span {
     color: white;
 }
 
+/*Style Promociones*/
+.card {
+    border-radius: 15px;
+    background-color: #f8f9fa;
+}
+
+.card-body h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #0a303a;
+}
+
+.card-body h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #e73a2d;
+}
+
+.btn-info {
+    background-color: #00cfe6;
+    border: none;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #ff5722;
+    border: none;
+}
+
+
 /*Footer */
 
 .footer-text {
     font-size: 0.875rem; /* Puedes ajustar el valor según lo que necesites */
-}
-/* Aumentar la especificidad para evitar conflictos con Bootstrap */
-.header-main .boton {
-    background-color: var(--buttom-color) !important;
-    color: white !important; /* Color de texto blanco */
-    border: none !important; /* Sin borde */
-    padding: 5px 12px !important; /* Tamaño del botón */
-    border-radius: 30px !important; /* Bordes redondeados */
-    font-size: 1rem !important; /* Asegurarse del tamaño correcto de la fuente */
-    display: inline-block !important; /* Asegurar que sea un bloque en línea */
-    text-align: center !important; /* Alinear el texto al centro */
-    transition: background-color 0.3s ease !important; /* Efecto de transición suave */
-}
-
-
-.card {
-    height: 100%; /* Permitir que todas las tarjetas tengan la misma altura */
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Espaciado uniforme entre los elementos */
 }
 
 

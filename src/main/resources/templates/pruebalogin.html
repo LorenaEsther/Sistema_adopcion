@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Prueba Login</title>
+    </head>
+    <body>
+        <h1>Login</h1>
+
+        <div th:if="${param.registered}" style="color: green;">
+            Registro exitoso. Por favor, inicia sesión.
+        </div>
+
+        <form th:action="@{/pruebalogin}" method="post">
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </body>
+</html>

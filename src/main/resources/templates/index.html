@@ -3,77 +3,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-
-        <title th:text="${titulo}">Adopta un Miau</title>
+        <title th:text="${titulo}">Index Miau</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Bootstrap Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
 
-        <!-- boostrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-        <!-- Styles -->
+        <!-- Custom Styles -->
         <link rel="stylesheet" href="css/styles.css">
-
     </head>
     <body> 
-        <!-- Header Start -->
-        <header class="bg-white">
-            <div class="container header-main">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white position-relative">
-                    <a class="navbar-brand" href="#">
-                        <img src="img/logo.png" alt="Logo" class="img-fluid" width="105px" >
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-modile" aria-controls="offcanvasNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/adopta}">Adopta</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Donaciones</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Miaus en Casa</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Consultas</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">MiauShop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/login}">Intranet</a>
-                            </li>  
-
-                        </ul>
-                        <div class="d-flex align-items-center"> 
-                            <button class="btn boton" type="button">
-                                Dona Aquí 
-                                <img src="img/donate.png" alt="Corazón" class="icono" />
-                            </button>
-                        </div>
-
-                    </div>
-
-                </nav>
-            </div>
-            <div class="header-shape"></div>
-        </header>
+        <!-- Header -->
+        <header th:replace="~{Plantilla/header :: header}"></header>
 
         <!-- Carousel Start -->
         <section>
@@ -100,45 +45,6 @@
             </div> 
         </section>
         <!-- Carousel End -->
-
-        <!-- navbar para dispositivos móviles : modo Responsivo Pendiente Hacer funcionar -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbar-modile" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">   </button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Adopta</a>   
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Wufs en casa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Donaciones</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Preguntas Frecuentes</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- Header End -->
 
         <!-- Sección Adopta -->
         <section class="my-5">
@@ -283,70 +189,12 @@
         </div>
 
 
-
-        <footer class="bg-dark text-light py-4">
-            <div class="container">
-                <div class="row footer-text">
-                    <!-- Logo Section -->
-                    <div class="col-md-3">
-                        <img src="img/logo.png" alt="Logo" class="img-fluid" width="120px">
-                    </div>
-
-                    <!-- Síguenos en Section -->
-                    <div class="col-md-3">
-                        <h5>Síguenos en</h5>
-                        <ul class="list-unstyled d-flex">
-                            <li>
-                                <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Contáctanos Section -->
-                    <div class="col-md-3">
-                        <h5>Contáctanos</h5>
-                        <p>Email: contacto@adopciongatos.com</p>
-                        <p>Teléfono: +51 923 456 890</p>
-                    </div>
-
-                    <!-- Términos y Condiciones Section -->
-                    <div class="col-md-3">
-                        <h5>Términos y Condiciones</h5>
-                        <a href="#" class="text-light">Ver Términos y Condiciones</a>
-                    </div>
-                </div>
-
-                <!-- Copyright Section -->
-                <div class="text-center mt-3 footer-text">
-                    <p class="mb-0">© 2024 Sistema de Adopción de Gatos. Todos los derechos reservados.</p>
-                </div>
-            </div>
-        </footer>
+        <footer th:replace="~{Plantilla/footer :: footer}"></footer>
 
 
-
-        <!-- Bootstrap Icons CDN -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                integrity="sha384-oBqDVmMz4fnFO9gyb2KjXhYb6/vp4z5QXxwMxB3b6qDgAnFqUuZY7zW7Ck2jU9i" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-                integrity="sha384-4gDqWx5/NeS4xWz4pu71fMOdaGHJ64eW/6DkMl0b+ItfMkdVdb8y6T7R9VqjFqR" crossorigin="anonymous">
-        </script>   
+        <!-- Bootstrap JavaScript Bundle (incluye Popper.js) -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>   
 
