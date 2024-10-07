@@ -165,20 +165,37 @@ h2.title span {
     margin-bottom: 10px;
 }
 
-/* Botón de Adoptar */
+/* Boton Adoptar y detalles */
+.adoptar-btn, 
+.btn-secondary {
+    width: 100%;
+    border-radius: 20px; 
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
 .adoptar-btn {
     background-color: #FF6347;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
 .adoptar-btn:hover {
     background-color: #e5533c;
+    opacity: 0.8;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    opacity: 0.8;
 }
 
 /* Footer */
@@ -206,4 +223,4 @@ h2.title span {
         font-size: 12px;
         padding: 3px 5px;
     }
-}
+}  
