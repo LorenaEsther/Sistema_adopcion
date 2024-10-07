@@ -8,11 +8,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    @Bean
+    /*@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/", "/login", "/pruebalogin","/pruebaregistrate", "/adopta", "/donaciones", "/miaus-en-casa", "/consultas", "/nosotros", "/miaushop", "/adminprueba", "/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/", "/login", "/pruebalogin", "/pruebaregistrate",
+                        "/adopta", "/donaciones", "/miaus-en-casa", "/consultas", "/nosotros",
+                        "/miaushop", "/admin/adminprueba", "/admin/registergatito", "/css/**", "/js/**", "/img/**").permitAll()
                 .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -28,6 +30,16 @@ public class SecurityConfig {
                 .permitAll()
                 )
                 .csrf(csrf -> csrf.disable());
+
+        return http.build();
+    }*/
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                .anyRequest().permitAll() // Permitir todas las solicitudes sin autenticación
+                )
+                .csrf(csrf -> csrf.disable()); // Desactivar CSRF temporalmente
 
         return http.build();
     }

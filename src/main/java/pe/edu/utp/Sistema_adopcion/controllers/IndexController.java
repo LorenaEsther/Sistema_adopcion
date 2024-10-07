@@ -52,10 +52,10 @@ public class IndexController {
         return "miaushop";
     }
     
-    @GetMapping("/adminprueba")
+    /*@GetMapping("/adminprueba")
     public String admin(Model model) {
         model.addAttribute("titulo", "Admin");
         return "Admin/index";
-    }
+    }*/
 
 }

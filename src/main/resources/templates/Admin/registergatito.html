@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{Admin/adminTemplate :: header}"></head>
+    <body>
+        <!-- Fondo de encabezado -->
+        <div th:replace="~{Admin/adminTemplate :: headerBackground}"></div>
+
+        <!-- Incluir Sidebar y Navbar -->
+        <div th:replace="~{Admin/adminTemplate :: sidebar}"></div>
+        <div th:replace="~{Admin/adminTemplate :: navbar}"></div>
+
+        <!-- Contenido específico de esta página -->
+        <div class="container mt-4 d-flex justify-content-center position-relative" style="z-index: 1; margin-left: 300px;">
+            <!-- Contenedor principal con fondo y bordes redondeados -->
+            <div class="p-4 bg-white rounded shadow-lg" style="width: 120%; max-width: 2200px;">
+                <!-- Botón para registrar nuevo -->
+                <div id="botonRegistrarNuevo" class="d-flex justify-content-end mb-3">
+                    <button id="registrarNuevoBtn" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#registroModal">Registrar Nuevo</button>
+                </div>
+
+                <!-- Tabla de gatitos registrados -->
+                <div id="tablaGatitos">
+                    <h4 class="text-center text-primary mb-4">Gatitos Registrados</h4>
+                    <!-- Añadir .table-responsive aquí -->
+                    <div class="table-responsive" style="border-radius: 15px; overflow: hidden;">
+                        <table class="table table-bordered text-center rounded" style="background-color: white;">
+                            <thead class="rounded" style="background-color: #EEDCEC;">
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Nombre</th>
+                                    <th>Color</th>
+                                    <th>Edad Aproximada</th>
+                                    <th>Estado</th>
+                                    <th>Vacunas</th>
+                                    <th>N° Vis_veterinario</th>
+                                    <th>Estado</th>
+                                    <th>Historial_Médico</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaGatitos">
+                                <!-- Aquí se llenarán los gatitos registrados -->
+                                <tr>
+                                    <td><img src="/img/gato1.jpg" alt="Foto" class="img-fluid" style="max-width: 45px;"></td>
+                                    <td>Miau</td>
+                                    <td>Blanco</td>
+                                    <td>12</td>
+                                    <td>Disponible</td>
+                                    <td>3</td>
+                                    <td>2</td>
+                                    <td>En proceso</td>
+                                    <td>
+                                        <img src="/img/historialmedico.svg" alt="Historial Médico" style="width: 35px; height: 35px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#historialModal">
+                                    </td>
+                                    <td>
+                                        <img src="/img/edit.svg" alt="Editar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(85%) sepia(61%) saturate(629%) hue-rotate(322deg) brightness(103%) contrast(100%);" onclick="funcionDeEditar()">
+                                        <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);" onclick="funcionDeEliminar()">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- Cierre del .table-responsive -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Modal para el formulario de registro -->
+        <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registroModalLabel">Registrar Miau</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre del gato">
+                            </div>
+                            <div class="mb-3">
+                                <label for="color" class="form-label">Color</label>
+                                <input type="text" class="form-control" id="color" placeholder="Color del gato">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edadAproximada" class="form-label">Edad Aproximada</label>
+                                <input type="number" class="form-control" id="edadAproximada" placeholder="Edad aproximada en meses">
+                            </div>
+                            <div class="mb-3">
+                                <label for="estado" class="form-label">Estado</label>
+                                <select class="form-select" id="estado">
+                                    <option selected>Selecciona el estado</option>
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="Disponible">En proceso</option>
+                                    <option value="Adoptado">Adoptado</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fotoGatito" class="form-label">Foto del Gatito</label>
+                                <input type="file" class="form-control" id="fotoGatito" accept="image/*">
+                            </div>
+                            <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
+                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de confirmación -->
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmationModalLabel" style="color: #B1BF49;">Registro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="color: #B1BF49;">
+                        ¡Registrado correctamente!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal para el historial médico -->
+        <div class="modal fade" id="historialModal" tabindex="-1" aria-labelledby="historialModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="historialModalLabel">Historial Médico</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="historialForm">
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" placeholder="Descripción del historial médico"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dosisVacunas" class="form-label">Dosis de Vacunas</label>
+                                <input type="text" class="form-control" id="dosisVacunas" placeholder="Dosis de vacunas">
+                            </div>
+                            <div class="mb-3">
+                                <label for="numeroVisitas" class="form-label">Número de Visitas al Veterinario</label>
+                                <input type="number" class="form-control" id="numeroVisitas" placeholder="Número de visitas">
+                            </div>
+                            <button type="button" class="btn btn-primary" id="guardarHistorial">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Incluir los scripts -->
+        <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
+        <!-- Incluir el archivo JavaScript externo -->
+        <script th:src="@{/js/register.js}"></script>
+    </body>
+</html>
