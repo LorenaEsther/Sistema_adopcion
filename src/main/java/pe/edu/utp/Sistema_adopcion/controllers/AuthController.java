@@ -67,7 +67,7 @@ public class AuthController {
         // Si no hay usuarios, redirigir al registro.
         return "redirect:/pruebaregistrate";
     }
-    
+
     @GetMapping("/pruebalogin")
     public String showTestLoginForm() {
         // Si hay usuarios en la base de datos, mostrar la página de login.
@@ -82,5 +82,38 @@ public class AuthController {
     public String loginUser() {
         // Implementar lógica de autenticación
         return "redirect:/";
+    }
+
+    @PostMapping("/login")
+    public String loginUser(@ModelAttribute("email") String email,
+            @ModelAttribute("password") String password,
+            Model model) {
+
+        // Mensajes de depuración
+        System.out.println("Email recibido: " + email);
+        System.out.println("Contraseña recibida: " + password);
+
+        // Busca al usuario en la base de datos por su email
+        Usuarios usuario = usuarioService.findByEmail(email);
+
+        // Verifica si el usuario existe
+        if (usuario != null) {
+            System.out.println("Usuario encontrado: " + usuario.getEmail());
+            System.out.println("Contraseña almacenada: " + usuario.getPassword());
+
+            // Verifica si la contraseña es correcta
+            if (usuario.getPassword().equals(password)) {
+                System.out.println("Autenticación exitosa");
+                return "redirect:/test-db"; // Redirigir al home o a donde sea necesario
+            } else {
+                System.out.println("Contraseña incorrecta");
+            }
+        } else {
+            System.out.println("Usuario no encontrado");
+        }
+
+        // Autenticación fallida
+        model.addAttribute("error", "Correo o contraseña incorrectos");
+        return "login"; // Mantener en la página de login con el mensaje de error
     }
 }

@@ -44,7 +44,7 @@
                     <p th:text="${error}" style="color: red;"></p>
                 </div>
 
-                <form action="/login" method="post">
+                <form th:action="@{/login}" method="post">
                     <h1>Iniciar Sesión</h1>
                     <div class="social-icons">
                         <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>

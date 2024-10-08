@@ -18,4 +18,9 @@ public class UsuarioService {
     public long count() {
         return usuariosRepository.count();
     }
+
+    public Usuarios findByEmail(String email) {
+        return usuariosRepository.findByEmail(email);
+    }
+    
 }
