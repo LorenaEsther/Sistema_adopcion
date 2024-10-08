@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/miaus-en-casa.css">
+        <title>Adopta un Gatito</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header th:replace="~{Plantilla/header :: header}"></header>
+
+    <section class="adopted-cats">
+      <div class="cat-card">
+        <img src="img/miaucasa1.png" alt="Gato adoptado 1" />
+        <h2>Nombre: Simba</h2>
+        <p>Fecha de adopción: 05/08/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa2.jpg" alt="Gato adoptado 2" />
+        <h2>Nombre: Nala</h2>
+        <p>Fecha de adopción: 12/08/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa3.jpg" alt="Gato adoptado 3" />
+        <h2>Nombre: Oreo</h2>
+        <p>Fecha de adopción: 18/08/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa4.jpg" alt="Gato adoptado 4" />
+        <h2>Nombre: Cleo</h2>
+        <p>Fecha de adopción: 25/08/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa5.jpg" alt="Gato adoptado 5" />
+        <h2>Nombre: Félix</h2>
+        <p>Fecha de adopción: 30/08/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa6.jpg" alt="Gato adoptado 6" />
+        <h2>Nombre: Leo</h2>
+        <p>Fecha de adopción: 03/09/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa7.jpg" alt="Gato adoptado 7" />
+        <h2>Nombre: Mia</h2>
+        <p>Fecha de adopción: 07/09/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa8.jpg" alt="Gato adoptado 8" />
+        <h2>Nombre: Coco</h2>
+        <p>Fecha de adopción: 12/09/2024</p>
+      </div>
+      <div class="cat-card">
+        <img src="img/miaucasa9.jpg" alt="Gato adoptado 9" />
+        <h2>Nombre: Max</h2>
+        <p>Fecha de adopción: 15/09/2024</p>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-container">
+        <div class="faq">
+          <div class="faq-header">
+            <h3>¿Cómo adopto un gato?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-content">
+            <p>
+              Para adoptar un gato, primero debes registrarte en nuestro sitio
+              web creando una cuenta con tus datos personales. Una vez que hayas
+              creado tu cuenta, podrás explorar nuestra lista de gatos
+              disponibles para adopción. Después de elegir al gato que más te
+              guste, deberás completar un formulario de adopción en línea con
+              algunos detalles sobre tu hogar y tu situación actual.
+              Posteriormente, nuestro equipo revisará tu solicitud y se pondrá
+              en contacto contigo para coordinar los siguientes pasos.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-header">
+            <h3>¿Cuál es el proceso de adopción?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-content">
+            <p>
+              El proceso de adopción comienza con la elección del gato que
+              deseas adoptar, seguido por el llenado de un formulario de
+              adopción. Luego, nuestro equipo te contactará para realizar una
+              entrevista, donde discutiremos más a fondo las necesidades del
+              gato y cómo planeas integrarlo a tu vida diaria. También
+              realizamos una visita a tu hogar para asegurarnos de que sea un
+              ambiente seguro y adecuado para el animal. Finalmente, si todo
+              está en orden, procederemos a completar los documentos de
+              adopción, y podrás llevar a tu nuevo amigo felino a casa.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-header">
+            <h3>¿Qué debo hacer después de adoptar?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-content">
+            <p>
+              Después de adoptar a tu gato, es esencial que le proporciones todo
+              lo que necesita para adaptarse a su nuevo hogar. Esto incluye una
+              cama cómoda, comida y agua fresca, y una bandeja de arena para sus
+              necesidades. Los primeros días pueden ser de adaptación para el
+              gato, por lo que es importante ofrecerle un espacio tranquilo y
+              seguro para que se sienta cómodo. Además, asegúrate de tener un
+              plan de visitas al veterinario para controles de salud y
+              vacunaciones. No olvides brindarle mucho amor y atención, ya que
+              este es un nuevo comienzo para ambos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="testimonials">
+      <h2>Testimonios</h2>
+      <div class="testimonial-container">
+        <div class="testimonial">
+          <img src="img/testimonio1.jpg" alt="Foto de María González" />
+          <p>
+            “Adoptar a mi gatito ha sido una experiencia increíble. El proceso
+            fue sencillo y eficiente, desde la elección del gato hasta la
+            entrega final en mi hogar. Ahora Michi se ha convertido en parte
+            esencial de mi familia, nos llena de alegría cada día. Sin duda,
+            recomendaría este lugar a cualquiera que esté buscando un nuevo
+            compañero felino. Todo el equipo fue muy amable y se aseguraron de
+            que tanto el gatito como yo estuviéramos cómodos durante todo el
+            proceso.”
+          </p>
+          <h3>María González</h3>
+          <span>Adoptante feliz</span>
+        </div>
+        <div class="testimonial">
+          <img src="img/testimonio2.jpg" alt="Foto de Juan Pérez" />
+          <p>
+            “El equipo de la tienda fue muy atento y comprensivo desde el
+            inicio. Nos ayudaron a encontrar el gato perfecto para nuestra
+            familia, tomando en cuenta nuestras necesidades y estilo de vida.
+            Nos dieron muchos consejos útiles sobre cómo hacer que Luna se
+            sintiera bienvenida en casa, y estamos muy agradecidos por todo el
+            apoyo. Luna ya es parte de nuestra familia y ha sido una bendición
+            tenerla en nuestras vidas.”
+          </p>
+          <h3>Juan Pérez</h3>
+          <span>Padre adoptivo</span>
+        </div>
+        <div class="testimonial">
+          <img src="img/testimonio3.jpg" alt="Foto de Ana Martínez" />
+          <p>
+            “La adopción fue rápida y fácil, ¡pero lo que más me impresionó fue
+            el seguimiento y la atención al detalle que ofreció el equipo! Desde
+            el momento en que decidí adoptar hasta las semanas posteriores,
+            siempre estuvieron disponibles para responder a mis dudas y
+            asegurarse de que Oreo estuviera bien. Ahora no puedo imaginar mi
+            vida sin él. Ha sido una experiencia transformadora, y recomiendo
+            este lugar a cualquiera que esté buscando adoptar.”
+          </p>
+          <h3>Ana Martínez</h3>
+          <span>Amante de los gatos</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="adoption-tips">
+      <h2>Consejos para Adoptantes</h2>
+      <div class="tips-container">
+        <div class="tip">
+          <h3>🐾 Preparar tu hogar</h3>
+          <p>
+            Asegúrate de tener un espacio tranquilo y seguro para tu nuevo gato.
+            Debe incluir una cama cómoda, comida, agua fresca, y una caja de
+            arena accesible.
+          </p>
+        </div>
+        <div class="tip">
+          <h3>🐾 Introducción gradual</h3>
+          <p>
+            Permite que el gato explore su nuevo entorno a su propio ritmo. No
+            lo fuerces a interactuar si no está listo, especialmente en los
+            primeros días.
+          </p>
+        </div>
+        <div class="tip">
+          <h3>🐾 Visitas al veterinario</h3>
+          <p>
+            Agenda una visita al veterinario para asegurarte de que el gato está
+            sano y tiene todas sus vacunas al día. No olvides preguntar sobre
+            cuidados a largo plazo.
+          </p>
+        </div>
+        <div class="tip">
+          <h3>🐾 Tiempo y paciencia</h3>
+          <p>
+            Los gatos pueden tardar en adaptarse a su nuevo hogar. Sé paciente y
+            dale tiempo para aclimatarse. Cada gato es diferente, algunos pueden
+            tardar semanas en sentirse completamente cómodos.
+          </p>
+        </div>
+      </div>
+    </section>
+        
+    <script>
+      const faqs = document.querySelectorAll(".faq");
+
+      faqs.forEach((faq) => {
+        faq.querySelector(".faq-header").addEventListener("click", () => {
+          faq.classList.toggle("active");
+        });
+      });
+    </script>
+        
+        <footer th:replace="~{Plantilla/footer :: footer}"></footer>
+
+
+
+        <!-- Bootstrap Icons CDN -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    </body>
+</html>
