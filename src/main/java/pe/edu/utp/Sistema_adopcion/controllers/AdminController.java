@@ -1,5 +1,5 @@
 package pe.edu.utp.Sistema_adopcion.controllers;
-
+ 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,7 @@ public class AdminController {
     @GetMapping("/adminprueba")
     public String admin(Model model) {
         model.addAttribute("titulo", "Admin");
+        model.addAttribute("activePage", "adminprueba");
         // Cambia la vista para usar la plantilla adminTemplate
         return "Admin/adminTemplate";
     }
@@ -20,6 +21,7 @@ public class AdminController {
     @GetMapping("/registergatito")
     public String mostrarRegistroGatito(Model model) {
         model.addAttribute("titulo", "Registrar Gatito");
+        model.addAttribute("activePage", "registergatito");
         System.out.println("Accediendo al método mostrarRegistroGatito");
         return "Admin/registergatito"; 
     }

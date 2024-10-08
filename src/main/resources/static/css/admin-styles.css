@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --primary-color: #919CD9;
+    --secondary-color: #0a303a;
+    --background-color: #fff;
+    --background-color-secondary: #d5e6eb;
+    --text-color: #676666;
+    --font-family: "Poppins", sans-serif ;
+    --title-color: #D9910D;  
+    --text-color: #676666; 
+    --buttom-color: #B1BF49;  
+}
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ 
+a {
+    text-decoration: none !important;
+}
+
+li {
+    list-style: none !important;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.wrapper {
+    display: flex;
+}
+.wrapper-background {
+    background-color: var(--primary-color);
+    min-width: 100%;
+    height: 300px;
+}
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    z-index: 2;    
+}
+
+#sidebar {
+    height: calc(100% - 40px);
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    flex-shrink: 0; /* No se encogerá */
+    transition: all .25s ease-in-out;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+    padding-left: 0.3rem;
+    padding-right: 0.3rem; 
+}
+
+#sidebar.expand {
+    width: 250px;
+    min-width: 250px;
+    
+}
+
+.navbar-brand-img{
+    width: 100px;
+}
+
+.main {
+    min-height: 100vh;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    margin-left: 260px; /* Margen inicial para cuando la barra lateral está expandida */
+}
+
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.15rem;
+}
+
+
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #67748e;
+}
+
+.purple{
+    color: #919CD9 !important;
+}
+.red{
+    color: #fb6340 !important;
+}
+
+.green {
+   color: #2dce89 !important;
+}
+
+.wrapper-sidebar-logo{
+    height: 60px;
+}
+.sidebar-logo a {
+    color: #67748e;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+.sidebar-logo{
+    margin-left: 1rem;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.15rem;
+    color: #67748e;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+a.sidebar-link{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 10px; 
+    
+}
+a.sidebar-link.active,
+a.sidebar-link:hover {
+    background-color: rgba(103, 116, 142,.05);
+}
+/* a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;
+} */
+
+.sidebar-item {
+    position: relative; 
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
