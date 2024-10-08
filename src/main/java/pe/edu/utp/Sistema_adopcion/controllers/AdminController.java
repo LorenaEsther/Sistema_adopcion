@@ -21,7 +21,7 @@ public class AdminController {
     public String mostrarRegistroGatito(Model model) {
         model.addAttribute("titulo", "Registrar Gatito");
         System.out.println("Accediendo al método mostrarRegistroGatito");
-        return "Admin/registergatito"; // Asegúrate de que este nombre coincida con el archivo HTML
+        return "Admin/registergatito"; 
     }
 
 }

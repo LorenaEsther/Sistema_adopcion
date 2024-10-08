@@ -12,7 +12,7 @@
         <!-- Contenido específico de esta página -->
         <div class="container mt-4 d-flex justify-content-center position-relative" style="z-index: 1; margin-left: 300px;">
             <!-- Contenedor principal con fondo y bordes redondeados -->
-            <div class="p-4 bg-white rounded shadow-lg" style="width: 120%; max-width: 2200px;">
+            <div class="p-4 bg-white rounded shadow-lg" style="width: 100%; max-width: 1200px;">
                 <!-- Botón para registrar nuevo -->
                 <div id="botonRegistrarNuevo" class="d-flex justify-content-end mb-3">
                     <button id="registrarNuevoBtn" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#registroModal">Registrar Nuevo</button>
@@ -77,7 +77,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" placeholder="Nombre del gato">
@@ -136,21 +136,22 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="historialForm">
+                        <form id="historialForm" method="post" th:action="@{/admin/guardarHistorial}" th:object="${historialMedico}">
                             <div class="mb-3">
                                 <label for="descripcion" class="form-label">Descripción</label>
-                                <textarea class="form-control" id="descripcion" placeholder="Descripción del historial médico"></textarea>
+                                <textarea class="form-control" th:field="*{descripcion}" id="descripcion" placeholder="Descripción del historial médico"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="dosisVacunas" class="form-label">Dosis de Vacunas</label>
-                                <input type="text" class="form-control" id="dosisVacunas" placeholder="Dosis de vacunas">
+                                <input type="text" class="form-control" th:field="*{dosisVacunas}" id="dosisVacunas" placeholder="Dosis de vacunas">
                             </div>
                             <div class="mb-3">
                                 <label for="numeroVisitas" class="form-label">Número de Visitas al Veterinario</label>
-                                <input type="number" class="form-control" id="numeroVisitas" placeholder="Número de visitas">
+                                <input type="number" class="form-control" th:field="*{numeroVisitasVeterinario}" id="numeroVisitas" placeholder="Número de visitas">
                             </div>
-                            <button type="button" class="btn btn-primary" id="guardarHistorial">Guardar</button>
+                            <button type="submit" class="btn btn-primary" id="guardarHistorial">Guardar</button>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -162,5 +163,13 @@
         <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
         <!-- Incluir el archivo JavaScript externo -->
         <script th:src="@{/js/register.js}"></script>
+        <!-- Incluir CSS de Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Incluir JavaScript de Bootstrap y Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
     </body>
 </html>
