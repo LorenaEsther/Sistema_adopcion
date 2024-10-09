@@ -211,3 +211,63 @@ body {
 .container.active .toggle-right {
     transform: translateX(200%);
 }
+
+.registration-fail {
+    background-color: #C71585; /* Color de fondo suave para el éxito */
+    color: #155724; /* Color de texto verde oscuro */
+    border: 0px solid #494a4a; /* Borde verde claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Aumenta el espaciado interno */
+    margin: 10px 0; /* Margen superior e inferior */
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: center; /* Centrar el texto */
+    animation: fadeIn 0.5s; /* Añadir una animación de aparición */
+    position: absolute; /* Cambiar a posición absoluta */
+    top: 5px; /* Ajusta esto según sea necesario */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Alinea correctamente al centro */
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    width: 80%; /* Ajusta el ancho para evitar líneas múltiples */
+    max-width: 400px; /* Establece un ancho máximo si es necesario */
+    
+}
+
+.registration-success {
+    background-color: #4169E1; /* Color de fondo suave para el éxito */
+    color: #ffff; /* Color de texto verde oscuro */
+    border: 0px solid #494a4a; /* Borde verde claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Aumenta el espaciado interno */
+    margin: 10px 0; /* Margen superior e inferior */
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: center; /* Centrar el texto */
+    animation: fadeIn 0.5s; /* Añadir una animación de aparición */
+    position: absolute; /* Cambiar a posición absoluta */
+    top: 5px; /* Ajusta esto según sea necesario */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Alinea correctamente al centro */
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    width: 80%; /* Ajusta el ancho para evitar líneas múltiples */
+    max-width: 400px; /* Establece un ancho máximo si es necesario */
+    
+}
+.registration-fail p {
+    margin: 0px 0;
+    color: #ffff; /* Cambiar el color del texto a blanco */
+    /*font-weight: bold;  Establecer el texto en negrita */
+}
+
+.registration-success {
+    
+    color: #ffff; /* Cambiar el color del texto a blanco */
+    /*font-weight: bold;  Establecer el texto en negrita */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
