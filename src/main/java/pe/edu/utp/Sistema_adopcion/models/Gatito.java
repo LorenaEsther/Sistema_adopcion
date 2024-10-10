@@ -12,6 +12,8 @@ public class Gatito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String descripcion;
+
     private String nombre;
 
     private int edadAproximada;
@@ -81,6 +83,14 @@ public class Gatito {
 
     public Date getFechaIngreso() {
         return fechaIngreso;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public void setFechaIngreso(Date fechaIngreso) {
