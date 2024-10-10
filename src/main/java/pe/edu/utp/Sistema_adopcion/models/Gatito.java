@@ -2,6 +2,7 @@ package pe.edu.utp.Sistema_adopcion.models;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Gatitos")
@@ -23,6 +24,9 @@ public class Gatito {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "ENUM('disponible', 'en proceso', 'adoptado')", nullable = false)
     private EstadoGatito estado = EstadoGatito.DISPONIBLE;
+
+    @OneToMany(mappedBy = "gatito", cascade = CascadeType.ALL) // Asegúrate de que esto esté aquí
+    private List<FotoGatito> fotos; // Lista de fotos asociadas
 
     // Enumerated type for 'estado'
     public enum EstadoGatito {
@@ -89,5 +93,13 @@ public class Gatito {
 
     public void setEstado(EstadoGatito estado) {
         this.estado = estado;
+    }
+
+    public List<FotoGatito> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<FotoGatito> fotos) {
+        this.fotos = fotos;
     }
 }

@@ -15,64 +15,70 @@
                             <div class="p-4 bg-white rounded shadow-lg" style="width: 100%; max-width: 1200px;">
                                 <!-- Botón para registrar nuevo -->
                                 <div id="botonRegistrarNuevo" class="d-flex justify-content-end mb-3">
-                                    <button id="registrarNuevoBtn" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#registroModal">Registrar Nuevo</button>
+                                    <button id="registrarNuevoBtn" class="btn rounded-pill" style="background-color: #919CD9; border-color: #919CD9; color: #fff" data-bs-toggle="modal" data-bs-target="#registroModal">
+                                        Registrar Nuevo
+                                    </button>
+
                                 </div>
-                
+
                                 <!-- Tabla de gatitos registrados -->
                                 <div id="tablaGatitos">
-                                    <h4 class="text-center text-primary mb-4">Gatitos Registrados</h4>
+                                    <h4 class="text-center mb-4" style="color: #919CD9;">Gatitos Registrados</h4>
+
                                     <!-- Añadir .table-responsive aquí -->
                                     <div class="table-responsive" style="border-radius: 15px; overflow: hidden;">
-                                        <table class="table table-bordered text-center rounded" style="background-color: white;">
-                                            <thead class="rounded" style="background-color: #EEDCEC;">
+                                        <table class="table table-bordered text-center rounded w-100" style="background-color: white;">
+                                            <thead class="rounded custom-thead">
                                                 <tr>
                                                     <th>Foto</th>
                                                     <th>Nombre</th>
                                                     <th>Color</th>
                                                     <th>Edad Aproximada</th>
                                                     <th>Estado</th>
-                                                    <th>Vacunas</th>
-                                                    <th>N° Vis_veterinario</th>
-                                                    <th>Estado</th>
-                                                    <th>Historial_Médico</th>
+                                                    <th>Historial Médico</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
+
                                             <tbody id="listaGatitos">
-                                                <!-- Aquí se llenarán los gatitos registrados -->
-                                                <tr>
-                                                    <td><img src="/img/gato1.jpg" alt="Foto" class="img-fluid" style="max-width: 45px;"></td>
-                                                    <td>Miau</td>
-                                                    <td>Blanco</td>
-                                                    <td>12</td>
-                                                    <td>Disponible</td>
-                                                    <td>3</td>
-                                                    <td>2</td>
-                                                    <td>En proceso</td>
+                                                <tr th:each="gatito : ${listaGatitos}">
                                                     <td>
-                                                        <!-- Botón para abrir el modal de historial médico -->
-                                                        <a data-id="1" onclick="abrirModalHistorial(this)" data-bs-toggle="modal" data-bs-target="#historialModal">
+                                                        <img th:if="${not #lists.isEmpty(gatito.fotos)}" th:src="@{${gatito.fotos[0].urlFoto}}" alt="Foto" class="img-fluid" style="max-width: 45px;">
+                                                        <img th:if="${#lists.isEmpty(gatito.fotos)}" src="/img/default-image.jpg" alt="Foto por defecto" class="img-fluid" style="max-width: 45px;">
+                                                    </td>
+
+
+                                                    <td th:text="${gatito.nombre}"></td>
+                                                    <td th:text="${gatito.color}"></td>
+                                                    <td th:text="${gatito.edadAproximada}"></td>
+                                                    <td th:text="${gatito.estado}"></td> <!-- Estado se muestra aquí -->
+                                                    <td>
+                                                        <!-- Para el historial médico, asumiendo que solo quieres el último registro -->
+                                                        <a th:href="@{/historial/${gatito.id}}" data-bs-toggle="modal" data-bs-target="#historialModal">
                                                             <img src="/img/historialmedico.svg" alt="Historial Médico" style="width: 35px; height: 35px; cursor: pointer;">
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <img src="/img/edit.svg" alt="Editar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(85%) sepia(61%) saturate(629%) hue-rotate(322deg) brightness(103%) contrast(100%);" onclick="funcionDeEditar()">
-                                                        <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);" onclick="funcionDeEliminar()">
+                                                        <img src="/img/edit.svg" alt="Editar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(85%) sepia(61%) saturate(629%) hue-rotate(322deg) brightness(103%) contrast(100%);" onclick="funcionDeEditar(${gatito.id})">
+                                                        <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);" onclick="funcionDeEliminar(${gatito.id})">
                                                     </td>
+
                                                 </tr>
                                             </tbody>
+
                                         </table>
-                                    </div> <!-- Cierre del .table-responsive -->
+                                    </div> 
+                                    <!-- Cierre del .table-responsive -->
                                 </div>
                             </div>
                         </div>
-            
+
                     </div>
                 </div>
             </div>
         </div>
 
-           <!-- Contenido específico de esta página -->
+        <!-- Contenido específico de esta página -->
         <!-- Modal para el formulario de registro -->
         <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -85,29 +91,33 @@
                         <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre del gato">
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato">
                             </div>
                             <div class="mb-3">
                                 <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control" id="color" placeholder="Color del gato">
+                                <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Color del gato">
                             </div>
+
                             <div class="mb-3">
                                 <label for="edadAproximada" class="form-label">Edad Aproximada</label>
-                                <input type="number" class="form-control" id="edadAproximada" placeholder="Edad aproximada en meses">
+                                <input type="number" class="form-control" id="edadAproximada" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses">
                             </div>
+
                             <div class="mb-3">
                                 <label for="estado" class="form-label">Estado</label>
-                                <select class="form-select" id="estado">
-                                    <option selected>Selecciona el estado</option>
-                                    <option value="Disponible">Disponible</option>
-                                    <option value="Disponible">En proceso</option>
-                                    <option value="Adoptado">Adoptado</option>
+                                <select class="form-select" id="estado" th:field="*{estado}">
+                                    <option value="" selected>Selecciona el estado</option>
+                                    <option value="DISPONIBLE">Disponible</option>
+                                    <option value="EN_PROCESO">En proceso</option>
+                                    <option value="ADOPTADO">Adoptado</option>
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label for="fotoGatito" class="form-label">Foto del Gatito</label>
-                                <input type="file" class="form-control" id="fotoGatito" accept="image/*">
+                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*">
                             </div>
+
                             <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
                             <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
                         </form>
@@ -163,39 +173,14 @@
 
         <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
 
-         <!-- Incluir el archivo JavaScript externo -->
-         <script th:src="@{/js/register.js}"></script>
-         <!-- Incluir CSS de Bootstrap -->
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
- 
-         <!-- Incluir JavaScript de Bootstrap y Popper.js -->
-         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        
+        <!-- Incluir el archivo JavaScript externo -->
+        <script th:src="@{/js/register.js}"></script>
+        <!-- Incluir CSS de Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-         <script>
-            function abrirModalHistorial(button) {
-                // Obtener el ID del gatito desde el atributo data-id
-                const gatitoId = button.getAttribute('data-id');
-        
-                // Aquí puedes hacer una llamada AJAX para obtener el historial médico del gatito
-                // usando el gatitoId y luego cargar los datos en el modal.
-        
-                // Simularemos datos cargados dinámicamente
-                const historialData = {
-                    descripcion: "Gatito rescatado, recibió su primera vacuna.",
-                    dosisVacunas: "1 dosis",
-                    numeroVisitasVeterinario: "2 visitas"
-                };
-        
-                // Rellenar los campos del modal con los datos obtenidos
-                document.getElementById('descripcion').value = historialData.descripcion;
-                document.getElementById('dosisVacunas').value = historialData.dosisVacunas;
-                document.getElementById('numeroVisitas').value = historialData.numeroVisitasVeterinario;
-        
-                // Mostrar el modal (esto lo gestiona Bootstrap automáticamente)
-            }
-        </script>
+        <!-- Incluir JavaScript de Bootstrap y Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
     </body>

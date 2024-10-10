@@ -18,12 +18,4 @@ public class AdminController {
         return "Admin/adminTemplate";
     }
 
-    @GetMapping("/registergatito")
-    public String mostrarRegistroGatito(Model model) {
-        model.addAttribute("titulo", "Registrar Gatito");
-        model.addAttribute("activePage", "registergatito");
-        System.out.println("Accediendo al método mostrarRegistroGatito");
-        return "Admin/registergatito"; 
-    }
-
 }
