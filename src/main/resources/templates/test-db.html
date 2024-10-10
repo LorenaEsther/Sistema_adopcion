@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test DB</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> <!-- Asegúrate de que la ruta sea correcta -->
+</head>
+<body>
+    <h1>Información de Usuarios</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Contraseña</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:each="usuario : ${usuarios}">
+                <tr>
+                    <td th:text="${usuario.persona.nombre}"></td>
+                    <td th:text="${usuario.email}"></td>
+                    <td th:text="${usuario.password}"></td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+    
+    <a href="/logout">Cerrar sesión</a> <!-- Enlace para cerrar sesión -->
+</body>
+</html>
