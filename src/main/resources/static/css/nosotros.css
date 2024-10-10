@@ -4,26 +4,141 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 /* 
     Created on : 27 set. 2024, 21:46:30
-    Author     : Soporte
+    Author     : Gabriela
 */
 .center {
     text-align: center;
 }
 
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Alinea elementos en el centro horizontalmente */
+
+.title {
+    font-size: 3rem; /* Tamaño del texto */
+    color: white; /* Color del texto */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra del texto */
 }
+
+
+.container {
+    display: flex;
+    flex-direction: column; /* Elementos se apilen verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.wrapper{
+    padding-top: 20px;
+    padding-bottom: 100px; /* Espacio inferior, ajusta según necesites */
+}
+.card {
+    width: 300px; /* Ajusta este valor según el tamaño que desees */
+    margin: 80px; /* Espacio entre tarjetas */
+    margin-bottom: 50px; /* Espacio adicional en la parte inferior de cada tarjeta */
+    overflow: hidden; /* Asegura que el efecto no se desborde */
+}
+.card-img-top{
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho de la tarjeta */
+    height: 200%; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Mantiene la proporción de la imagen sin recortar */
+    transition: opacity 0.3s ease; /* Transición suave de la opacidad */
+}
+.card:hover .card-img-top {
+    opacity: 0.7; /* Atenúa la imagen al pasar el mouse */
+}
+
 
 .row {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan */
+    justify-content: center; /* Centra horizontalmente las tarjetas */
+    margin-bottom: 0; /* Aumenta el espacio entre las filas */
 }
+
+
+.card-body{
+    text-align: center;
+    box-shadow: 0px 15px 15px -8px rgba(0,0,0,0.5);
+}
+.card-body h6{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: deeppink;
+}
+.card-title{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+}
+.socials a{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+.social i{
+    color: #fff;
+    padding: 12px 0;
+}
+/* Colores iconos */
+.socials a i {
+    color: #fff; /* Color por defecto para los íconos */
+    padding: 12px 0; /* Tamaño del ícono */
+}
+.socials a:nth-child(1) i { /* Primer ícono (Facebook) */
+    color: #3b5998; /* Color rojo */
+}
+.socials a:nth-child(2) i { /* Segundo ícono (YouTube) */
+    color: #ff0000; /* Color rojo */
+}
+.socials a:nth-child(3) i { /* Tercer ícono (Instagram) */
+    color: #E1306C; /* Color característico de Instagram */
+}
+
+
+@media (max-width:800px){
+    .mx-30{
+        margin-bottom: 30px;
+    }
+}
+
+
+
+
+.col-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro de cada columna */
+    margin: 5px; /* Espacio entre las columnas */
+}
+
+.img-fluid {
+    max-width: 100%; /* Asegura que las imágenes no excedan el 75% del ancho */
+    height: auto; /* Mantiene la proporción de las imágenes */
+}
+
+.text-justified {
+    text-align: justify; /* Justificar texto */
+}
+
+.name-box {
+    background-color: #ffffff; /* Color de fondo del recuadro */
+    padding: 5px; /* Espaciado interno */
+    margin-top: 50px; /* Espacio superior */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Asegura que el recuadro ocupe el ancho disponible */
+}
+
+
 
 /* Footer */
 .footer-text {
     font-size: 0.875rem; /* Ajusta el tamaño de fuente según sea necesario */
     text-align: center; /* Asegura que el texto del footer esté centrado */
 }
+.btn-custom:hover {
+    background-color:#c25a92; /* Color al pasar el cursor */
+    transform: translateY(-5px); /* Mueve el botón hacia arriba */
+}
+
 
