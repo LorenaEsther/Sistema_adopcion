@@ -14,8 +14,56 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 70vh;
+    height: 75vh;
 }
+
+/* Botón 'Atrás' pegado a la izquierda */
+.atras--actions {
+    position: absolute;
+    top: 20px;
+    left: 15px; /* Pegado a la izquierda */
+    margin-left: 0; /* Sin márgenes a la izquierda */
+    z-index: 10; /* Asegurar que el botón esté por encima de otros elementos */
+}
+
+/* Estilo y animación del botón */
+.button.atras-page--action {
+    background-color: #f299a9;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 3.5rem;
+    font-size: 1.125em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+/* Efecto hover: Cambia el color del botón y agrega sombra */
+.button.atras-page--action:hover {
+    background-color: #845c72;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo y animación del icono SVG de la flecha */
+.button.atras-page--action #arrow-svg {
+    transition: transform 1s ease-in-out; /* Asegura una transición suave */
+    margin-right: 10px; /* Separar la flecha del texto */
+}
+
+/* Efecto hover del icono SVG */
+.button.atras-page--action:hover #arrow-svg {
+    transform: translateX(-15px) rotate(-720deg); /* Mueve la flecha y la rota */
+}
+
+/* Efecto clic del botón */
+.button.atras-page--action:active {
+    transform: scale(0.95); /* Reduce ligeramente el tamaño al hacer clic */
+}
+
 
 .container {
     background-color: #fff;
@@ -48,7 +96,7 @@ body {
 }
 
 .container button {
-    background-color: #f299a9; 
+    background-color: #f299a9;
     color: #fff;
     font-size: 14px;
     padding: 12px 50px;
@@ -164,7 +212,7 @@ body {
 }
 
 .toggle {
-    background-color: #494a4a; 
+    background-color: #494a4a;
     height: 100%;
     background: linear-gradient(to right, #f299a9, #845c72);
     color: #fff;
@@ -229,7 +277,7 @@ body {
     z-index: 10; /* Asegura que esté por encima de otros elementos */
     width: 80%; /* Ajusta el ancho para evitar líneas múltiples */
     max-width: 400px; /* Establece un ancho máximo si es necesario */
-    
+
 }
 
 .registration-success {
@@ -249,7 +297,7 @@ body {
     z-index: 10; /* Asegura que esté por encima de otros elementos */
     width: 80%; /* Ajusta el ancho para evitar líneas múltiples */
     max-width: 400px; /* Establece un ancho máximo si es necesario */
-    
+
 }
 .registration-fail p {
     margin: 0px 0;
@@ -258,7 +306,7 @@ body {
 }
 
 .registration-success {
-    
+
     color: #ffff; /* Cambiar el color del texto a blanco */
     /*font-weight: bold;  Establecer el texto en negrita */
 }
