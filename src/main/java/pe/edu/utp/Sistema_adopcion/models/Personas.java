@@ -12,6 +12,8 @@ public class Personas {
     private int id;
 
     private String nombre;
+    
+    private String apellidos;
 
     private String telefono;
 
@@ -50,6 +52,14 @@ public class Personas {
 
     public String getTelefono() {
         return telefono;
+    }
+    
+    public String getApellidos() {
+        return telefono;
+    }
+    
+    public void setApellidos(String telefono) {
+        this.telefono = telefono;
     }
 
     public void setTelefono(String telefono) {

@@ -38,6 +38,7 @@
                                         <h3 th:text="${gatito.nombre}">Michi</h3>
                                         <p th:text="'Edad: ' + ${gatito.edadAproximada} + ' años'">Edad: 2 años</p>
                                         <p>Un gato muy cariñoso y juguetón.</p>
+                                        <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
                                         <a th:href="@{'/detalles-gato/' + ${gatito.id}}" class="btn btn-secondary">Detalles</a>
                                     </div>
                                 </div>
