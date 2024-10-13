@@ -17,8 +17,12 @@ import pe.edu.utp.Sistema_adopcion.services.HistorialMedicoService;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import pe.edu.utp.Sistema_adopcion.services.FileStorageService;
 
 @Controller
 @RequestMapping("/admin")
@@ -33,6 +37,12 @@ public class RegistroGatitoController {
     @Autowired
     private HistorialMedicoService historialMedicoService;
 
+    @Autowired
+    private FileStorageService fileStorageService;
+
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+
     @GetMapping("/registergatito")
     public String mostrarRegistroGatito(Model model) {
         model.addAttribute("titulo", "Registrar Gatito");
@@ -42,11 +52,7 @@ public class RegistroGatitoController {
         model.addAttribute("gatito", new Gatito());
 
         // Recuperar todos los gatos y añadirlos al modelo
-        List<Gatito> listaGatitos = gatitoService.findAll(); // Asegúrate de que este método existe en tu GatitoService
-
-        // Agregar log para verificar cuántos gatitos se recuperaron
-        System.out.println("Total de gatitos recuperados: " + listaGatitos.size());
-
+        List<Gatito> listaGatitos = gatitoService.findAll();
         model.addAttribute("listaGatitos", listaGatitos);
 
         return "Admin/registergatito";
@@ -55,56 +61,76 @@ public class RegistroGatitoController {
     @PostMapping("/registergatito")
     public String registrarGatito(@ModelAttribute Gatito gatito,
             @ModelAttribute HistorialMedico historialMedico,
-            @RequestParam("fotoGatito") MultipartFile fotoGatitoFile,
+            @RequestParam("fotoGatito") MultipartFile[] fotoGatitosFiles,
             Model model) {
 
-        // Guardar el gatito
+        if (fotoGatitosFiles == null || fotoGatitosFiles.length == 0) {
+            System.out.println("No se han recibido archivos.");
+        } else {
+            System.out.println("Archivos recibidos correctamente.");
+        }
+
+        // Imprimir el número de archivos recibidos para verificar
+        System.out.println("Número de archivos recibidos: " + fotoGatitosFiles.length);
+
+        // Guardar el gatito primero
         Gatito nuevoGatito = gatitoService.save(gatito);
 
         // Ruta donde se guardarán las imágenes
-        String uploadDir = "D:/Repositorios/Sistema_Adopcion/src/main/resources/uploads"; // Ruta absoluta
+        String uploadDir = "D:/Repositorios/Sistema_Adopcion/src/main/resources/uploads";
 
-        // Asegúrate de que el directorio existe
+        // Verificar que el directorio exista o crearlo
         File uploadDirFile = new File(uploadDir);
         if (!uploadDirFile.exists()) {
-            uploadDirFile.mkdirs(); // Crea el directorio si no existe
+            uploadDirFile.mkdirs(); // Crear el directorio si no existe
         }
 
-        // Guardar la foto del gatito
-        if (!fotoGatitoFile.isEmpty()) {
-            try {
-                // Guarda el archivo en la ruta especificada
-                String filePath = uploadDir + "/" + fotoGatitoFile.getOriginalFilename();
-                fotoGatitoFile.transferTo(new File(filePath)); // Guarda el archivo
+        // Guardar las fotos del gatito si están presentes
+        if (fotoGatitosFiles != null && fotoGatitosFiles.length > 0) {
+            for (MultipartFile fotoGatitoFile : fotoGatitosFiles) {
+                if (!fotoGatitoFile.isEmpty()) {
+                    try {
+                        // Almacenar archivo
+                        String storedFilename = fileStorageService.storeFile(fotoGatitoFile, uploadDir);
 
-                // Crear y guardar el objeto FotoGatito
-                FotoGatito fotoGatito = new FotoGatito();
-                fotoGatito.setGatito(nuevoGatito); // Asocia la foto al gatito
-                fotoGatito.setUrlFoto(fotoGatitoFile.getOriginalFilename()); // Guarda el nombre del archivo
-                fotoGatitoService.save(fotoGatito);
-                System.out.println("Foto guardada en: " + filePath); // Logging de éxito
-            } catch (IOException e) {
-                e.printStackTrace();
-                model.addAttribute("errorMessage", "Error al subir la foto: " + e.getMessage());
-                return "error"; // Manejo de errores en caso de fallo en la subida de la foto
+                        // Crear y guardar la entidad FotoGatito
+                        FotoGatito fotoGatito = new FotoGatito();
+                        fotoGatito.setGatito(nuevoGatito);  // Asociar la foto con el gatito
+                        fotoGatito.setUrlFoto(storedFilename);  // Guardar el nombre del archivo generado
+                        fotoGatitoService.save(fotoGatito);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        model.addAttribute("errorMessage", "Error al subir la foto: " + e.getMessage());
+                        return "error";
+                    }
+                }
             }
-        } else {
-            System.out.println("No se subió ninguna foto."); // Logging si no hay archivo
         }
 
         // Guardar el historial médico
         try {
-            historialMedico.setGatito(nuevoGatito); // Asocia el historial médico al gatito
+            historialMedico.setGatito(nuevoGatito);
             historialMedicoService.save(historialMedico);
-            System.out.println("Historial médico guardado correctamente.");
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("errorMessage", "Error al guardar el historial médico: " + e.getMessage());
-            return "error"; // Manejo de errores en caso de fallo en la subida de la foto
+            return "error";
         }
 
         // Redirigir a la página de registro o mostrar mensaje de éxito
-        return "redirect:/admin/registergatito"; // Cambia esto según tu lógica
+        return "redirect:/admin/registergatito";
+    }
+
+    @PostMapping("/admin/eliminar/{id}")
+    public String eliminarGatito(@PathVariable int id, Model model) {
+        try {
+            gatitoService.deleteById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("errorMessage", "Error al eliminar el gatito.");
+            return "error";
+        }
+        return "redirect:/admin/registergatito";
     }
 
 }

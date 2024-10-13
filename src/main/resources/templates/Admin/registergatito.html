@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{Admin/adminTemplate :: header}"></head>
+    <head th:replace="~{Admin/adminTemplate :: header}">
+    <head th:replace="~{Admin/adminTemplate :: header}">
+        <meta name="_csrf" content="${_csrf.token}"/>
+        <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    </head>
     <body>
 
         <div class="wrapper">
@@ -43,8 +47,7 @@
                                             <tbody id="listaGatitos">
                                                 <tr th:each="gatito : ${listaGatitos}">
                                                     <td>
-                                                        <img th:if="${not #lists.isEmpty(gatito.fotos)}" th:src="@{${gatito.fotos[0].urlFoto}}" alt="Foto" class="img-fluid" style="max-width: 45px;">
-                                                        <img th:if="${#lists.isEmpty(gatito.fotos)}" src="/img/default-image.jpg" alt="Foto por defecto" class="img-fluid" style="max-width: 45px;">
+                                                        <img th:src="@{'/uploads/' + ${gatito.fotos[0].urlFoto}}" alt="Foto" width="40" height="40">
                                                     </td>
 
 
@@ -59,9 +62,21 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <img src="/img/edit.svg" alt="Editar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(85%) sepia(61%) saturate(629%) hue-rotate(322deg) brightness(103%) contrast(100%);" onclick="funcionDeEditar(${gatito.id})">
-                                                        <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);" onclick="funcionDeEliminar(${gatito.id})">
+                                                        <!-- Botón para editar -->
+                                                        <a th:href="@{/admin/editar/{id}(id=${gatito.id})}">
+                                                            <img src="/img/edit.svg" alt="Editar" 
+                                                                 style="width: 20px; height: 20px; cursor: pointer;
+                                                                 filter: invert(85%) sepia(61%) saturate(629%)
+                                                                 hue-rotate(322deg) brightness(103%) contrast(100%);">
+                                                        </a>
+
+                                                        <!-- Botón para eliminar con confirmación -->
+                                                        <a href="#" onclick="funcionDeEliminar(${gatito.id})">
+                                                            <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);">
+                                                        </a>
+
                                                     </td>
+
 
                                                 </tr>
                                             </tbody>
@@ -94,6 +109,10 @@
                                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato">
                             </div>
                             <div class="mb-3">
+                                <label for="nombre" class="form-label">Descripción</label>
+                                <input type="text" class="form-control" id="descipcion" th:field="*{descripcion}" placeholder="Descripción del gato">
+                            </div>
+                            <div class="mb-3">
                                 <label for="color" class="form-label">Color</label>
                                 <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Color del gato">
                             </div>
@@ -114,28 +133,15 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="fotoGatito" class="form-label">Foto del Gatito</label>
-                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*">
+                                <label for="fotoGatito" class="form-label">Fotos del Gatito</label>
+                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" multiple>
+
                             </div>
+
 
                             <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
                             <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal de confirmación -->
-        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="confirmationModalLabel" style="color: #B1BF49;">Registro</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" style="color: #B1BF49;">
-                        ¡Registrado correctamente!
                     </div>
                 </div>
             </div>
