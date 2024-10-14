@@ -17,7 +17,7 @@ public class HistorialMedico {
     private Gatito gatito;
 
     @Lob
-    private String descripcion;
+    public String descripcionHistorial;
 
     private String dosisVacunas;
 
@@ -28,12 +28,12 @@ public class HistorialMedico {
 
     // Constructors, Getters, and Setters
 
-    public HistorialMedico(int id, Gatito gatito, String descripcion, String dosisVacunas, Date fecha) {
+    public HistorialMedico(int id, Gatito gatito, String descripcionHistorial, String dosisVacunas, Date fecha) {
         this.id = id;
         this.gatito = gatito;
-        this.descripcion = descripcion;
+        this.descripcionHistorial = descripcionHistorial;
         this.dosisVacunas = dosisVacunas;
-        this.fecha = fecha;
+        this.fecha = new Date();
     }
 
     public HistorialMedico() {
@@ -55,12 +55,12 @@ public class HistorialMedico {
         this.gatito = gatito;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescripcionHistorial() {
+        return descripcionHistorial;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String descripcionHistorial) {
+        this.descripcionHistorial = descripcionHistorial;
     }
 
     public String getDosisVacunas() {

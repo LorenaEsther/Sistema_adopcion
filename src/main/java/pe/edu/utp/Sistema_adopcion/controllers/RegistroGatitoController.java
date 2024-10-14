@@ -16,8 +16,10 @@ import pe.edu.utp.Sistema_adopcion.services.HistorialMedicoService;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -40,6 +42,7 @@ public class RegistroGatitoController {
 
         // Inicializa un nuevo objeto Gatito para el formulario
         model.addAttribute("gatito", new Gatito());
+        model.addAttribute("historialMedico", new HistorialMedico());
 
         // Recuperar todos los gatos y añadirlos al modelo
         List<Gatito> listaGatitos = gatitoService.findAll(); // Asegúrate de que este método existe en tu GatitoService
@@ -54,7 +57,6 @@ public class RegistroGatitoController {
 
     @PostMapping("/registergatito")
     public String registrarGatito(@ModelAttribute Gatito gatito,
-            @ModelAttribute HistorialMedico historialMedico,
             @RequestParam("fotoGatito") MultipartFile fotoGatitoFile,
             Model model) {
 
@@ -62,7 +64,7 @@ public class RegistroGatitoController {
         Gatito nuevoGatito = gatitoService.save(gatito);
 
         // Ruta donde se guardarán las imágenes
-        String uploadDir = "D:/Repositorios/Sistema_Adopcion/src/main/resources/uploads"; // Ruta absoluta
+        String uploadDir = new File("src/main/resources/uploads").getAbsolutePath(); // Ruta absoluta
 
         // Asegúrate de que el directorio existe
         File uploadDirFile = new File(uploadDir);
@@ -94,8 +96,9 @@ public class RegistroGatitoController {
 
         // Guardar el historial médico
         try {
-            historialMedico.setGatito(nuevoGatito); // Asocia el historial médico al gatito
-            historialMedicoService.save(historialMedico);
+            HistorialMedico historialMed = new HistorialMedico();
+            historialMed.setGatito(nuevoGatito); // Asocia el historial médico al gatito
+            historialMedicoService.save(historialMed);
             System.out.println("Historial médico guardado correctamente.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,6 +108,49 @@ public class RegistroGatitoController {
 
         // Redirigir a la página de registro o mostrar mensaje de éxito
         return "redirect:/admin/registergatito"; // Cambia esto según tu lógica
+    }
+       
+    @GetMapping("/registergatito/historial")
+    public String mostrarHistorialMedico(@PathVariable int id, Model model){        
+        List<HistorialMedico> historial =  historialMedicoService.findAll();        
+        model.addAttribute("mostrarLista", historial);
+        model.addAttribute("historialID", historialMedicoService.obtenerHistorial(id));
+        return "redirect:/admin/registergatito";
+    }    
+    
+// ACTUALIZAR HISTORIAL DEL GATITO
+    @PostMapping("/registergatito/historial/{id}")    
+    public String actualizarHistorialMedico(@ModelAttribute("historialMedico") HistorialMedico historialMedico,
+            @PathVariable("id") int id, Model model) {
+        try {
+            Gatito gatito = gatitoService.obtenerGatitoPorId(id); // Obtiene el objeto Gatito
+            HistorialMedico historial = historialMedicoService.obtenerHistorial(id);
+            
+            historial.setId(id);
+            historial.setDescripcion(historialMedico.getDescripcionHistorial());
+            historial.setDosisVacunas(historialMedico.getDosisVacunas());
+            historial.setNumeroVisitasVeterinario(historialMedico.getNumeroVisitasVeterinario());
+            historial.setFecha(new Date());
+            historialMedico.setGatito(gatito); // Asocia el historial médico al gatito
+            historialMedicoService.save(historial);
+            System.out.println("Historial médico guardado correctamente.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("errorMessage", "Error al guardar el historial médico: " + e.getMessage());
+            return "error"; // Manejo de errores en caso de fallo en la subida del historial médico
+        }
+
+        // Redirigir a la página correspondiente o mostrar mensaje de éxito
+        return "redirect:/admin/registergatito"; // Cambia esto según tu lógica
+    }
+
+// ELIMINAR GATITO
+    @GetMapping("registergatito/{id}")
+    public String eliminarGatito(@PathVariable int id, Model model) {
+        historialMedicoService.deleteById(id);
+        fotoGatitoService.deleteById(id);
+        gatitoService.deleteById(id);
+        return "redirect:/admin/registergatito";
     }
 
 }

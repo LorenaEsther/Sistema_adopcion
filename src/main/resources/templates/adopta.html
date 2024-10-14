@@ -21,7 +21,7 @@
         <section id="adopta" class="adopta-section">
             <h1>Conoce a Nuestros Gatos Miau en Adopción</h1>
             <p>Estos gatitos Miau están esperando un hogar lleno de amor. ¡Anímate a conocerlos!</p>
-            <div class="container">
+            <div class="container"> 
                 <div class="container-fluid p-0">
                     <img src="img/adopta.jpg" alt="imagen" class="img-class">
                 </div>
@@ -35,88 +35,18 @@
                                 <div class="gato-card">
                                     <img src="img/gato1.jpg" alt="Gato 1">
                                     <div class="gato-info">
-                                        <h3 th:text="${gatito.nombre}">Michi</h3>
-                                        <p th:text="'Edad: ' + ${gatito.edadAproximada} + ' años'">Edad: 2 años</p>
-                                        <p>Un gato muy cariñoso y juguetón.</p>
+                                        <h3 th:text="${gatito.nombre}"></h3>
+                                        <p th:text="'Edad: ' + ${gatito.edadAproximada} + ' años'"></p>
+                                        <p th:text="${gatito.descripcion}"></p>
                                         <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
                                         <a th:href="@{'/detalles-gato/' + ${gatito.id}}" class="btn btn-secondary">Detalles</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        <!-- <div class="col-md-4">
-                            <div class="gato-card">
-                                <img src="img/gato2.jpg" alt="Gato 2">
-                                <div class="gato-info">
-                                    <h3>Luna</h3>
-                                    <p>Edad: 1 año</p>
-                                    <p>Gata tranquila, ideal para un hogar relajado.</p>
-                                    <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
-                                    <button class="btn btn-secondary">Detalles
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="gato-card">
-                                <img src="img/gato3.jpg" alt="Gato 3">
-                                <div class="gato-info">
-                                    <h3>Tiger</h3>
-                                    <p>Edad: 4 meses</p>
-                                    <p>Independiente y curioso, le encanta explorar.</p>
-                                    <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
-                                    <button class="btn btn-secondary">Detalles
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="gato-card">
-                                <img src="img/gato4.jpg" alt="Gato 4">
-                                <div class="gato-info">
-                                    <h3>Pelusa</h3>
-                                    <p>Edad: 5 años</p>
-                                    <p>Gato independiente y cariñoso a su manera.</p>
-                                    <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
-                                    <button class="btn btn-secondary">Detalles
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="gato-card">
-                                <img src="img/gato5.jpg" alt="Gato 5">
-                                <div class="gato-info">
-                                    <h3>Bigotes</h3>
-                                    <p>Edad: 4 meses</p>
-                                    <p>Una gatita muy sociable y juguetona.</p>
-                                    <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
-                                    <button class="btn btn-secondary">Detalles
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="gato-card">
-                                <img src="img/gato6.jpg" alt="Gato 6">
-                                <div class="gato-info">
-                                    <h3>Rayo</h3>
-                                    <p>Edad: 1 año</p>
-                                    <p>Gato muy activo y curioso.</p>
-                                    <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
-                                    <button class="btn btn-secondary">Detalles
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
+                    </div>
                 </div>
-            </div>
-        </div>-->
+        </div>
     </section>
 
     <!-- Modal -->
