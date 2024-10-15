@@ -1,0 +1,744 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --primary-color: #e73a2d;
+    --secondary-color: #0a303a;
+    --background-color: #fff;
+    --background-color-secondary: #d5e6eb;
+    --text-color: #676666;
+    --font-family: "Poppins", sans-serif;
+    --title-color: #D9910D; /* Color de los títulos */
+    --text-color: #676666; /* Color de texto */
+    --buttom-color: #B1BF49; /*Color de boton*/
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color-secondary) !important;
+    font-size: 16px;
+    color: var(--text-color);
+    line-height: 1.6;   
+    
+}
+
+h2.title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--title-color);
+}
+
+h2.title span {
+    color: #EA939C;
+}
+
+
+/* Botones css End */
+
+/* Header Start */
+/* Creamos shape para poner las nubesdebajo */
+.header-main{
+    position: sticky;
+    z-index: 3;
+}
+.header-shape{
+    background-image: url('/img/nube.png');
+    position: absolute;
+    top: 3rem;
+    width: 100%;
+    height: 58px;
+    z-index: 2;
+    background-repeat: repeat;
+    background-position: center;
+}
+/* agregamos espaciado */
+.navbar-nav{
+    gap: 1rem;
+}
+/* Modificamos nav-link */
+.nav-link{
+    padding: 5px 10px !important;
+    display: inline-block !important;
+    font-family: var(--font-family) !important;
+    font-size: 13px;
+    font-weight: bold  ;
+}
+
+/* cuando el boton de nav-bar esta activo debe cambiar de forma */
+.nav-link {
+    padding: 5px 10px !important;
+    display: inline-block !important;
+    font-family: var(--font-family) !important;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none; /* Esta línea elimina la subrayado en los enlaces */
+}
+.card-title {
+    text-decoration: none; /* Eliminar el subrayado */
+    color: inherit; /* Mantener el color del texto */
+}
+
+.card-title:hover {
+    text-decoration: underline; /* O bien, puedes agregar un subrayado solo al pasar el ratón */
+}
+
+.custom-btn {
+    font-size: 16px; /* Ajusta el tamaño según lo necesites */
+    text-decoration: none; /* Eliminar subrayado */
+    color: #000; /* Cambia el color del texto si es necesario */
+    padding: 10px 20px; /* Espaciado interno para el botón */
+    background-color: #f0f0f0; /* Color de fondo del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    display: inline-block; /* Asegúrate de que el enlace se comporte como un botón */
+}
+
+.nav-link.active,
+.nav-link:hover{
+    position: relative;
+    display: inline-block;
+    color: var(--background-color);
+    font-weight: bold;
+    background-color: transparent;
+    background-image: url('/img/arrow_bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    text-align: center;
+    max-width: 100%;
+    transition: opacity 0.3s linear, transform 0.3s linear;
+    z-index: 1;
+}
+
+/*  Parte del Main - Quienes somos */
+.about-us {
+    background-color: #A7AED9; /* color de fondo */
+    font-family: 'Baloo 2', sans-serif;
+}
+
+.about-us h2 {
+    color: var(--primary-color-color); /* color del título */
+    font-weight: bold;
+}
+
+.about-us p {
+    color: var(--secondary-color); /* color del texto */
+    font-size: 1.2rem;
+}
+
+.about-us img {
+    max-width: 70%;
+    border-radius: 8px;
+}
+
+.about-us .row .col-md-3 p {
+    color: #EEDCEC; /* color de los subtítulos de las secciones */
+    font-weight: bold;
+}
+
+.about-us .btn-donar {
+    background-color: #B1BF49 !important;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.about-us .btn-voluntario {
+    background-color: #C5E4D4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.about-us .icon {
+    width: 50px; /*tamaño de las imágenes */
+    height: 50px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.about-us .col-md-3 p {
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.btn-custom {
+    background-color: #EA939C;
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+}
+
+.btnn {
+    background-color: black;  /* Fondo negro */
+    color: white;             /* Texto blanco para contraste */
+    border: 2px solid black;   /* Borde negro de 2px */
+    padding: 10px 20px;       /* Espaciado interno */
+    margin-top: 20px;
+    text-decoration: none;    /* Elimina el subrayado del enlace */
+    font-size: 16px;          /* Tamaño del texto */
+    display: inline-block;    /* Se comporta como un botón */
+    border-radius: 5px;       /* Esquinas ligeramente redondeadas */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza la transición de color */
+}
+
+/* Efecto al pasar el cursor (hover) */
+.btnn:hover {
+    background-color: white;  /* Cambia el fondo a blanco */
+    color: black;             /* Cambia el texto a negro */
+}
+
+
+.btn-custom:hover {
+    background-color: #D17C84; /* Color al pasar el mouse */
+    color: white;
+}
+
+/*Footer */
+
+.footer-text {
+    font-size: 0.875rem; /* Puedes ajustar el valor según lo que necesites */
+}
+/* Aumentar la especificidad para evitar conflictos con Bootstrap */
+.header-main .boton {
+    background-color: var(--buttom-color) !important;
+    color: white !important; /* Color de texto blanco */
+    border: none !important; /* Sin borde */
+    padding: 5px 12px !important; /* Tamaño del botón */
+    border-radius: 30px !important; /* Bordes redondeados */
+    font-size: 1rem !important; /* Asegurarse del tamaño correcto de la fuente */
+    display: inline-block !important; /* Asegurar que sea un bloque en línea */
+    text-align: center !important; /* Alinear el texto al centro */
+    transition: background-color 0.3s ease !important; /* Efecto de transición suave */
+}
+
+
+.card {
+    height: 100%; /* Permitir que todas las tarjetas tengan la misma altura */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espaciado uniforme entre los elementos */
+}
+
+.has-bg-image {
+    background-image: url(../img/cta-bg.jpg);
+}
+
+
+/* Header End css */
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+    .nav-link {
+        font-size: 12px;
+        padding: 3px 5px;
+    }
+    .has-bg-image{
+        background-image: none;
+    }
+}
+
+
+/*-----------------------------------*\
+  #REUSED STYLE
+\*-----------------------------------*/
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size:  1.5rem;
+}
+
+.section-title .span {
+    display: inline;
+    color: var(--portland-orange);
+}
+
+.img-holder {
+    aspect-ratio: var(--width) / var(--height);
+    background-color: var(--light-gray);
+    overflow: hidden;
+}
+
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 18px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+}
+.service .container {
+    padding-top: 2rem;
+    text-align: center;
+}
+.card-text {
+    padding-top: 0.5rem;
+}
+
+
+.has-scrollbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: inline mandatory;
+    padding-bottom: 20px;
+    margin-bottom: -40px;
+    list-style: none; /* Eliminar puntos de la lista */
+    
+}
+.has-scrollbarr {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: inline mandatory;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    list-style: none; /* Eliminar puntos de la lista */
+    
+}
+
+.scrollbar-item {
+    min-width: 100%;
+    scroll-snap-align: start;
+}
+
+.grid-list {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas de igual tamaño */
+    padding: 20px; /* Espacio interno */
+    list-style: none; /* Eliminar viñetas de la lista */
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/*-----------------------------------*\
+  #CATEGORY
+\*-----------------------------------*/
+
+.category-card .card-banner {
+    border-radius: var(--radius-10);
+}
+
+.category-card .img-cover {
+    transition: var(--transition-2);
+    border-radius: 1rem;
+}
+
+.category-card:is(:hover, :focus-within) .img-cover {
+    transform: scale(1.08);
+}
+
+.category-card .card-title {
+    margin-top: 15px;
+    text-align: center;
+    transition: var(--transition-1);
+}
+
+.category-card .card-title:is(:hover, :focus) {
+    color: var(--portland-orange);
+}
+
+/*-----------------------------------*\
+  #PRODUCT
+\*-----------------------------------*/
+
+.product .img-cover.hover,
+.product-card .card-action-btn {
+    display: none;
+}
+
+.product-card {
+    text-align: center;
+
+}
+
+.product-card .card-banner {
+    border: 1px solid var(--platinum);
+    border-radius: var(--radius-10);
+    margin-bottom: 20px;
+}
+
+.product-card:is(.wrapper, .rating-wrapper) {
+    display: flex;
+}
+
+.product-card .wrapper {
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--silver-chalice);
+    font-size: var(--fs-7);
+}
+
+.product-card .rating-wrapper {
+    color: var(--amber);
+    gap: 2px;
+}
+
+.product-card .rating-wrapper.gray {
+    color: unset;
+}
+
+.product-card .h3 {
+    font-size: 1.5rem;
+    margin: 8px 0 10px;
+}
+
+.product-card .card-title {
+    transition: var(--transition-1);
+}
+
+.product-card .card-title:is(:hover, :focus) {
+    color: var(--portland-orange);
+}
+
+.product-card .card-price {
+    color: var(--portland-orange);
+    font-size: var(--fs-4);
+    font-weight: var(--fw-700);
+}
+
+/*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+
+.footer {
+    background-color: var(--raisin-black);
+    color: var(--battleship-gray);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top;    
+}
+
+.footer-top {
+    padding-top: 100px;
+    border-bottom: 1px solid var(--onyx);
+}
+
+.footer-top .container {
+    display: grid;
+    gap: 30px;
+}
+
+.footer .logo {
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    font-size: var(--fs-6);
+    margin-bottom: 0px;
+}
+
+.footer-text .link {
+    display: inline-block;
+    color: var(--portland-orange);
+}
+
+.contact-item {
+    margin-bottom: 15px;
+    color: var(--white);
+    font-weight: var(--fw-700);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-item ion-icon {
+    flex-shrink: 0;
+    font-size: 22px;
+    color: var(--portland-orange);
+}
+.rating-wrapper ion-icon {
+    color: #B1BF49; /* Cambia el color de las estrellas a amarillo */
+}
+
+
+
+.social-list {
+    display: flex;
+    gap: 10px;
+}
+
+.social-link {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 12px;
+    border-radius: 50%;
+    transition: var(--transition-1);
+}
+
+.social-link:is(:hover, :focus) {
+    background-color: var(--portland-orange);
+    color: var(--white);
+}
+
+.footer-list-title {
+    color: var(--white);
+    font-size: var(--fs-5);
+    font-weight: var(--fw-700);
+    padding: 10px 0;
+}
+
+.footer-link {
+    padding: 4px 0;
+    transition: var(--transition-1);
+}
+
+.footer-link:is(:hover, :focus) {
+    color: var(--portland-orange);
+}
+
+.footer-bottom {
+    padding: 20px 0;
+}
+
+.copyright {
+    margin-bottom: 10px;
+}
+
+.copyright-link {
+    display: inline-block;
+}
+
+.footer-bottom .img {
+    width: 100%;
+    max-width: max-content;
+}
+
+
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+@media (min-width: 575px) {
+    .scrollbar-item {
+        min-width: calc(50% - 15px);
+    }
+
+    .grid-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-top .container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 768px) {
+    .scrollbar-item {
+        min-width: calc(33.33% - 20px);
+    }
+
+    .grid-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero {
+        aspect-ratio: 1512 / 784;
+        padding-left: 10%;
+    }
+
+    .offer .grid-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cta-banner {
+        display: block;
+        margin: 0;
+        width: 100%; /* Ocupa el 100% del ancho del contenedor */
+        max-width: 700px; /* Tamaño máximo para pantallas grandes */
+        height: auto; /* Mantener la proporción de la imagen */
+
+    }
+
+    .cta .container {
+        display: grid;
+        grid-template-columns: 1fr 0.75fr;
+        align-items: flex-end;
+    }
+
+    .cta.has-bg-image {
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    .footer-bottom .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .element.style{
+        background-image: none;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .container {
+        padding-inline: 15px;
+    }
+
+    .scrollbar-item {
+        min-width: calc(20% - 24px);
+    }
+
+    .category-card .h3 {
+        font-size: 2rem;
+    }
+
+    .service .grid-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-top .container {
+        grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cta-content {
+        padding: 100px 0;
+    }
+
+    .brand .container,
+    .footer .container {
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+
+    .footer {
+        padding-top: 40px;
+        
+    }
+}
+
+/*-----------------------------------*\
+  #CUSTOM STYLES
+\*-----------------------------------*/
+
+.custom-section-offer {
+    padding: 40px;
+}
+
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.custom-grid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-offer-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-offer-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.custom-img-holder {
+    --width: 100%;
+    --height: auto;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.custom-card-subtitle {
+    font-size: 15px;
+    color: #2dce89;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.custom-card-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.custom-card-title .custom-span {
+    color: #ff5722;
+}
+
+.custom-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff5722;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #e64a19;
+    color: #333; /* Color del texto en hover */
+}
+.h33{
+    text-align: center;      /* Centra el texto */
+    font-size: 20px;        /* Tamaño de fuente */
+    font-weight: normal;     /* Quita la negrita */
+    color: #333;            /* Color de texto, puedes cambiarlo según prefieras */
+    line-height: 1.5;      /* Altura de línea para mejorar la legibilidad */
+    margin: 10px 0;        /* Espaciado vertical alrededor del texto */
+    text-decoration: none;       /* Elimina el subrayado */
+}
+a.h33 {
+    text-decoration: none;           /* Elimina el subrayado en enlaces */
+}

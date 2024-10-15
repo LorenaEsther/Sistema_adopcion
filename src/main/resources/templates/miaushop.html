@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="${titulo}">Index Miau</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Bootstrap Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="css/miaushop.css">
+        <!-- 
+  - preload images
+        -->
+        <link rel="preload" as="image" href="../img/hero-bannner.jpeg">
+    </head>
+
+    <body id="top">
+        <header th:replace="~{Plantilla/header :: header}"></header>
+
+        <header class="header" data-header>
+
+        </header>
+
+        <main>
+
+            <article>
+
+                <section>
+                    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../img/hero-bannner.jpeg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../img/hero-bannner.jpeg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../img/hero-bannner.jpeg" class="d-block w-100" alt="">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div> 
+                </section>
+                <section class="section category" aria-label="category">
+                    <div class="container">
+
+                        <h2 class="h2 section-title">
+                            <span class="span">Top</span> de categorias
+                        </h2>
+
+                        <ul class="has-scrollbar">
+
+                            <li class="scrollbar-item">
+                                <div class="category-card">
+
+                                    <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                                        <img src="../img/category-1.png" width="330" height="300" loading="lazy" alt="Cat Food"
+                                             class="img-cover">
+                                    </figure>
+
+                                    <h3 class="h33">
+                                        <a href="#" class="card-title">Comida</a>
+                                    </h3>
+
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="category-card">
+
+                                    <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                                        <img src="../img/category-2.jpg" width="330" height="300" loading="lazy" alt="Cat Toys"
+                                             class="img-cover">
+                                    </figure>
+
+                                    <h3 class="h33">
+                                        <a href="#" class="card-title">Juguetes</a>
+                                    </h3>
+
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="category-card">
+
+                                    <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                                        <img src="../img/category-3.png" width="330" height="300" loading="lazy" alt="Dog Food"
+                                             class="img-cover">
+                                    </figure>
+
+                                    <h3 class="h33">
+                                        <a href="#" class="card-title">Medicamentos</a>
+                                    </h3>
+
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="category-card">
+
+                                    <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                                        <img src="../img/category-44.jpg" width="330" height="300" loading="lazy" alt="Dog Toys"
+                                             class="img-cover">
+                                    </figure>
+
+                                    <h3 class="h33">
+                                        <a href="#" class="card-title">Tuning</a>
+                                    </h3>
+
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="category-card">
+
+                                    <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                                        <img src="../img/category-5.jpg" width="330" height="300" loading="lazy"
+                                             alt="Dog Sumpplements" class="img-cover">
+                                    </figure>
+
+                                    <h3 class="h33">
+                                        <a href="#" class="card-title">Suplementos</a>
+                                    </h3>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+                <section class="custom-section-offer" aria-label="offer">
+                    <div class="custom-container">
+                        <ul class="custom-grid-list">
+                            <li>
+                                <div class="custom-offer-card custom-has-bg-image custom-img-holder"
+                                     style="background-image: url('../img/offer-banner-1.jpg'); --width: 540; --height: 374;">
+                                    <p class="custom-card-subtitle">Artículos seleccionados. Solo en línea.</p>
+                                    <h3 class="custom-h33 custom-card-title">
+                                        Grandes Ofertas de<span class="custom-span">Verano</span>
+                                    </h3>
+                                    <a href="#" class="custom-btn">Más Información</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="custom-offer-card custom-has-bg-image custom-img-holder"
+                                     style="background-image: url('../img/offer-banner-2.jpg'); --width: 540; --height: 374;">
+                                    <p class="custom-card-subtitle">Golosinas y cuidados</p>
+                                    <h3 class="custom-h33 custom-card-title">
+                                        Consiente a tu gran <span class="custom-span">amor</span>
+                                    </h3>
+                                    <a href="#" class="custom-btn">Más Información</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="custom-offer-card custom-has-bg-image custom-img-holder"
+                                     style="background-image: url('../img/offer-banner-3.jpg'); --width: 540; --height: 374;">
+                                    <p class="custom-card-subtitle">Nuestra marca te encantará</p>
+                                    <h3 class="custom-h33 custom-card-title">
+                                        Novedad de este <span class="custom-span">año</span>
+                                    </h3>
+                                    <a href="#" class="custom-btn">Más Información</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+
+                <section class="section product" id="shop" aria-label="product">
+                    <div class="container">
+
+                        <h2 class="h2 section-title">
+                            <span class="span">Más</span> Vendidos
+                        </h2>
+
+                        <ul class="grid-list">
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-1.jpg" width="360" height="360" loading="lazy"
+                                             alt="Commodo leo sed porta" class="img-cover default">                                       
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(355)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Ricocat Gatitos <br>15 Kg</a>
+                                        </h3>
+
+                                        <data class="card-price" value="15">S/55.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-2.jpg" width="360" height="360" loading="lazy"
+                                             alt="Purus consequat congue sit" class="img-cover default">
+                                        <img src="../img/product-2_0.jpg" width="360" height="360" loading="lazy"
+                                             alt="Purus consequat congue sit" class="img-cover hover">
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper gray">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(320)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Ricocat Pate <br>180 g</a>
+                                        </h3>
+
+                                        <data class="card-price" value="45">s/ 4.5.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-3.jpg" width="360" height="360" loading="lazy"
+                                             alt="Morbi vel arcu scelerisque" class="img-cover default">
+                                        <img src="../img/product-3_0.jpg" width="360" height="360" loading="lazy"
+                                             alt="Morbi vel arcu scelerisque" class="img-cover hover">
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper gray">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(255)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Canbo Esterilizados<br>15 Kg</a>
+                                        </h3>
+
+                                        <data class="card-price" value="45">s/85.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-4.jpg" width="360" height="360" loading="lazy"
+                                             alt="Morbi vel arcu scelerisque" class="img-cover default">
+                                        <img src="../img/product-4_0.jpg" width="360" height="360" loading="lazy"
+                                             alt="Morbi vel arcu scelerisque" class="img-cover hover">
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper gray">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(220)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Canbo Pate<br>100 gr</a>
+                                        </h3>
+
+                                        <data class="card-price" value="49">s/ 5.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-5.jpg" width="360" height="360" loading="lazy"
+                                             alt="Morbi vel arcu scelerisque" class="img-cover default">
+                                        <img src="../img/product-5_0.jpg" width="360" height="360" loading="lazy"
+                                             alt="Morbi vel arcu scelerisque" class="img-cover hover">
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper gray">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(181)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Supercat Gatitos <br> 15 Kg</a>
+                                        </h3>
+
+                                        <data class="card-price" value="85">s/ 45.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-6.jpg" width="360" height="360" loading="lazy"
+                                             alt="Nam justo libero porta ege" class="img-cover default">
+                                        <img src="../img/product-6_0.jpg" width="360" height="360" loading="lazy"
+                                             alt="Nam justo libero porta ege" class="img-cover hover">
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper gray">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(150)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Supercat Pate <br>160 gr</a>
+                                        </h3>
+
+                                        <data class="card-price" value="85">s/ 2.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-7.jpg" width="360" height="360" loading="lazy"
+                                             alt="Nam justo libero porta ege" class="img-cover default">
+                                        <img src="../img/product-7_0.jpg" width="360" height="360" loading="lazy"
+                                             alt="Nam justo libero porta ege" class="img-cover hover">
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper gray">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(125)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Churu Gatitos <br> 100 gr</a>
+                                        </h3>
+
+                                        <data class="card-price" value="85">s/ 10.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="product-card">
+
+                                    <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                                        <img src="../img/product-8.jpg" width="360" height="360" loading="lazy"
+                                             alt="Etiam commodo leo sed" class="img-cover default">
+                                        <img src="../img/product-8_0.jpg" width="360" height="360" loading="lazy"
+                                             alt="Etiam commodo leo sed" class="img-cover hover">
+
+                                        <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                                            <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <div class="wrapper">
+                                            <div class="rating-wrapper gray">
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                                <ion-icon name="star" aria-hidden="true"></ion-icon>
+                                            </div>
+
+                                            <span class="span">(99)</span>
+                                        </div>
+
+                                        <h3 class="h3">
+                                            <a href="#" class="card-title">Cat Chow Gatitos <br> 8 Kg</a>
+                                        </h3>
+
+                                        <data class="card-price" value="55">s/20.00</data>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+
+                <section class="section service" aria-label="service">
+                    <div class="container">
+
+                        <img src="../img/service-image.png" width="122" height="136" loading="lazy" alt="" class="img">
+
+                        <h2 class="h2 section-title">
+                            <span class="span">Lo que tu mascota necesita, </span> cuando lo necesita.
+                        </h2>
+
+                        <ul class="grid-list">
+
+                            <li>
+                                <div class="service-card">
+
+                                    <figure class="card-icon">
+                                        <img src="../img/service-icon-1.png" width="70" height="70" loading="lazy"
+                                             alt="service icon">
+                                    </figure>
+
+                                    <h3 class="h3 card-title">Entrega gratuita el mismo día</h3>
+
+                                    <p class="card-text">
+                                        Haga su pedido los fines de semana, para obtener entrega gratuita en pedidos mayores a 100.
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+
+                                    <figure class="card-icon">
+                                        <img src="../img/service-icon-2.png" width="70" height="70" loading="lazy"
+                                             alt="service icon">
+                                    </figure>
+
+                                    <h3 class="h3 card-title">Devolución hasta los 30 días</h3>
+
+                                    <p class="card-text">
+                                        35% de descuento en tu primer pedido más 5% de descuento en todos los pedidos futuros.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+
+                                    <figure class="card-icon">
+                                        <img src="../img/service-icon-3.png" width="70" height="70" loading="lazy"
+                                             alt="service icon">
+                                    </figure>
+
+                                    <h3 class="h3 card-title">Pago con seguridad y garantía</h3>
+
+                                    <p class="card-text">
+                                        Utiliza el medio de pago de tu preferencia, yape, plin, transferencia, efectivo, visa, etc.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="service-card">
+
+                                    <figure class="card-icon">
+                                        <img src="../img/service-icon-4.png" width="70" height="70" loading="lazy"
+                                             alt="service icon">
+                                    </figure>
+
+                                    <h3 class="h3 card-title">Soporte 24/7 <br> los 365 días del año</h3>
+
+                                    <p class="card-text">
+                                        ¡Estamos aquí para ti las 24 horas del día, los 7 días de la semana! Contacta con nosotros
+                                    </p>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+
+                <section class="cta has-bg-image" aria-label="cta" >
+                    <div class="container">
+
+                        <figure class="cta-banner">
+                            <img src="../img/cta-banner.png" loading="lazy" alt="cat" class="w-100">
+                        </figure>
+
+                        <div class="cta-content">
+
+                            <img src="../img/cta-icon.png" width="120" height="35" loading="lazy" alt="taste guarantee"
+                                 class="img">
+
+                            <h2 class="h2 section-title">Pruébalo, ámalo o lo reemplazamos… ¡Garantizado!</h2>
+
+                            <p class="section-text">
+                                En Petio, creemos que a su perro y gato les encantará tanto su comida que, si no es así, lo ayudaremos
+                                a encontrar un
+                                reemplazo. Esa es nuestra garantía de sabor.
+                            </p>
+
+                            <a href="#" class="btnn">Saber más</a>
+
+                        </div>
+
+                    </div>
+                </section>
+
+
+                <section class="section brand" aria-label="brand">
+                    <div class="container">
+
+                        <h2 class="h2 section-title">
+                            <span class="span">Nuestros</span> Socios
+                        </h2>
+
+                        <ul class="has-scrollbarr">
+
+                            <li class="scrollbar-item">
+                                <div class="brand-card img-holder" style="--width: 150; --height: 150;">
+                                    <img src="../img/brand-1.jpg" width="150" height="150" loading="lazy" alt="brand logo"
+                                         class="img-cover">
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="brand-card img-holder" style="--width: 150; --height: 150;">
+                                    <img src="../img/brand-2.jpg" width="150" height="150" loading="lazy" alt="brand logo"
+                                         class="img-cover">
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="brand-card img-holder" style="--width: 150; --height: 150;">
+                                    <img src="../img/brand-3.jpg" width="150" height="150" loading="lazy" alt="brand logo"
+                                         class="img-cover">
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="brand-card img-holder" style="--width: 150; --height: 150;">
+                                    <img src="../img/brand-4.jpg" width="150" height="150" loading="lazy" alt="brand logo"
+                                         class="img-cover">
+                                </div>
+                            </li>
+
+                            <li class="scrollbar-item">
+                                <div class="brand-card img-holder" style="--width: 150; --height: 150;">
+                                    <img src="../img/brand-5.jpg" width="150" height="150" loading="lazy" alt="brand logo"
+                                         class="img-cover">
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+
+            </article>
+        </main>
+
+        <footer th:replace="~{Plantilla/footer :: footer}"></footer>
+
+
+        
+
+        <script src="./assets/js/script.js" defer></script>
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    </body>
+
+</html>
