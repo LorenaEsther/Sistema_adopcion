@@ -33,15 +33,9 @@ public class IndexController {
 
     @GetMapping("/detalles-gato/{id}")
     public String detallesGato(@PathVariable("id") int id, Model model) {
-        Optional<Gatito> gatitoOpt = gatitoService.obtenerGatitoPorId(id);
-
-        if (gatitoOpt.isPresent()) {
-            model.addAttribute("gatito", gatitoOpt.get());
-            return "detalles-gato"; // Thymeleaf buscará un archivo detalles-gato.html
-        } else {
-            model.addAttribute("error", "Gatito no encontrado");
-            return "error"; // O una vista de error que hayas definido
-        }
+        Gatito gatitoOpt = gatitoService.obtenerGatitoPorId(id);
+        model.addAttribute("gatito", gatitoOpt);
+        return "detalles-gato"; // Thymeleaf buscará un archivo detalles-gato.html
     }
 
     @GetMapping("/donaciones")

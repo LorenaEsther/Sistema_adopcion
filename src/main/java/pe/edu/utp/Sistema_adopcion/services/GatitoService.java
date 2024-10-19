@@ -41,8 +41,8 @@ public class GatitoService {
         gatitoRepository.deleteById(id);
     }
 
-    public Optional<Gatito> obtenerGatitoPorId(int id) {
-        return gatitoRepository.findById(id);
+    public Gatito obtenerGatitoPorId(int id) {
+        return gatitoRepository.findById(id).get();
     }
 
     // Método para actualizar el gatito

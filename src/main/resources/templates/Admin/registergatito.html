@@ -39,6 +39,7 @@
                                                     <th>Color</th>
                                                     <th>Edad Aproximada</th>
                                                     <th>Estado</th>
+                                                    <th>Descripcion</th>
                                                     <th>Historial Médico</th>
                                                     <th>Acciones</th>
                                                 </tr>
@@ -55,15 +56,16 @@
                                                     <td th:text="${gatito.color}"></td>
                                                     <td th:text="${gatito.edadAproximada}"></td>
                                                     <td th:text="${gatito.estado}"></td> <!-- Estado se muestra aquí -->
+                                                    <td th:text="${gatito.descripcion}"></td>
                                                     <td>
                                                         <!-- Para el historial médico, asumiendo que solo quieres el último registro -->
-                                                        <a th:href="@{/historial/${gatito.id}}" data-bs-toggle="modal" data-bs-target="#historialModal">
+                                                        <a th:href="@{/admin/registergatito/historial/{id}(id=${gatito.id})}" data-bs-toggle="modal" data-bs-target="#historialModal">
                                                             <img src="/img/historialmedico.svg" alt="Historial Médico" style="width: 35px; height: 35px; cursor: pointer;">
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <!-- Botón para editar -->
-                                                        <a th:href="@{/admin/editar/{id}(id=${gatito.id})}">
+                                                        <a th:href="@{/admin/editar/{id}(id=${gatito.id})}" data-bs-toggle="modal" data-bs-target="#editarModal">
                                                             <img src="/img/edit.svg" alt="Editar" 
                                                                  style="width: 20px; height: 20px; cursor: pointer;
                                                                  filter: invert(85%) sepia(61%) saturate(629%)
@@ -71,16 +73,14 @@
                                                         </a>
 
                                                         <!-- Botón para eliminar con confirmación -->
-                                                        <a href="#" onclick="funcionDeEliminar(${gatito.id})">
+                                                        <a th:href="@{/admin/registergatito/{id}(id=${gatito.id})}" href="#" onclick="funcionDeEliminar(${gatito.id})">
                                                             <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);">
                                                         </a>
-
                                                     </td>
 
 
                                                 </tr>
                                             </tbody>
-
                                         </table>
                                     </div> 
                                     <!-- Cierre del .table-responsive -->
@@ -103,10 +103,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
+                            <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato">
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>
                             </div>
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Descripción</label>
@@ -114,17 +114,17 @@
                             </div>
                             <div class="mb-3">
                                 <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Color del gato">
+                                <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Color del gato" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="edadAproximada" class="form-label">Edad Aproximada</label>
-                                <input type="number" class="form-control" id="edadAproximada" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses">
+                                <input type="number" class="form-control" id="edadAproximada" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="estado" class="form-label">Estado</label>
-                                <select class="form-select" id="estado" th:field="*{estado}">
+                                <select class="form-select" id="estado" th:field="*{estado}" required>
                                     <option value="" selected>Selecciona el estado</option>
                                     <option value="DISPONIBLE">Disponible</option>
                                     <option value="EN_PROCESO">En proceso</option>
@@ -133,13 +133,69 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="fotoGatito" class="form-label">Fotos del Gatito</label>
-                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" multiple>
+                                <label for="fotoGatito" class="form-label">Foto del Gatito</label>
+                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" required multiple>
+                            </div>
 
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="Escribe aquí la descripción..."></textarea>
                             </div>
 
 
                             <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
+                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para el formulario de editar -->
+        <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registroModalLabel">Editar Miau</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                            <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="color" class="form-label">Color</label>
+                                <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Color del gato" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="edadAproximada" class="form-label">Edad Aproximada</label>
+                                <input type="number" class="form-control" id="edadAproximada" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="estado" class="form-label">Estado</label>
+                                <select class="form-select" id="estado" th:field="*{estado}" required>
+                                    <option value="" selected>Selecciona el estado</option>
+                                    <option value="DISPONIBLE">Disponible</option>
+                                    <option value="EN_PROCESO">En proceso</option>
+                                    <option value="ADOPTADO">Adoptado</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fotoGatito" class="form-label">Foto del Gatito</label>
+                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="Escribe aquí la descripción..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary rounded-pill">Editar</button>
                             <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
                         </form>
                     </div>
@@ -156,18 +212,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="historialForm" method="post" th:action="@{/admin/guardarHistorial}">
-                            <div class="mb-3">
-                                <label for="descripcion" class="form-label">Descripción</label>
-                                <textarea class="form-control" id="descripcion" placeholder="Descripción del historial médico"></textarea>
-                            </div>
+                        <form id="historialForm" method="post" th:action="@{/admin/registergatito/historial/{id}(id=${historialMedico.id})}" th:object="${historialMedico}">
                             <div class="mb-3">
                                 <label for="dosisVacunas" class="form-label">Dosis de Vacunas</label>
-                                <input type="text" class="form-control" id="dosisVacunas" placeholder="Dosis de vacunas">
+                                <input type="text" class="form-control" id="dosisVacunas" th:field="*{dosisVacunas}" placeholder="Dosis de vacunas">
                             </div>
                             <div class="mb-3">
                                 <label for="numeroVisitas" class="form-label">Número de Visitas al Veterinario</label>
-                                <input type="number" class="form-control" id="numeroVisitas" placeholder="Número de visitas">
+                                <input type="number" class="form-control" id="numeroVisitasVeterinario" th:field="*{numeroVisitasVeterinario}" placeholder="Número de visitas">
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcionHistorial" th:field="*{descripcionHistorial}" placeholder="Descripción del historial médico"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary" id="guardarHistorial">Guardar</button>
                         </form>

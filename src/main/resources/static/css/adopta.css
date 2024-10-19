@@ -197,7 +197,54 @@ h2.title span {
 .btn-secondary:hover {
     opacity: 0.8;
 }
+/* Detalle Gatos */
+.cont-detalles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 850px;
+}
 
+.cont-info{
+    padding: 60px 120px;
+    box-shadow: inset 0 0 35px rgba(0,0,0,0.5);
+    border-radius: 35px;
+}
+
+.info-gato{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cont-img{
+    min-width: 400px;
+}
+
+.img-det{
+    margin: 0 20px;
+    width: 550px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 30%;
+}
+
+.btn-detalles{
+    margin-top: 40px;
+    border-radius: 20px; 
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;    
+    padding: 8px 50px;
+    border: .5px solid #aebac0; 
+}
+
+.btn-detalles:hover{
+    background-color: #FF6347;
+    color: white;
+}
 /* Footer */
 .footer-text {
     font-size: 0.875rem;
