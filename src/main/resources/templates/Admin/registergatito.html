@@ -4,6 +4,8 @@
     <head th:replace="~{Admin/adminTemplate :: header}">
         <meta name="_csrf" content="${_csrf.token}"/>
         <meta name="_csrf_header" content="${_csrf.headerName}"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
 
@@ -73,7 +75,7 @@
                                                         </a>
 
                                                         <!-- Botón para eliminar con confirmación -->
-                                                        <a th:href="@{/admin/registergatito/{id}(id=${gatito.id})}" href="#" onclick="funcionDeEliminar(${gatito.id})">
+                                                        <a onclick="funcionDeEliminar('${gatito.id}')">
                                                             <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);">
                                                         </a>
                                                     </td>
@@ -103,14 +105,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                            <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
+                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombre" class="form-label">Descripción</label>
-                                <input type="text" class="form-control" id="descipcion" th:field="*{descripcion}" placeholder="Descripción del gato">
                             </div>
                             <div class="mb-3">
                                 <label for="color" class="form-label">Color</label>
@@ -150,7 +148,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal para el formulario de editar -->
         <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -160,7 +158,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                            <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
+                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito/{id}(id=${gatito.id})}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>

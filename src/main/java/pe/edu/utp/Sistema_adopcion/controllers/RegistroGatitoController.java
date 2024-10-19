@@ -158,8 +158,8 @@ public class RegistroGatitoController {
     }
 
 // ELIMINAR GATITO
-    @GetMapping("registergatito/{id}")
-    public String eliminarGatito(@PathVariable int id, Model model){
+    @GetMapping("/registergatito/{id}")
+    public String eliminarGatito(@PathVariable int id, Model model){    
         historialMedicoService.deleteById(id);
         fotoGatitoService.deleteById(id);
         gatitoService.deleteById(id);

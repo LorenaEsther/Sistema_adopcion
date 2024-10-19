@@ -101,9 +101,13 @@ h2.title span {
 
 /* Adopta Section */
 .adopta-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     padding: 50px 20px;
     background-color: var(--background-color-secondary); /* Fondo azul claro */
+    min-height: 720px; 
 }
 
 .adopta-section h1 {

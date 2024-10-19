@@ -15,8 +15,8 @@ console.log("register.js cargado correctamente");
 
 function funcionDeEliminar(gatitoId) {
     if (confirm("¿Estás seguro de que deseas eliminar este gatito?")) {
-        fetch(`/admin/eliminar/${gatitoId}`, {
-            method: 'POST',
+        fetch(`/admin/registergatito/{gatitoId}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="_csrf"]').getAttribute('content') // Asegúrate de tener este meta tag en tu HTML
@@ -35,8 +35,3 @@ function funcionDeEliminar(gatitoId) {
         });
     }
 }
-
-
-
-
-
