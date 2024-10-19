@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{Admin/adminTemplate :: header}">
+        <meta name="_csrf" content="${_csrf.token}"/>
+        <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div th:replace="~{Admin/adminTemplate :: background}"></div>
+            <aside th:replace="~{Admin/adminTemplate :: sidebar}"></aside>
+            <div class="main p-3">
+                <div class="m-2 mx-4">
+                    <aside th:replace="~{Admin/adminTemplate :: nav-menu}"></aside>
+                    <div class="text-center">
+                        <div class="container-fluid mt-4 d-flex justify-content-center">
+                            <!-- Contenedor principal con fondo y bordes redondeados -->
+                            <div class="p-4 bg-white rounded shadow-lg" style="width: 100%; max-width: 1200px;">
+                                <!-- Botón para registrar nuevo -->
+                                <div id="botonRegistrarNuevo" class="d-flex justify-content-end mb-3">
+                                    <button id="registrarNuevoBtn" class="btn rounded-pill" style="background-color: #919CD9; border-color: #919CD9; color: #fff" data-bs-toggle="modal" data-bs-target="#registroModal">
+                                        Registrar Voluntario
+                                    </button>
+                                </div>
+
+                                <!-- Tabla de voluntarios registrados -->
+                                <div id="tablaVoluntarios">
+                                    <h4 class="text-center mb-4" style="color: #919CD9;">Voluntarios Registrados</h4>
+
+                                    <!-- Añadir .table-responsive aquí -->
+                                    <div class="table-responsive" style="border-radius: 15px; overflow: hidden;">
+                                        <table class="table table-bordered text-center rounded w-100" style="background-color: white;">
+                                            <thead class="rounded custom-thead">
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Correo</th>
+                                                    <th>Telefono</th>
+                                                    <th>Disponibilidad</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="listaVoluntarios">
+                                                <tr th:each="voluntario : ${listaVoluntarios}">
+                                                    <td th:text="${voluntario.nombre}"></td>
+                                                    <td th:text="${voluntario.correo}"></td>
+                                                    <td th:text="${voluntario.telefono}"></td>
+                                                    <td th:text="${voluntario.disponibilidad}"></td>
+                                                    <td>
+                                                        <!-- Botón para editar -->
+                                                        <a th:href="@{/admin/editarVoluntario/{id}(id=${voluntario.id})}" data-bs-toggle="modal" data-bs-target="#editarModal">
+                                                            <img src="/img/edit.svg" alt="Editar" style="width: 20px; height: 20px; cursor: pointer;">
+                                                        </a>
+                                                        <!-- Botón para eliminar con confirmación -->
+                                                        <a th:href="@{/admin/eliminarVoluntario/{id}(id=${voluntario.id})}" href="#" onclick="return confirmEliminar();">
+                                                            <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer;">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para el formulario de registro -->
+        <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registroModalLabel">Registrar Voluntario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" th:action="@{/admin/registervolunteer}" th:object="${voluntario}">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del voluntario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Correo</label>
+                                <input type="email" class="form-control" id="correo" th:field="*{correo}" placeholder="Correo del voluntario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Telefono</label>
+                                <input type="tel" class="form-control" id="telefono" th:field="*{telefono}" placeholder="Telefono del voluntario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disponibilidad" class="form-label">Disponibilidad</label>
+                                <input type="text" class="form-control" id="disponibilidad" th:field="*{disponibilidad}" placeholder="Disponibilidad del voluntario" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
+                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para el formulario de editar -->
+        <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarModalLabel">Editar Voluntario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" th:action="@{/admin/editarVoluntario}" th:object="${voluntario}">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del voluntario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Correo</label>
+                                <input type="email" class="form-control" id="correo" th:field="*{correo}" placeholder="Correo del voluntario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono" th:field="*{telefono}" placeholder="Telefono del voluntario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disponibilidad" class="form-label">Disponibilidad</label>
+                                <input type="text" class="form-control" id="disponibilidad" th:field="*{disponibilidad}" placeholder="Disponibilidad del voluntario" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary rounded-pill">Editar</button>
+                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incluir CSS de Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Incluir JavaScript de Bootstrap y Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
+    </body>
+</html>
+    
