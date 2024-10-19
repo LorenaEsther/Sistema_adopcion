@@ -1,67 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
-:root{
-    --primary-color: #e73a2d;
-    --secondary-color: #0a303a;
-    --background-color: #fff;
-    --background-color-secondary: #d5e6eb;
-    --text-color: #676666;
-    --font-family: "Poppins", sans-serif;
-    --title-color: #D9910D; /* Color de los títulos */
+/* Variables Globales */
+:root {
+    --primary-color: #e73a2d; /* Rojo principal */
+    --secondary-color: #0a303a; /* Azul oscuro */
+    --background-color: #ffffff; /* Blanco */
+    --background-secondary-color: #d5e6eb; /* Azul claro */
     --text-color: #676666; /* Color de texto */
-    --buttom-color: #B1BF49; /*Color de boton*/
-    --border-radius: 1rem;
+    --title-color: #D9910D; /* Color de los títulos */
+    --button-color: #B1BF49; /* Color de botón */
+    --border-radius: 1rem; /* Radio de borde */
+    --font-family: "Poppins", sans-serif;
+    --heading-color: #919CD9; /* Color para encabezados */
+    --highlight-color: #EA939C; /* Color de resalte */
 }
 
+/* Estilos Globales */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Tipografía base */
-/*body {
-    width: 100%;
-    font-size: 16px;
-    line-height: 1.5;
+html, body {
+    height: 100%; /* Asegura que el body y html ocupen toda la pantalla */
+    margin: 0;
+    padding: 0;
     font-family: var(--font-family);
-    background-color: var(--background-color-secondary) ;
-}*/
-
-body {
-    font-family: var(--font-family);
-    background-color: var(--background-color-secondary) !important;
-    font-size: 16px;
     color: var(--text-color);
+    font-size: 16px;
     line-height: 1.6;
 }
+
+body {
+    background-color: #C9EBFF !important; /* Un color celeste suave */
+    background-image: radial-gradient(circle, #C9EBFF 30%, #ffffff 100%) !important; /* Gradiente radial */
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+}
+
+/* Ajustar la sección de adopción para que el fondo también se aplique */
+.adoption-section {
+    background-color: #C9EBFF; /* Mismo color celeste */
+    background-image: radial-gradient(circle, #C9EBFF 30%, #ffffff 100%); /* Gradiente radial */
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 0; /* Añadir padding para dar espacio interno */
+}
+
+
 /* Títulos */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
-    color: #919CD9 !important;
     font-family: var(--font-family);
+    color: var(--heading-color);
 }
 
+/* Título principal de sección */
 h2.title {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: var(--title-color);
 }
 
+/* Resalte en los títulos */
 h2.title span {
-    color: #EA939C;
+    color: var(--highlight-color);
+}
+
+/* Botones generales */
+.button-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F299A9;
+    text-decoration: none;
+    color: var(--background-color);
+    padding: .3rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+.button-primary:hover {
+    background-color: #F299A9;
+}
+
+.details-button {
+    background-color: #C5E4D4; /* Color de fondo */
+    color: #000; /* Color del texto (puedes cambiarlo si lo prefieres) */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor cuando pasa el mouse */
+    transition: background-color 0.3s ease; /* Transición suave al hacer hover */
+}
+
+.details-button:hover {
+    background-color: #b2d8c4; /* Color de fondo al pasar el mouse */
 }
 
 
-/* Botones css End */
+.button-primary::after {
+    content: "";
+    background-image: url('/img/patita-white.png');
+    display: inline-block;
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 0;
+    margin-left: .2rem;
+}
+
+.header-main .boton {
+    background-color: var(--button-color) !important;
+    color: white !important;
+    border: none !important;
+    padding: 5px 12px !important;
+    border-radius: 30px !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+    transition: background-color 0.3s ease !important;
+}
 
 /* Header Start */
-/* Creamos shape para poner las nubesdebajo */
-.header-main{
+.header-main {
     position: sticky;
     z-index: 3;
 }
-.header-shape{
+
+.header-shape {
     background-image: url('/img/nube.png');
     position: absolute;
     top: 3rem;
@@ -71,23 +145,22 @@ h2.title span {
     background-repeat: repeat;
     background-position: center;
 }
-/* agregamos espaciado */
-.navbar-nav{
+
+/* Navegación */
+.navbar-nav {
     gap: 1rem;
 }
-/* Modificamos nav-link */
-.nav-link{
+
+.nav-link {
     padding: 5px 10px !important;
     display: inline-block !important;
     font-family: var(--font-family) !important;
     font-size: 13px;
-    font-weight: bold  ;
+    font-weight: bold;
 }
 
-/* cuando el boton de nav-bar esta activo debe cambiar de forma */
-
 .nav-link.active,
-.nav-link:hover{
+.nav-link:hover {
     position: relative;
     display: inline-block;
     color: var(--background-color);
@@ -104,141 +177,17 @@ h2.title span {
     z-index: 1;
 }
 
-/*  Parte del Main - Quienes somos */
-.about-us {
-    background-color: #A7AED9; /* color de fondo */
-    font-family: 'Baloo 2', sans-serif;
-}
-
-.about-us h2 {
-    color: var(--primary-color-color); /* color del título */
-    font-weight: bold;
-}
-
-.about-us p {
-    color: var(--secondary-color); /* color del texto */
-    font-size: 1.2rem;
-}
-
-.about-us img {
-    max-width: 70%;
-    border-radius: 8px;
-}
-
-.about-us .row .col-md-3 p {
-    color: #EEDCEC; /* color de los subtítulos de las secciones */
-    font-weight: bold;
-}
-
-.about-us .btn-donar {
-    background-color: #B1BF49 !important;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.about-us .btn-voluntario {
-    background-color: #C5E4D4;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-.about-us .icon {
-    width: 50px; /*tamaño de las imágenes */
-    height: 50px;
-    display: block;
-    margin: 0 auto 10px;
-}
-
-.about-us .col-md-3 p {
-    text-align: center;
-    font-weight: bold;
-    color: var(--secondary-color);
-}
-
-.btn-custom {
-    background-color: #EA939C;
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-}
-
-.btn-custom:hover {
-    background-color: #D17C84; /* Color al pasar el mouse */
-    color: white;
-}
-
-/*Footer */
-
+/* Footer */
 .footer-text {
-    font-size: 0.875rem; /* Puedes ajustar el valor según lo que necesites */
-}
-/* Aumentar la especificidad para evitar conflictos con Bootstrap */
-.header-main .boton {
-    background-color: var(--buttom-color) !important;
-    color: white !important; /* Color de texto blanco */
-    border: none !important; /* Sin borde */
-    padding: 5px 12px !important; /* Tamaño del botón */
-    border-radius: 30px !important; /* Bordes redondeados */
-    font-size: 1rem !important; /* Asegurarse del tamaño correcto de la fuente */
-    display: inline-block !important; /* Asegurar que sea un bloque en línea */
-    text-align: center !important; /* Alinear el texto al centro */
-    transition: background-color 0.3s ease !important; /* Efecto de transición suave */
+    font-size: 0.875rem;
 }
 
-
-.card {
-    height: 100%; /* Permitir que todas las tarjetas tengan la misma altura */
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Espaciado uniforme entre los elementos */
-}
-
-/* Botones css Start */
-.button-primary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F299A9;
-    text-decoration: none;
-    color: var(--background-color);
-    padding: .3rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-family: var(--font-family);
-    font-size: 16px;
-    font-weight: 700;
-    transition: background-color 0.4s ease, transform 0.4s ease
-}
-
-
-.button-primary:hover {
-    background-color: #F299A9;
-}
-
-.button-primary::after {
-    content: "";
-    background-image: url('/img/patita-white.png');
-    display: inline-block;
-    position: relative;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    top: 0;
-    margin-left: .2rem;
-}
-
+/* Etiqueta flotante */
 .join-label {
     position: absolute;
     top: -25px;
     right: -190px;
-    background-color: #919CD9; /* Ajusta el color del fondo */
+    background-color: #919CD9;
     color: white;
     font-size: 10px;
     padding: 2px 8px;
@@ -246,17 +195,463 @@ h2.title span {
     font-family: Arial, sans-serif;
 }
 
+/* Sección de adopción */
+.adoption-section {
+    text-align: center;
+    padding: 50px 0;
+    background-color: var(--background-color);
+}
 
-/* Header End css */
+/* Contenedor de las tarjetas de gatitos */
+.kittens-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
+/* Tarjetas de gatitos */
+.kitten-card {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kitten-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen de gatitos */
+.kitten-image {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px;
+}
+
+.kitten-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Insignia de la edad */
+.age-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.kitten-card h3 {
+    font-size: 22px;
+    color: var(--heading-color);
+    margin: 10px 0;
+}
+
+.kitten-card p {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/*SECTION 2: QUIENES SOMOS*/
+.health-section {
+    padding: 60px 0;
+    background-color: #D0D9F2;
+    padding: 30px 0;
+}
+
+.row {
+    gap: 0; /* Elimina el espacio predeterminado entre las columnas */
+}
+
+.col-md-6 {
+    padding: 0 15px; /* Ajustar padding dentro de cada columna */
+}
+
+.benefits-list {
+    padding-left: 0; /* Ajusta el padding si es necesario para alinear mejor el contenido */
+}
+
+.health-section h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+.health-section p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.benefits-list li img.icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.benefits-list h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.benefits-list p {
+    font-size: 14px;
+    color: #777;
+}
+
+.img-reducida {
+    max-width: 60% !important;
+    height: auto;
+    transition: transform 0.3s ease; /* Transición suave de 0.3s */
+}
+
+.img-reducida:hover {
+    transform: scale(1.05); /* Agranda la imagen un 5% al hacer hover */
+}
+
+
+@media (min-width: 768px) {
+    .img-reducida {
+        max-width: 80%; /* En pantallas medianas, reduce el tamaño al 80% del contenedor */
+    }
+}
+
+@media (min-width: 992px) {
+    .img-reducida {
+        max-width: 60%; /* En pantallas grandes, reduce el tamaño al 60% del contenedor */
+    }
+}
+
+/* SECTION 3: VOLUNTARIOS*/
+.volunteers-section {
+    background-color: #F5E6BB; /* Fondo claro */
+    padding: 60px 0;
+}
+
+.title-container {
+    background-color: #fff; /* Fondo suave */
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+
+.section-description {
+    font-size: 18px;
+    color: #555;
+    text-align: justify; /* Texto justificado */
+}
+
+.volunteer-card {
+    display: flex; /* Flexbox para alinear imagen y texto */
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.volunteer-image {
+    flex: 0 0 350px; /* Asegura que la imagen tenga un ancho fijo */
+    margin-right: 20px;
+}
+
+.volunteer-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Esquinas ligeramente redondeadas */
+}
+
+.volunteer-info {
+    flex: 1;
+}
+
+.volunteer-info h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.volunteer-info p {
+    color: #666;
+    margin-bottom: 20px;
+    text-align: justify; /* Justificar el texto de la descripción */
+}
+
+.volunteer-features {
+    list-style: none;
+    padding: 0;
+}
+
+.volunteer-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.volunteer-features img.icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.volunteer-features span {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Sección de donación */
+
+.dona-section {
+    background-color: #233d63; /* Color azul oscuro */
+    padding: 60px 0;
+    color: white;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.section-description {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #F3F3F3;
+}
+
+/* Carrusel de imágenes de gatos */
+.cat-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.carousel-wrapper {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
+    padding: 10px;
+}
+
+.cat-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid white;
+    transition: transform 0.3s ease;
+}
+
+.cat-img:hover {
+    transform: scale(1.1); /* Efecto de agrandar ligeramente la imagen */
+}
+
+/* Botones de adopción y donación */
+.donation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Agregar sombra */
+}
+
+.btn-adoptar {
+    background-color: #f7931e; /* Color naranja */
+    border: none;
+}
+
+.btn-donar {
+    background-color: #ffc107; /* Color amarillo */
+    border: none;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .cat-carousel {
+        flex-direction: column;
+    }
+
+    .cat-img {
+        margin-bottom: 20px;
+    }
+
+    .donation-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .cat-carousel {
+        flex-direction: column;
+    }
+
+    .cat-img {
+        margin-bottom: 20px;
+    }
+
+    .donation-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* Sección de video con fondo de onda */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Efecto de onda en la parte superior */
+.wave-top {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: url('ruta-nube.svg') repeat-x bottom;
+    background-size: contain;
+}
+
+/* Estilos generales para la sección de testimonios */
+.testimonials-section {
+    padding: 50px 0;
+    background-color: #D0D9F2; /* Fondo suave */
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #919CD9;
+}
+
+.section-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+
+/* Tarjetas de testimonios */
+.testimonial-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden; /* Para que las esquinas redondeadas se apliquen a la imagen también */
+}
+
+.testimonial-card .card-body {
+    padding: 20px;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.card-title {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Imágenes de los testimonios */
+.testimonial-card img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px 0 0 15px; /* Esquinas redondeadas en el lado izquierdo */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .testimonial-card .row {
+        flex-direction: column;
+    }
+
+    .testimonial-card img {
+        border-radius: 15px 15px 0 0; /* Esquinas redondeadas arriba en pantallas pequeñas */
+    }
+}
+
+
+
+/* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
     .navbar-nav {
         gap: 0.5rem;
     }
+
     .nav-link {
         font-size: 12px;
         padding: 3px 5px;
     }
 }
-
-
