@@ -73,9 +73,11 @@
                                                         </a>
 
                                                         <!-- Botón para eliminar con confirmación -->
-                                                        <a th:href="@{/admin/registergatito/{id}(id=${gatito.id})}" href="#" onclick="funcionDeEliminar(${gatito.id})">
+                                                        <a th:href="@{/admin/registergatito/{id}(id=${gatito.id})}" href="#" onclick="return confirmEliminar();">
                                                             <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);">
                                                         </a>
+
+
                                                     </td>
 
 
@@ -93,6 +95,7 @@
             </div>
         </div>
 
+
         <!-- Contenido específico de esta página -->
         <!-- Modal para el formulario de registro -->
         <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
@@ -103,7 +106,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                            <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
+                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>
@@ -137,10 +140,7 @@
                                 <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" required multiple>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="descripcion" class="form-label">Descripción</label>
-                                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="Escribe aquí la descripción..."></textarea>
-                            </div>
+
 
 
                             <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal para el formulario de editar -->
         <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -160,7 +160,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                            <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
+                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>
