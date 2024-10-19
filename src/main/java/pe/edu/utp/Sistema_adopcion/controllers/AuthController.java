@@ -2,6 +2,7 @@ package pe.edu.utp.Sistema_adopcion.controllers;
 
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,9 @@ public class AuthController {
 
     @Autowired
     private RolService rolService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     // Mostrar el formulario de inicio de sesión y registro
     @GetMapping("/login")
@@ -55,6 +59,9 @@ public class AuthController {
         Rol usuarioRol = rolService.findById(2); // Asegúrate de que este método existe en RolService
         usuario.setRol(usuarioRol);
 
+        // Hashear la contraseña antes de guardarla
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+
         // Guarda el usuario
         usuarioService.save(usuario);
 
@@ -68,13 +75,20 @@ public class AuthController {
         Usuarios usuarioEncontrado = usuarioService.findByEmail(usuario.getEmail());
 
         // Verifica si el usuario existe y si la contraseña es correcta
-        if (usuarioEncontrado != null && usuarioEncontrado.getPassword().equals(usuario.getPassword())) {
-            // Autenticación exitosa
-            return "redirect:/test-db"; // Redirigir al home o a donde sea necesario
+        if (usuarioEncontrado != null && passwordEncoder.matches(usuario.getPassword(), usuarioEncontrado.getPassword())) {
+            // Verificar si el usuario tiene el rol de administrador (rol_id = 1)
+            if (usuarioEncontrado.getRol().getId() == 1 && usuario.getEmail().equals("administrador123@gmail.com")) {
+                // Si el usuario es administrador, redirigir al panel de administración
+                return "redirect:/admin/adminprueba";  // Asegúrate de redirigir a la ruta correcta
+            } else {
+                // Si el usuario no es administrador, redirigir a la página principal
+                return "redirect:/";
+            }
         } else {
             // Autenticación fallida
             model.addAttribute("error", "Correo o contraseña incorrectos");
             return "login"; // Mantener en la página de login con el mensaje de error
         }
     }
+
 }

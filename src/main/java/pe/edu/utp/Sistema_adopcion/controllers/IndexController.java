@@ -37,7 +37,7 @@ public class IndexController {
         model.addAttribute("gatito", gatitoOpt);
         return "detalles-gato"; // Thymeleaf buscará un archivo detalles-gato.html
     }
-
+    
     @GetMapping("/donaciones")
     public String donaciones(Model model) {
         model.addAttribute("titulo", "Donaciones");

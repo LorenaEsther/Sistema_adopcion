@@ -47,17 +47,22 @@
                                 <li class="nav-item">
                                     <a class="nav-link" th:href="@{/miaushop}">MiauShop</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/login}">Intranet</a>
-                                </li>
+
                             </ul>
-                            <div class="d-flex align-items-center">
-                                <button class="btn boton" type="button">
-                                    Dona Aquí
-                                    <img th:src="@{/img/donate.png}" alt="Corazón" class="icono" />
-                                </button>
+                            <div class="nav-button">
+                                <a class=" button-primary center" href="">Dona Aquí </a>
                             </div>
+
                         </div>
+
+                        <div style="position: relative; display: inline-block;">
+                            <a th:href="@{/login}">
+                                <img th:src="@{/img/user.png}" alt="Vector" class="img-fluid" style="max-width: 30px; position: absolute; right: -160px; top: -16px;" />
+                                <span class="join-label">Únete</span>
+                            </a>
+                        </div>
+
+
                     </nav>
                 </div>
                 <div class="header-shape"></div>
