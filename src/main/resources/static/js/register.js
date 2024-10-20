@@ -13,9 +13,11 @@ function abrirModalHistorial(button) {
 
 console.log("register.js cargado correctamente");
 
-function funcionDeEliminar(gatitoId) {
+function funcionDeEliminar(id) {
+    // Solicitar confirmación al usuario
     if (confirm("¿Estás seguro de que deseas eliminar este gatito?")) {
-        fetch(`/admin/registergatito/{gatitoId}`, {
+        // Solo se ejecuta si el usuario hace clic en "Aceptar"
+        fetch(`/admin/registergatito/id`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,8 +35,12 @@ function funcionDeEliminar(gatitoId) {
         .catch(error => {
             console.error("Error al eliminar el gatito:", error);
         });
+    } else {
+        // Si el usuario seleccionó "Cancelar", no se hace nada
+        console.log("Eliminación cancelada por el usuario.");
     }
 }
+
 /*
 function confirmEliminar() {
     return confirm("¿Estás seguro de que deseas eliminar este gatito?");

@@ -48,26 +48,26 @@
                                             </thead>
 
                                             <tbody id="listaGatitos">
-                                                <tr th:each="gatito : ${listaGatitos}">
+                                                <tr th:each="fotos : ${fotoGatitos}">
                                                     <td>
-                                                        <img th:src="@{'/uploads/' + ${gatito.fotos[0].urlFoto}}" alt="Foto" width="40" height="40">
+                                                        <img th:src="@{/img/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Foto" width="40" height="40">
                                                     </td>
 
 
-                                                    <td th:text="${gatito.nombre}"></td>
-                                                    <td th:text="${gatito.color}"></td>
-                                                    <td th:text="${gatito.edadAproximada}"></td>
-                                                    <td th:text="${gatito.estado}"></td> <!-- Estado se muestra aquí -->
-                                                    <td th:text="${gatito.descripcion}"></td>
+                                                    <td th:text="${fotos.gatito.nombre}"></td>
+                                                    <td th:text="${fotos.gatito.color}"></td>
+                                                    <td th:text="${fotos.gatito.edadAproximada}"></td>
+                                                    <td th:text="${fotos.gatito.estado}"></td> <!-- Estado se muestra aquí -->
+                                                    <td th:text="${fotos.gatito.descripcion}"></td>
                                                     <td>
                                                         <!-- Para el historial médico, asumiendo que solo quieres el último registro -->
-                                                        <a th:href="@{/admin/registergatito/historial/{id}(id=${gatito.id})}" data-bs-toggle="modal" data-bs-target="#historialModal">
+                                                        <a th:href="@{/admin/registergatito/historial/{id}(id=${fotos.gatito.id})}" data-bs-toggle="modal" data-bs-target="#historialModal">
                                                             <img src="/img/historialmedico.svg" alt="Historial Médico" style="width: 35px; height: 35px; cursor: pointer;">
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <!-- Botón para editar -->
-                                                        <a th:href="@{/admin/editar/{id}(id=${gatito.id})}" data-bs-toggle="modal" data-bs-target="#editarModal">
+                                                        <a th:href="@{/admin/editar/{id}(id=${fotos.gatito.id})}" data-bs-toggle="modal" data-bs-target="#editarModal">
                                                             <img src="/img/edit.svg" alt="Editar" 
                                                                  style="width: 20px; height: 20px; cursor: pointer;
                                                                  filter: invert(85%) sepia(61%) saturate(629%)
@@ -75,7 +75,7 @@
                                                         </a>
 
                                                         <!-- Botón para eliminar con confirmación -->
-                                                        <a onclick="funcionDeEliminar('${gatito.id}')">
+                                                        <a th:href="@{/admin/registergatito/{id}(id=${fotos.gatito.id})}">
                                                             <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);">
                                                         </a>
 
@@ -137,9 +137,11 @@
                                 <label for="fotoGatito" class="form-label">Foto del Gatito</label>
                                 <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" required multiple>
                             </div>
-
-
-
+                            
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="Escribe aquí la descripción..."></textarea>
+                            </div>
 
                             <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
                             <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
@@ -208,7 +210,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="historialForm" method="post" th:action="@{/admin/registergatito/historial/{id}(id=${historialMedico.id})}" th:object="${historialMedico}">
+                        <form id="historialForm" method="post" th:action="@{/admin/registergatito/{id}(id=${historialMedico.id})}" th:object="${historialMedico}">
                             <div class="mb-3">
                                 <label for="dosisVacunas" class="form-label">Dosis de Vacunas</label>
                                 <input type="text" class="form-control" id="dosisVacunas" th:field="*{dosisVacunas}" placeholder="Dosis de vacunas">

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import pe.edu.utp.Sistema_adopcion.models.FotoGatito;
 import pe.edu.utp.Sistema_adopcion.models.Gatito;
+import pe.edu.utp.Sistema_adopcion.services.FotoGatitoService;
 import pe.edu.utp.Sistema_adopcion.services.GatitoService;
 
 @Controller
@@ -15,6 +17,9 @@ public class IndexController {
 
     @Autowired
     private GatitoService gatitoService;
+    
+    @Autowired
+    private FotoGatitoService fotoGatitoService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -27,6 +32,8 @@ public class IndexController {
     public String adopta(Model model) {
         List<Gatito> gatitos = gatitoService.findAll();  // Obtener la lista de gatitos desde el servicio
         model.addAttribute("gatitos", gatitos);  // Pasar la lista de gatitos al modelo
+        List<FotoGatito> fotoGatitos = fotoGatitoService.findAll();
+        model.addAttribute("fotoGatitos", fotoGatitos);
         model.addAttribute("titulo", "Adopta un gatito");
         return "adopta";  // Thymeleaf buscará adopta.html en /templates
     }
@@ -35,6 +42,8 @@ public class IndexController {
     public String detallesGato(@PathVariable("id") int id, Model model) {
         Gatito gatitoOpt = gatitoService.obtenerGatitoPorId(id);
         model.addAttribute("gatito", gatitoOpt);
+        List<FotoGatito> fotoGatitos = fotoGatitoService.findAll();
+        model.addAttribute("fotoGatitos", fotoGatitos);
         return "detalles-gato"; // Thymeleaf buscará un archivo detalles-gato.html
     }
     

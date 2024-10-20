@@ -55,7 +55,13 @@ public class RegistroGatitoController {
         // Recuperar todos los gatos y añadirlos al modelo
         List<Gatito> listaGatitos = gatitoService.findAll();
         model.addAttribute("listaGatitos", listaGatitos);
-
+        
+        List<FotoGatito> fotoGatitos = fotoGatitoService.findAll();
+        model.addAttribute("fotoGatitos", fotoGatitos);
+        
+        List<HistorialMedico> historialMedico = historialMedicoService.findAll();
+        model.addAttribute("historialM",historialMedico);
+        
         return "Admin/registergatito";
     }
 
@@ -77,7 +83,7 @@ public class RegistroGatitoController {
         Gatito nuevoGatito = gatitoService.save(gatito);
 
         // Ruta donde se guardarán las imágenes
-        String uploadDir = new File("src/main/resources/uploads").getAbsolutePath(); // Ruta absoluta
+        String uploadDir = new File("src/main/resources/static/img").getAbsolutePath(); // Ruta absoluta
 
         // Verificar que el directorio exista o crearlo
         File uploadDirFile = new File(uploadDir);
@@ -123,16 +129,24 @@ public class RegistroGatitoController {
         return "redirect:/admin/registergatito";
     }
     
-    @GetMapping("/registergatito/historial")
-    public String mostrarHistorialMedico(@PathVariable int id, Model model){        
-        List<HistorialMedico> historial =  historialMedicoService.findAll();        
-        model.addAttribute("mostrarLista", historial);
-        model.addAttribute("historialID", historialMedicoService.obtenerHistorial(id));
-        return "redirect:/admin/registergatito";
-    }    
     
-// ACTUALIZAR HISTORIAL DEL GATITO
-    @PostMapping("/registergatito/historial/{id}")    
+// ACTUALIZAR GATITO
+    
+   @GetMapping("/registergatito/editar/{id}")
+   public String editarGatito(@PathVariable int id, Model model){
+       model.addAttribute("editarGato", gatitoService.obtenerGatitoPorId(id));
+       return "redirect:/admin/registergatito";
+   }
+    
+// ACTUALIZAR HISTORIAL DEL GATITO 
+    @GetMapping("/registergatito/historial/{id}")
+    public String editarHistorial(@PathVariable int id, Model model){
+        model.addAttribute("editarHistorial", historialMedicoService.obtenerHistorial(id));
+        return "redirect:/admin/registergatito";
+    }
+    
+   
+    @PostMapping("/registergatito/{id}")    
     public String actualizarHistorialMedico(@ModelAttribute("historialMedico") HistorialMedico historialMedico,
             @PathVariable("id") int id, Model model) {
         try {
@@ -165,5 +179,4 @@ public class RegistroGatitoController {
         gatitoService.deleteById(id);
         return "redirect:/admin/registergatito";
     }
-
 }

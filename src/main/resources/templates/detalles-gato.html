@@ -18,18 +18,18 @@
     <body>
         <header th:replace="~{Plantilla/header :: header}"></header>
 
-        <div class="container cont-detalles" th:each="gatito : ${gatito}">
+        <div class="container cont-detalles" th:each="fotos : ${fotoGatitos}">
             <div class="container cont-info">
-                <h1 th:text="'Detalles de '+${gatito.nombre}" style="font-size: 50px">Detalles</h1>
+                <h1 th:text="'Detalles de '+${fotos.gatito.nombre}" style="font-size: 50px">Detalles</h1>
                 <div class="row">
                     <div class="col-md-6 info-gato">
                         <h2>Historia</h2>
-                        <p th:text="${gatito.descripcion}">Michi fue rescatado de las calles al año y medio de vida. Es un gato juguetón y muy cariñoso, que está en busca de un hogar lleno de amor.</p>
+                        <p th:text="${fotos.gatito.descripcion}">Michi fue rescatado de las calles al año y medio de vida. Es un gato juguetón y muy cariñoso, que está en busca de un hogar lleno de amor.</p>
                         <h3>Caracteríscticas</h3>
                         <ul>
-                            <li th:text="'Color: '+${gatito.color}"></li>
-                            <li th:text="'Edad: '+${gatito.edadAproximada}"></li>
-                            <li th:text="'Nombre: '+${gatito.nombre}"></li>
+                            <li th:text="'Color: '+${fotos.gatito.color}"></li>
+                            <li th:text="'Edad: '+${fotos.gatito.edadAproximada}"></li>
+                            <li th:text="'Nombre: '+${fotos.gatito.nombre}"></li>
                         </ul>
                         <h3>Historial Medica</h3>
                         <table class="table table-bordered text-center rounded w-100">
@@ -48,7 +48,7 @@
                         </table>
                     </div>
                     <div class="col-md-6 d-flex justify-content-center align-items-center cont-img">
-                        <img src="https://i.pinimg.com/564x/b8/98/1c/b8981cb1b0ca4b846438fa28e7f6cbac.jpg" alt="Gato" class="img-det">
+                        <img th:src="@{/img/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Gato 1" class="img-det">
                     </div>
                 </div>
             </div>

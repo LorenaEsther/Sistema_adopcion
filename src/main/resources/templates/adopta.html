@@ -31,15 +31,15 @@
 
 
                         <div class="row">
-                            <div class="col-md-4" th:each="gatito : ${gatitos}">
+                            <div class="col-md-4" th:each="fotos : ${fotoGatitos}">
                                 <div class="gato-card">
-                                    <img src="img/gato1.jpg" alt="Gato 1">
+                                    <img th:src="@{/img/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Gato 1">
                                     <div class="gato-info">
-                                        <h3 th:text="${gatito.nombre}"></h3>
-                                        <p th:text="'Edad: ' + ${gatito.edadAproximada} + ' años'"></p>
-                                        <p th:text="${gatito.descripcion}"></p>
+                                        <h3 th:text="${fotos.gatito.nombre}"></h3>
+                                        <p th:text="'Edad: ' + ${fotos.gatito.edadAproximada} + ' años'"></p>
+                                        <p th:text="${fotos.gatito.descripcion}"></p>
                                         <button class="adoptar-btn" data-bs-toggle="modal" data-bs-target="#adoptaModal">Adoptar</button>
-                                        <a th:href="@{'/detalles-gato/' + ${gatito.id}}" class="btn btn-secondary">Detalles</a>
+                                        <a th:href="@{'/detalles-gato/' + ${fotos.gatito.id}}" class="btn btn-secondary">Detalles</a>
                                     </div>
                                 </div>
                             </div>
