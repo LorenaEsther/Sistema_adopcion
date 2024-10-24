@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+:root {
+    --background-color-secondary: #d5e6eb; /* Azul claro */
+    --text-color: #676666;
+    --font-family: "Poppins", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color-secondary) !important;
+    font-size: 16px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Títulos */
+h1 {
+    font-weight: 700;
+    color: #919CD9 !important;
+    font-family: var(--font-family);
+    font-size: 36px;
+}
+
+/* Adopta Section */
+.adopta-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--background-color-secondary);
+    min-height: 720px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.adopta-section p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+#alerta {
+    max-width: 700px;
+}
+
+#adoptaForm {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+#adoptaForm div{
+    width: 500px;
+}
+
+/* Boton Adoptar */
+.adoptar-btn {
+    width: 100%;
+    border-radius: 20px; 
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.adoptar-btn:hover {
+    background-color: #e5533c;
+    color: white;
+    opacity: 0.8;
+}
+
+
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .adopta-section {
+        padding: 20px;
+    }
+}

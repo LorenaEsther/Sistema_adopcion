@@ -189,6 +189,7 @@ h2.title span {
 
 .adoptar-btn:hover {
     background-color: #e5533c;
+    color: white;
     opacity: 0.8;
 }
 

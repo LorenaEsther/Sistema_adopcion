@@ -26,12 +26,15 @@ public class Personas {
     public Personas() {
     }
 
-    public Personas(String nombre, String telefono, String direccion) {
+    public Personas(String nombre, String apellidos, String telefono, String direccion, Date fechaRegistro) {
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.telefono = telefono;
         this.direccion = direccion;
         this.fechaRegistro = new Date();
     }
+    
+    
 
     // Getters and Setters
     public int getId() {
@@ -50,16 +53,16 @@ public class Personas {
         this.nombre = nombre;
     }
 
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+    
     public String getTelefono() {
         return telefono;
-    }
-    
-    public String getApellidos() {
-        return telefono;
-    }
-    
-    public void setApellidos(String telefono) {
-        this.telefono = telefono;
     }
 
     public void setTelefono(String telefono) {

@@ -18,6 +18,8 @@ public class SolicitudAdopcion {
     @ManyToOne
     @JoinColumn(name = "gatito_id", nullable = false)
     private Gatito gatito;
+    
+    private String razonAdopcion;
 
     private LocalDateTime fechaSolicitud = LocalDateTime.now();
 
@@ -25,10 +27,11 @@ public class SolicitudAdopcion {
     @Column(columnDefinition = "ENUM('pendiente', 'aprobada', 'rechazada')", nullable = false)
     private EstadoSolicitud estado = EstadoSolicitud.PENDIENTE;
 
-    public SolicitudAdopcion(int id, Usuarios usuario, Gatito gatito) {
+    public SolicitudAdopcion(int id, Usuarios usuario, Gatito gatito, String razonAdopcion) {
         this.id = id;
         this.usuario = usuario;
         this.gatito = gatito;
+        this.razonAdopcion = razonAdopcion;
     }
 
     public SolicitudAdopcion() {
@@ -73,6 +76,16 @@ public class SolicitudAdopcion {
     public void setEstado(EstadoSolicitud estado) {
         this.estado = estado;
     }
+
+    public String getRazonAdopcion() {
+        return razonAdopcion;
+    }
+
+    public void setRazonAdopcion(String razonAdopcion) {
+        this.razonAdopcion = razonAdopcion;
+    }
+    
+    
 
     public enum EstadoSolicitud {
         PENDIENTE, APROBADA, RECHAZADA
