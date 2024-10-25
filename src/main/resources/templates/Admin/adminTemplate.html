@@ -44,14 +44,17 @@
                         </a>
                     </li>
                     <li class="sidebar-item my-1">
-                        <a href="#" class="sidebar-link">
+                        <a th:href="@{/admin/solicitudesadopcion}" 
+                           th:classappend="${activePage == 'solicitudesadopcion'} ? ' active' : ''"
+                           class="sidebar-link">
                             <i class="fa-solid fa-users green"></i>
                             <span>Solicitudes</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item my-1">
-                        <a th:href="@{/admin/registervolunteer}" class="sidebar-link">
+                        <a th:href="@{/admin/registervolunteer}" class="sidebar-link"
+                           th:classappend="${activePage == 'registervolunteer'} ? ' active' : ''">
                             <i class="fa-solid fa-hands-helping green"></i>
                             <span>Voluntarios</span>
                         </a>

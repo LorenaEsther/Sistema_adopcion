@@ -25,7 +25,7 @@ public class SolicitudAdopcion {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "ENUM('pendiente', 'aprobada', 'rechazada')", nullable = false)
-    private EstadoSolicitud estado = EstadoSolicitud.PENDIENTE;
+    private EstadoSolicitud estado = EstadoSolicitud.pendiente;
 
     public SolicitudAdopcion(int id, Usuarios usuario, Gatito gatito, String razonAdopcion) {
         this.id = id;
@@ -88,7 +88,7 @@ public class SolicitudAdopcion {
     
 
     public enum EstadoSolicitud {
-        PENDIENTE, APROBADA, RECHAZADA
+        pendiente, aprobada, rechazada
     }
 
 }

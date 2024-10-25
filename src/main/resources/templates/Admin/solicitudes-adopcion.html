@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{Admin/adminTemplate :: header}">
+        <meta name="_csrf" content="${_csrf.token}"/>
+        <meta name="_csrf_header" content="${_csrf.headerName}"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div  th:replace="~{Admin/adminTemplate :: background}"> </div>
+            <aside  th:replace="~{Admin/adminTemplate :: sidebar}"> </aside>
+            <div  class="main p-3">
+                <div class="m-2 mx-4">
+                    <aside  th:replace="~{Admin/adminTemplate :: nav-menu}"> </aside>
+                    <div class="text-center">
+                        <div class="container-fluid mt-4 d-flex justify-content-center ">
+                            <!-- Contenedor principal con fondo y bordes redondeados -->
+                            <div class="p-4 bg-white rounded shadow-lg" style="width: 100%; max-width: 1200px;">
+
+                                <!-- Tabla de gatitos registrados -->
+                                <div id="tablaGatitos">
+                                    <h4 class="text-center mb-4" style="color: #919CD9;">Solicitudes de adopcion enviadas</h4>
+
+                                    <!-- Añadir .table-responsive aquí -->
+                                    <div class="table-responsive" style="border-radius: 15px; overflow: hidden;">
+                                        <table class="table table-bordered text-center rounded w-100" style="background-color: white;">
+                                            <thead class="rounded custom-thead">
+                                                <tr>
+                                                    <th>Gatito</th>
+                                                    <th>Persona</th>
+                                                    <th>Correo Electronico</th>
+                                                    <th>Razón para Adoptar</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="listaGatitos">
+                                                <tr th:each="solicitud : ${listaSolicitudesAdopcion}">
+
+                                                    <td th:text="${solicitud.gatito.nombre}"></td>
+                                                    <td th:text="${solicitud.usuario.persona.nombre}"></td> <!-- Estado se muestra aquí -->
+                                                    <td th:text="${solicitud.usuario.email}"></td>
+                                                    <td th:text="${solicitud.razonAdopcion}"></td>
+                                                    <td th:text="${solicitud.estado}"></td>
+                                                    <td>
+                                                        <!-- Botones para Acciones Aceptar -->
+                                                        <a th:href="@{/admin/solicitudesadopcion}">
+                                                            <img src="/img/checkbox.svg" alt="Aceptar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(37%) sepia(76%) saturate(2374%) hue-rotate(86deg) brightness(89%) contrast(86%);">
+                                                        </a>
+                                                        <!-- Botones para Acciones Rechazar -->
+                                                        <a th:href="@{/admin/solicitudesadopcion}" >
+                                                            <img src="/img/cross-circle.svg" alt="Rechazar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(22%) sepia(94%) saturate(4163%) hue-rotate(-7deg) brightness(93%) contrast(115%);">
+                                                        </a>
+                                                    </td>
+
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> 
+                                    <!-- Cierre del .table-responsive -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incluir CSS de Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Incluir JavaScript de Bootstrap y Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
+    </body>
+</html>
