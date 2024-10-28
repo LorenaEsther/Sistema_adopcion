@@ -29,11 +29,28 @@ public class SolicitudAdopcionService {
 
     // Actualizar una solicitud de adopción
     public SolicitudAdopcion updateSolicitud(SolicitudAdopcion solicitud) {
-        
+
         if (solicitudAdopcionRepository.existsById(solicitud.getId())) {
             return solicitudAdopcionRepository.save(solicitud);
         } else {
             throw new RuntimeException("SolicitudAdopcion no encontrado");
+        }
+    }
+
+    public SolicitudAdopcion updateEstadoSolicitud(int id, SolicitudAdopcion.EstadoSolicitud nuevoEstado) {
+        // Verifica si la solicitud existe
+        if (solicitudAdopcionRepository.existsById(id)) {
+            // Obtiene la solicitud actual
+            SolicitudAdopcion solicitudExistente = solicitudAdopcionRepository.findById(id).orElseThrow(
+                    () -> new RuntimeException("SolicitudAdopcion no encontrada"));
+
+            // Actualiza solo el campo 'estado'
+            solicitudExistente.setEstado(nuevoEstado);
+
+            // Guarda la solicitud actualizada y la retorna
+            return solicitudAdopcionRepository.save(solicitudExistente);
+        } else {
+            throw new RuntimeException("SolicitudAdopcion no encontrada");
         }
     }
 

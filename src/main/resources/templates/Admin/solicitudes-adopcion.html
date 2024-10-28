@@ -5,7 +5,11 @@
         <meta name="_csrf_header" content="${_csrf.headerName}"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- Bootstrap CSS (mover aquí) -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-3C6E9118+gjcDyygT2O9a6m3PA7TT3y9vvUj8xOC47+f8F8JphrxYBz7yYaWGbZv" crossorigin="anonymous">
     </head>
+
     <body>
 
         <div class="wrapper">
@@ -47,11 +51,11 @@
                                                     <td th:text="${solicitud.estado}"></td>
                                                     <td>
                                                         <!-- Botones para Acciones Aceptar -->
-                                                        <a th:href="@{/admin/solicitudesadopcion}">
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalAceptar">
                                                             <img src="/img/checkbox.svg" alt="Aceptar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(37%) sepia(76%) saturate(2374%) hue-rotate(86deg) brightness(89%) contrast(86%);">
                                                         </a>
                                                         <!-- Botones para Acciones Rechazar -->
-                                                        <a th:href="@{/admin/solicitudesadopcion}" >
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalRechazar">
                                                             <img src="/img/cross-circle.svg" alt="Rechazar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(22%) sepia(94%) saturate(4163%) hue-rotate(-7deg) brightness(93%) contrast(115%);">
                                                         </a>
                                                     </td>
@@ -71,12 +75,53 @@
             </div>
         </div>
 
-        <!-- Incluir CSS de Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Modal Aceptar Solicitud -->
+        <div class="modal fade" id="modalAceptar" tabindex="-1" aria-labelledby="modalAceptarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAceptarLabel">Confirmar Aceptación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas aceptar esta solicitud?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <form th:action="@{/admin/aceptar-solicitud/{id}(id=${solicitud.id})}" method="post">
+                            <button type="submit" class="btn btn-success">Aceptar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!-- Incluir JavaScript de Bootstrap y Popper.js -->
+        <!-- Modal Rechazar Solicitud -->
+        <div class="modal fade" id="modalRechazar" tabindex="-1" aria-labelledby="modalRechazarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalRechazarLabel">Confirmar Rechazo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas rechazar esta solicitud?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <form th:action="@{/admin/rechazar-solicitud/{id}(id=${solicitud.id})}" method="post">
+                            <button type="submit" class="btn btn-danger">Rechazar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Bootstrap JavaScript y Popper.js -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
         <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
     </body>
 </html>
