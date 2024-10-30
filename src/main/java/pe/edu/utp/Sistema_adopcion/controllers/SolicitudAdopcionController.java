@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pe.edu.utp.Sistema_adopcion.models.Adopcion;
@@ -49,6 +48,11 @@ public class SolicitudAdopcionController {
 
         solicitudService.updateEstadoSolicitud(id, SolicitudAdopcion.EstadoSolicitud.aprobada);
 
+        Gatito gatitoActualizar = solicitudAdopcion.getGatito();
+        gatitoActualizar.setEstado(Gatito.EstadoGatito.ADOPTADO);
+        
+        gatitoService.updateGatito(gatitoActualizar);
+        
         Adopcion nuevaAdopcion = new Adopcion();
         nuevaAdopcion.setUsuario(solicitudAdopcion.getUsuario());
         nuevaAdopcion.setGatito(solicitudAdopcion.getGatito());
@@ -59,6 +63,12 @@ public class SolicitudAdopcionController {
 
     @PostMapping("/admin/rechazar-solicitud/{id}")
     public String rechazarSolicitud(@PathVariable int id) {
+        SolicitudAdopcion solicitudAdopcion = solicitudService.getSolicitudById(id);
+        
+        Gatito gatitoActualizar = solicitudAdopcion.getGatito();
+        gatitoActualizar.setEstado(Gatito.EstadoGatito.DISPONIBLE);
+        
+        gatitoService.updateGatito(gatitoActualizar);
         solicitudService.updateEstadoSolicitud(id, SolicitudAdopcion.EstadoSolicitud.rechazada);
         return "redirect:/admin/solicitudesadopcion";
     }

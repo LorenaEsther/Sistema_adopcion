@@ -50,14 +50,20 @@
                                                     <td th:text="${solicitud.razonAdopcion}"></td>
                                                     <td th:text="${solicitud.estado}"></td>
                                                     <td>
-                                                        <!-- Botones para Acciones Aceptar -->
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalAceptar">
-                                                            <img src="/img/checkbox.svg" alt="Aceptar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(37%) sepia(76%) saturate(2374%) hue-rotate(86deg) brightness(89%) contrast(86%);">
-                                                        </a>
-                                                        <!-- Botones para Acciones Rechazar -->
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalRechazar">
-                                                            <img src="/img/cross-circle.svg" alt="Rechazar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(22%) sepia(94%) saturate(4163%) hue-rotate(-7deg) brightness(93%) contrast(115%);">
-                                                        </a>
+                                                        <!-- Botón para Acción Aceptar -->
+                                                        <form method="post" th:action="@{/admin/aceptar-solicitud/{id}(id=${solicitud.id})}" style="display: inline;">
+                                                            <button type="submit" style="background: none; border: none; padding: 0;">
+                                                                <img src="/img/checkbox.svg" alt="Aceptar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(37%) sepia(76%) saturate(2374%) hue-rotate(86deg) brightness(89%) contrast(86%);">
+                                                            </button>
+                                                        </form>
+
+                                                        <!-- Botón para Acción Rechazar -->
+                                                        <form method="post" th:action="@{/admin/rechazar-solicitud/{id}(id=${solicitud.id})}" style="display: inline;">
+                                                            <button type="submit" style="background: none; border: none; padding: 0;">
+                                                                <img src="/img/cross-circle.svg" alt="Rechazar Solicitud" style="width: 20px; height: 20px; cursor: pointer; filter: invert(22%) sepia(94%) saturate(4163%) hue-rotate(-7deg) brightness(93%) contrast(115%);">
+                                                            </button>
+                                                        </form>
+
                                                     </td>
 
 
@@ -75,6 +81,7 @@
             </div>
         </div>
 
+        
         <!-- Modal Aceptar Solicitud -->
         <div class="modal fade" id="modalAceptar" tabindex="-1" aria-labelledby="modalAceptarLabel" aria-hidden="true">
             <div class="modal-dialog">

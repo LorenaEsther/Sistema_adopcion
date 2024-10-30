@@ -2,6 +2,7 @@ package pe.edu.utp.Sistema_adopcion.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ public class IndexController {
 
     @Autowired
     private GatitoService gatitoService;
-    
+
     @Autowired
     private FotoGatitoService fotoGatitoService;
 
@@ -30,10 +31,11 @@ public class IndexController {
 
     @GetMapping("/adopta")
     public String adopta(Model model) {
-        List<Gatito> gatitos = gatitoService.findAll();  // Obtener la lista de gatitos desde el servicio
-        model.addAttribute("gatitos", gatitos);  // Pasar la lista de gatitos al modelo
-        List<FotoGatito> fotoGatitos = fotoGatitoService.findAll();
-        model.addAttribute("fotoGatitos", fotoGatitos);
+        List<FotoGatito> fotoGatitosDisponibles = fotoGatitoService.findAll().stream()
+                .filter(foto -> foto.getGatito().getEstado() == Gatito.EstadoGatito.DISPONIBLE)
+                .collect(Collectors.toList());
+
+        model.addAttribute("fotoGatitos", fotoGatitosDisponibles);
         model.addAttribute("titulo", "Adopta un gatito");
         return "adopta";  // Thymeleaf buscará adopta.html en /templates
     }
@@ -46,7 +48,7 @@ public class IndexController {
         model.addAttribute("fotoGatitos", fotoGatitos);
         return "detalles-gato"; // Thymeleaf buscará un archivo detalles-gato.html
     }
-    
+
     @GetMapping("/donaciones")
     public String donaciones(Model model) {
         model.addAttribute("titulo", "Donaciones");

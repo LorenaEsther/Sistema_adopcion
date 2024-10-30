@@ -6,7 +6,6 @@ import pe.edu.utp.Sistema_adopcion.models.Gatito;
 import pe.edu.utp.Sistema_adopcion.repositories.GatitoRepository;
 
 import java.util.List;
-import java.util.Optional;
 import pe.edu.utp.Sistema_adopcion.models.FotoGatito;
 
 @Service
@@ -20,6 +19,10 @@ public class GatitoService {
 
     public List<Gatito> findAll() {
         return gatitoRepository.findAll();
+    }
+    
+    public List<Gatito> findAllDisponibles() {
+        return gatitoRepository.findByEstado(Gatito.EstadoGatito.DISPONIBLE);
     }
 
     public Gatito save(Gatito gatito) {
