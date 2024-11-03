@@ -57,9 +57,9 @@
                             <p class="card-text">Representa 1.5KG de comida mensuales o el equivalente en ayuda, campañas de salud y adopción.</p>
                             <h3>S/ 9.90</h3>
                             <p>mensuales, bimestrales y/o anual</p>
-                            <a href="pago.html" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
-                            <a href="pago.html" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
-                            <a href="pago.html" class="btn btn-danger d-block">PLAN ANUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='michi', modalidad='mensual')}" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='michi', modalidad='bimestral')}" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='michi', modalidad='anual')}" class="btn btn-danger d-block">PLAN ANUAL</a>
                         </div>
                     </div>
                 </div>
@@ -73,9 +73,9 @@
                             <p class="card-text">Representa 5KG de comida mensuales o el equivalente en ayuda, campañas de salud y adopción.</p>
                             <h3>S/ 24.90</h3>
                             <p>mensuales, bimestrales y/o anual</p>
-                            <a href="pago.html" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
-                            <a href="pago.html" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
-                            <a href="pago.html" class="btn btn-danger d-block">PLAN ANUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='munchkin', modalidad='mensual')}" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='munchkin', modalidad='bimestral')}" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='munchkin', modalidad='anual')}" class="btn btn-danger d-block">PLAN ANUAL</a>
                         </div>
                     </div>
                 </div>
@@ -89,9 +89,9 @@
                             <p class="card-text">Representa 12KG de comida mensuales o el equivalente en ayuda, campañas de salud y adopción.</p>
                             <h3>S/ 59.90</h3>
                             <p>mensuales, bimestrales y/o anual</p>
-                            <a href="pago.html" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
-                            <a href="pago.html" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
-                            <a href="pago.html" class="btn btn-danger d-block">PLAN ANUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='siames', modalidad='mensual')}" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='siames', modalidad='bimestral')}" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='siames', modalidad='anual')}" class="btn btn-danger d-block">PLAN ANUAL</a>
                         </div>
                     </div>
                 </div>
@@ -105,9 +105,9 @@
                             <p class="card-text">Representa 20KG de comida mensuales o el equivalente en ayuda, campañas de salud y adopción.</p>
                             <h3>S/ 99.90</h3>
                             <p>mensuales, bimestrales y/o anual</p>
-                            <a href="pago.html" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
-                            <a href="pago.html" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
-                            <a href="pago.html" class="btn btn-danger d-block">PLAN ANUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='faraon', modalidad='mensual')}" class="btn btn-info d-block mb-2">PLAN MENSUAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='faraon', modalidad='bimestral')}" class="btn btn-warning d-block mb-2">PLAN BIMESTRAL</a>
+                            <a th:href="@{/pago/{plan}/{modalidad}(plan='faraon', modalidad='anual')}" class="btn btn-danger d-block">PLAN ANUAL</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                                 <span class="input-group-text">S/</span>
                                 <input type="number" class="form-control" placeholder="Ingresa la cantidad" aria-label="Cantidad de donación">
                             </div>
-                            <a href=""pago.html"" class="btn btn-primary d-block mb-2">DONAR AHORA</a>
+                            <a th:href="@{/pago/coin}" class="btn btn-primary d-block mb-2">DONAR AHORA</a>
                         </div>
                     </div>
                 </div>
