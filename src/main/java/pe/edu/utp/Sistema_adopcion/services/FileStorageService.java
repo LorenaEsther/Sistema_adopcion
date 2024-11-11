@@ -14,7 +14,7 @@ public class FileStorageService {
         if (!uploadDirFile.exists()) {
             uploadDirFile.mkdirs();
         }
-        String uniqueFilename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        String uniqueFilename = UUID.randomUUID().toString();
         String filePath = uploadDir + "/" + uniqueFilename;
         file.transferTo(new File(filePath));
         return uniqueFilename;  // Devuelve el nombre del archivo almacenado

@@ -20,6 +20,10 @@ public class FotoGatitoService {
     public FotoGatito save(FotoGatito fotoGatito) {
         return fotoGatitoRepository.save(fotoGatito);
     }
+    
+    public FotoGatito obtenerFotoPorId(int id) {
+        return fotoGatitoRepository.findById(id).get();
+    }
 
     public void deleteById(int id) {
         fotoGatitoRepository.deleteById(id);

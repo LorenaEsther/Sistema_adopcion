@@ -20,11 +20,11 @@
 
         <div class="container cont-detalles" th:each="fotos : ${fotoGatitos}">
             <div class="container cont-info">
-                <h1 th:text="'Detalles de '+${fotos.gatito.nombre}" style="font-size: 50px">Detalles</h1>
+                <h1 th:text="'Detalles de '+${fotos.gatito.nombre}" style="font-size: 50px"></h1>
                 <div class="row">
                     <div class="col-md-6 info-gato">
                         <h2>Historia</h2>
-                        <p th:text="${fotos.gatito.descripcion}">Michi fue rescatado de las calles al año y medio de vida. Es un gato juguetón y muy cariñoso, que está en busca de un hogar lleno de amor.</p>
+                        <p th:text="${fotos.gatito.descripcion}"></p>
                         <h3>Caracteríscticas</h3>
                         <ul>
                             <li th:text="'Color: '+${fotos.gatito.color}"></li>
@@ -48,7 +48,7 @@
                         </table>
                     </div>
                     <div class="col-md-6 d-flex justify-content-center align-items-center cont-img">
-                        <img th:src="@{/img/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Gato 1" class="img-det">
+                        <img th:src="@{/uploads/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Gato 1" class="img-det">
                     </div>
                 </div>
             </div>

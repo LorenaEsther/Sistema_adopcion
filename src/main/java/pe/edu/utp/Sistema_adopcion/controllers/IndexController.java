@@ -42,10 +42,11 @@ public class IndexController {
 
     @GetMapping("/detalles-gato/{id}")
     public String detallesGato(@PathVariable("id") int id, Model model) {
-        Gatito gatitoOpt = gatitoService.obtenerGatitoPorId(id);
-        model.addAttribute("gatito", gatitoOpt);
-        List<FotoGatito> fotoGatitos = fotoGatitoService.findAll();
+        /*Gatito gatitoOpt = gatitoService.obtenerGatitoPorId(id);
+        model.addAttribute("gatito", gatitoOpt);*/
+        FotoGatito fotoGatitos = fotoGatitoService.obtenerFotoPorId(id);
         model.addAttribute("fotoGatitos", fotoGatitos);
+        model.addAttribute("titulo","Detalles");
         return "detalles-gato"; // Thymeleaf buscará un archivo detalles-gato.html
     }
 

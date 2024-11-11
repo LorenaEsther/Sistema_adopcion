@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col-md-4" th:each="fotos : ${fotoGatitos}">
                                 <div class="gato-card">
-                                    <img th:src="@{/img/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Gato 1">
+                                    <img th:src="@{/uploads/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Gato 1">
                                     <div class="gato-info">
                                         <h3 th:text="${fotos.gatito.nombre}"></h3>
                                         <p th:text="'Edad: ' + ${fotos.gatito.edadAproximada} + ' años'"></p>

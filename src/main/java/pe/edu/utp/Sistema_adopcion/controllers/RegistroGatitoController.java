@@ -47,22 +47,20 @@ public class RegistroGatitoController {
     public String mostrarRegistroGatito(Model model) {
         model.addAttribute("titulo", "Registrar Gatito");
         model.addAttribute("activePage", "registergatito");
-
         // Inicializa un nuevo objeto Gatito para el formulario
         model.addAttribute("gatito", new Gatito());
         model.addAttribute("historialMedico", new HistorialMedico());
-
         // Recuperar todos los gatos y añadirlos al modelo
         List<Gatito> listaGatitos = gatitoService.findAll();
         model.addAttribute("listaGatitos", listaGatitos);
-        
+
         List<FotoGatito> fotoGatitos = fotoGatitoService.findAll();
         model.addAttribute("fotoGatitos", fotoGatitos);
-        
+
         List<HistorialMedico> historialMedico = historialMedicoService.findAll();
-        model.addAttribute("historialM",historialMedico);
-        
-        return "Admin/registergatito";
+        model.addAttribute("historialM", historialMedico);
+
+        return "Admin/registergatito.html";
     }
 
     @PostMapping("/registergatito")
@@ -83,7 +81,7 @@ public class RegistroGatitoController {
         Gatito nuevoGatito = gatitoService.save(gatito);
 
         // Ruta donde se guardarán las imágenes
-        String uploadDir = new File("src/main/resources/static/img").getAbsolutePath(); // Ruta absoluta
+        uploadDir = new File("src/main/resources/static/uploads").getAbsolutePath(); // Ruta absoluta
 
         // Verificar que el directorio exista o crearlo
         File uploadDirFile = new File(uploadDir);
@@ -128,31 +126,34 @@ public class RegistroGatitoController {
         // Redirigir a la página de registro o mostrar mensaje de éxito
         return "redirect:/admin/registergatito";
     }
-    
-    
+
 // ACTUALIZAR GATITO
-    
-   @GetMapping("/registergatito/editar/{id}")
-   public String editarGatito(@PathVariable int id, Model model){
-       model.addAttribute("editarGato", gatitoService.obtenerGatitoPorId(id));
-       return "redirect:/admin/registergatito";
-   }
-    
+    @GetMapping("/registergatito/editar/{id}")
+    public String editarGatito(@PathVariable int id, Model model, @ModelAttribute("gatito") FotoGatito foto) {
+        model.addAttribute("editarGato", gatitoService.obtenerGatitoPorId(id));
+        Gatito gatitoExistente = gatitoService.obtenerGatitoPorId(id);
+        gatitoExistente.setNombre(foto.getGatito().getNombre());
+        gatitoExistente.setColor(foto.getGatito().getColor());
+        gatitoExistente.setEdadAproximada(foto.getGatito().getEdadAproximada());
+        gatitoExistente.setEstado(foto.getGatito().getEstado());
+        gatitoExistente.setDescripcion(foto.getGatito().getDescripcion());        
+        return "redirect:/admin/registergatito";
+    }
+
 // ACTUALIZAR HISTORIAL DEL GATITO 
     @GetMapping("/registergatito/historial/{id}")
-    public String editarHistorial(@PathVariable int id, Model model){
+    public String editarHistorial(@PathVariable int id, Model model) {
         model.addAttribute("editarHistorial", historialMedicoService.obtenerHistorial(id));
         return "redirect:/admin/registergatito";
     }
-    
-   
-    @PostMapping("/registergatito/{id}")    
+
+    @PostMapping("/registergatito/{id}")
     public String actualizarHistorialMedico(@ModelAttribute("historialMedico") HistorialMedico historialMedico,
             @PathVariable("id") int id, Model model) {
         try {
             Gatito gatito = gatitoService.obtenerGatitoPorId(id); // Obtiene el objeto Gatito
             HistorialMedico historial = historialMedicoService.obtenerHistorial(id);
-            
+
             historial.setId(id);
             historial.setDescripcion(historialMedico.getDescripcionHistorial());
             historial.setDosisVacunas(historialMedico.getDosisVacunas());
@@ -173,7 +174,7 @@ public class RegistroGatitoController {
 
 // ELIMINAR GATITO
     @GetMapping("/registergatito/{id}")
-    public String eliminarGatito(@PathVariable int id, Model model){    
+    public String eliminarGatito(@PathVariable int id, Model model) {
         historialMedicoService.deleteById(id);
         fotoGatitoService.deleteById(id);
         gatitoService.deleteById(id);
