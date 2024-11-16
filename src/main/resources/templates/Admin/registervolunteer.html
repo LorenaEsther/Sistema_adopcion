@@ -3,6 +3,9 @@
     <head th:replace="~{Admin/adminTemplate :: header}">
         <meta name="_csrf" content="${_csrf.token}"/>
         <meta name="_csrf_header" content="${_csrf.headerName}"/>
+        <title>Registrar Voluntario</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/admin-styles.css" rel="stylesheet">
     </head>
     <body>
         <div class="wrapper">
@@ -11,22 +14,71 @@
             <div class="main p-3">
                 <div class="m-2 mx-4">
                     <aside th:replace="~{Admin/adminTemplate :: nav-menu}"></aside>
-                    <div class="text-center">
-                        <!-- Contenido principal aquí -->
-                        <h3>Pon tu contenido aquí</h3>
-                        <p>Añade aquí el contenido principal de la página, como formularios o tablas.</p>
+                    <div class="container mt-4">
+                        <h2 class="text-center mb-4">Registrar Voluntario</h2>
+                        <div class="form-container shadow-lg p-4 rounded-3">
+                            <form action="#" th:action="@{/admin/registervolunteer}" th:object="${voluntario}" method="post">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" th:field="*{persona.nombre}" placeholder="Ingrese el nombre del voluntario" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellidos" class="form-label">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellidos" th:field="*{persona.apellidos}" placeholder="Ingrese los apellidos del voluntario" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" th:field="*{persona.telefono}" placeholder="Ingrese el teléfono" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="direccion" class="form-label">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" th:field="*{persona.direccion}" placeholder="Ingrese la dirección" required>
+                                </div>
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="submit" class="btn btn-primary custom-btn me-2">Registrar</button>
+                                    <a href="/admin" class="btn btn-secondary custom-btn">Cancelar</a>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="mt-5">
+                            <h3>Voluntarios Registrados</h3>
+                            <table class="table table-bordered table-striped mt-3 text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Teléfono</th>
+                                        <th>Dirección</th>
+                                        <th>Fecha de Registro</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="voluntario : ${voluntarios}">
+                                        <td th:text="${voluntario.persona.nombre}"></td>
+                                        <td th:text="${voluntario.persona.apellidos}"></td>
+                                        <td th:text="${voluntario.persona.telefono}"></td>
+                                        <td th:text="${voluntario.persona.direccion}"></td>
+                                        <td th:text="${#dates.format(voluntario.fechaRegistro, 'dd/MM/yyyy')}"></td>
+                                        <td>
+                                            <a th:href="@{/admin/deletevolunteer/{id}(id=${voluntario.personaId})}" 
+                                               class="btn btn-danger btn-sm" 
+                                               onclick="return confirm('¿Estás seguro de que deseas eliminar este voluntario?');">
+                                                Eliminar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Incluir CSS de Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Incluir JavaScript de Bootstrap y Popper.js -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
     </body>
 </html>
-

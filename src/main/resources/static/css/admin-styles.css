@@ -206,3 +206,35 @@ a.sidebar-link:hover {
 }
 
 
+/* Añadido para mejorar la visualización del formulario */
+.form-container {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 30px; /* Relleno dentro del formulario */
+    margin: 0 auto;
+    max-width: 600px; /* Limitar ancho máximo del formulario */
+}
+
+/* Botón personalizado */
+.custom-btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.custom-btn:hover {
+    background-color: var(--secondary-color); /* Cambio de color al pasar el ratón */
+    color: white;
+}
+
+/* Ajuste de color de fondo para botones secundarios */
+.custom-btn-secondary {
+    background-color: var(--background-color-secondary);
+    color: var(--secondary-color);
+}
+
+.custom-btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
