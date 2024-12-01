@@ -1,32 +1,121 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{Admin/adminTemplate :: header}">
-        <meta name="_csrf" content="${_csrf.token}"/>
-        <meta name="_csrf_header" content="${_csrf.headerName}"/>
-    </head>
-    <body>
-        <div class="wrapper">
-            <div th:replace="~{Admin/adminTemplate :: background}"></div>
-            <aside th:replace="~{Admin/adminTemplate :: sidebar}"></aside>
-            <div class="main p-3">
-                <div class="m-2 mx-4">
-                    <aside th:replace="~{Admin/adminTemplate :: nav-menu}"></aside>
-                    <div class="text-center">
-                        <!-- Contenido principal aquí -->
-                        <h3>Pon tu contenido aquí</h3>
-                        <p>Añade aquí el contenido principal de la página, como formularios o tablas.</p>
+<head th:replace="~{Admin/adminTemplate :: header}">
+    <title>Voluntarios Registrados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/admin-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div th:replace="~{Admin/adminTemplate :: background}"></div>
+        <aside th:replace="~{Admin/adminTemplate :: sidebar}"></aside>
+        <div class="main p-3">
+            <div class="m-2 mx-4">
+                <aside th:replace="~{Admin/adminTemplate :: nav-menu}"></aside>
+
+                <div class="container mt-4">
+                    <!-- Botón para abrir modal -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Voluntarios Registrados</h2>
+                        <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#modalRegistrarVoluntario">
+                            Registrar Voluntario
+                        </button>
                     </div>
+
+                    <!-- Tabla de voluntarios -->
+                    <table class="table table-bordered table-striped mt-3 text-center">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Fecha de Registro</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="voluntario : ${voluntarios}">
+                                <td th:text="${voluntario.persona.nombre}"></td>
+                                <td th:text="${voluntario.persona.apellidos}"></td>
+                                <td th:text="${voluntario.persona.telefono}"></td>
+                                <td th:text="${voluntario.persona.direccion}"></td>
+                                <td th:text="${#dates.format(voluntario.fechaRegistro, 'dd/MM/yyyy')}"></td>
+                                <td>
+                                    <a href="#" 
+                                       class="btn btn-danger btn-sm" 
+                                       th:onclick="'confirmarEliminacion(event, \'' + @{/admin/deletevolunteer/{id}(id=${voluntario.personaId})} + '\')'">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Incluir CSS de Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Modal para registrar voluntario -->
+    <div class="modal fade" id="modalRegistrarVoluntario" tabindex="-1" aria-labelledby="modalRegistrarVoluntarioLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalRegistrarVoluntarioLabel">Registrar Voluntario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" th:action="@{/admin/registervolunteer}" th:object="${voluntario}" method="post">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" th:field="*{persona.nombre}" placeholder="Ingrese el nombre del voluntario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos" th:field="*{persona.apellidos}" placeholder="Ingrese los apellidos del voluntario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" th:field="*{persona.telefono}" placeholder="Ingrese el teléfono" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" th:field="*{persona.direccion}" placeholder="Ingrese la dirección" required>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary custom-btn me-2">Guardar</button>
+                            <button type="button" class="btn btn-secondary custom-btn" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Incluir JavaScript de Bootstrap y Popper.js -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
-    </body>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function confirmarEliminacion(event, url) {
+                event.preventDefault(); // Evitar el comportamiento por defecto del enlace
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Si se confirma, redirigir al enlace para realizar la eliminación
+                        window.location.href = url;
+                    }
+                });
+            }
+        </script>
+    <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
+</body>
 </html>
-

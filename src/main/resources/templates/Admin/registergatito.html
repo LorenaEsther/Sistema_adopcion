@@ -49,7 +49,7 @@
                                             <tbody id="listaGatitos">
                                                 <tr th:each="fotos : ${fotoGatitos}">
                                                     <td>
-                                                        <img th:src="@{/img/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Foto" width="40" height="40">
+                                                        <img th:src="@{/uploads/{IDfoto}(IDfoto=${fotos.urlFoto})}" alt="Foto" width="40" height="40">
                                                     </td>
 
 
@@ -60,21 +60,21 @@
                                                     <td th:text="${fotos.gatito.descripcion}"></td>
                                                     <td>
                                                         <!-- Para el historial médico, asumiendo que solo quieres el último registro -->
-                                                        <a th:href="@{/admin/registergatito/historial/{id}(id=${fotos.gatito.id})}" data-bs-toggle="modal" data-bs-target="#historialModal">
+                                                        <a th:action="@{/admin/registergatito/historial/{id}(id=${fotos.gatito.id})}" data-bs-toggle="modal" data-bs-target="#historialModal">
                                                             <img src="/img/historialmedico.svg" alt="Historial Médico" style="width: 35px; height: 35px; cursor: pointer;">
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <!-- Botón para editar -->
-                                                        <a th:href="@{/admin/editar/{id}(id=${fotos.gatito.id})}" data-bs-toggle="modal" data-bs-target="#editarModal">
+                                                        <a href='#' th:onclick="'funcionDeEditar('+${fotos.gatito.id}+')'" data-bs-toggle="modal" data-bs-target="#editarModal">
                                                             <img src="/img/edit.svg" alt="Editar" 
                                                                  style="width: 20px; height: 20px; cursor: pointer;
                                                                  filter: invert(85%) sepia(61%) saturate(629%)
                                                                  hue-rotate(322deg) brightness(103%) contrast(100%);">
                                                         </a>
-
                                                         <!-- Botón para eliminar con confirmación -->
-                                                        <a th:href="@{/admin/registergatito/{id}(id=${fotos.gatito.id})}">
+                                                        <!-- th:href="@{/admin/registergatito/{id}(id=${fotos.gatito.id})}" onclick="funcionDeEliminar('${fotos.gatito.id}')"-->
+                                                        <a href='#' th:onclick="'funcionDeEliminar('+${fotos.gatito.id}+')'">
                                                             <img src="/img/delete.svg" alt="Eliminar" style="width: 20px; height: 20px; cursor: pointer; filter: invert(31%) sepia(98%) saturate(3715%) hue-rotate(-336deg) brightness(96%) contrast(102%);">
                                                         </a>
 
@@ -95,8 +95,6 @@
                 </div>
             </div>
         </div>
-
-
         <!-- Contenido específico de esta página -->
         <!-- Modal para el formulario de registro -->
         <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
@@ -110,21 +108,21 @@
                         <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>
+                                <input type="text" class="form-control" id="nombreR" th:field="*{nombre}" placeholder="Nombre del gato" required>
                             </div>
                             <div class="mb-3">
                                 <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Color del gato" required>
+                                <input type="text" class="form-control" id="colorR" th:field="*{color}" placeholder="Color del gato" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="edadAproximada" class="form-label">Edad Aproximada</label>
-                                <input type="number" class="form-control" id="edadAproximada" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses" required>
+                                <input type="number" class="form-control" id="edadAproximadaR" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="estado" class="form-label">Estado</label>
-                                <select class="form-select" id="estado" th:field="*{estado}" required>
+                                <select class="form-select" id="estadoR" th:field="*{estado}" required>
                                     <option value="" selected>Selecciona el estado</option>
                                     <option value="DISPONIBLE">Disponible</option>
                                     <option value="EN_PROCESO">En proceso</option>
@@ -134,12 +132,12 @@
 
                             <div class="mb-3">
                                 <label for="fotoGatito" class="form-label">Foto del Gatito</label>
-                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" required multiple>
+                                <input type="file" class="form-control" id="fotoGatitoR" name="fotoGatito" accept="image/*" required multiple>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label for="descripcion" class="form-label">Descripción</label>
-                                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="Escribe aquí la descripción..."></textarea>
+                                <textarea class="form-control" id="descripcionR" th:field="*{descripcion}" placeholder="Escribe aquí la descripción..."></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary rounded-pill">Registrar</button>
@@ -159,28 +157,24 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito/{id}(id=${gatito.id})}" th:object="${gatito}">
+                        <form method="post" enctype="multipart/form-data" th:action="@{/admin/registergatito/editar/{id}(id=${gatito.id})}" th:object="${gatito}">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del gato" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombre" class="form-label">Descripción</label>
-                                <input type="text" class="form-control" id="descipcion" th:field="*{descripcion}" placeholder="Descripción del gato">
+                                <input type="text" class="form-control" id="nombreE" th:field="*{nombre}" placeholder="Nombre del gato" required>
                             </div>
                             <div class="mb-3">
                                 <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Color del gato" required>
+                                <input type="text" class="form-control" id="colorE" th:field="*{color}" placeholder="Color del gato" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="edadAproximada" class="form-label">Edad Aproximada</label>
-                                <input type="number" class="form-control" id="edadAproximada" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses" required>
+                                <input type="number" class="form-control" id="edadAproximadaE" th:field="*{edadAproximada}" placeholder="Edad aproximada en meses" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="estado" class="form-label">Estado</label>
-                                <select class="form-select" id="estado" th:field="*{estado}" required>
+                                <select class="form-select" id="estadoE" th:field="*{estado}" required>
                                     <option value="" selected>Selecciona el estado</option>
                                     <option value="DISPONIBLE">Disponible</option>
                                     <option value="EN_PROCESO">En proceso</option>
@@ -190,11 +184,16 @@
 
                             <div class="mb-3">
                                 <label for="fotoGatito" class="form-label">Foto del Gatito</label>
-                                <input type="file" class="form-control" id="fotoGatito" name="fotoGatito" accept="image/*" required>
+                                <input type="file" class="form-control" id="fotoGatitoE" name="fotoGatito" accept="image/*" required multiple>
                             </div>
+
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcionE" th:field="*{descripcion}" placeholder="Escribe aquí la descripción..."></textarea>
+                            </div>
+
                             <button type="submit" class="btn btn-primary rounded-pill">Editar</button>
                             <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -233,7 +232,7 @@
         <div th:replace="~{Admin/adminTemplate :: scripts}"></div>
 
         <!-- Incluir el archivo JavaScript externo -->
-        <script th:src="@{/js/register.js}"></script>
+        <script th:inline="javascript" th:src="@{/js/register.js}"></script>
         <!-- Incluir CSS de Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
