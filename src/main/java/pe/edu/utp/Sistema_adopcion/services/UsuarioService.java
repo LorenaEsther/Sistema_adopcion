@@ -28,4 +28,7 @@ public class UsuarioService {
         return usuariosRepository.findByEmail(email);
     }
     
+    public long contarUsuariosRegistrados() {
+        return usuariosRepository.count();
+    }
 }

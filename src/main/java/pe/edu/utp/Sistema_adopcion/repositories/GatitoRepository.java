@@ -6,4 +6,6 @@ import pe.edu.utp.Sistema_adopcion.models.Gatito;
 
 public interface GatitoRepository extends JpaRepository<Gatito, Integer> {
     List<Gatito> findByEstado(Gatito.EstadoGatito estado);
+
+    public long countByEstado(Gatito.EstadoGatito estado);
 }
