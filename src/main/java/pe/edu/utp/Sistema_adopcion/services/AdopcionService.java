@@ -1,6 +1,8 @@
 package pe.edu.utp.Sistema_adopcion.services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,4 +48,20 @@ public class AdopcionService{
         }
     }
     
+    public long contarTotalAdopciones() {
+        return adopcionRepository.count();
+    }
+    
+    public Map<String, Long> contarPreferenciasPorColor() {
+        List<Object[]> resultados = adopcionRepository.contarAdopcionesPorColor();
+        Map<String, Long> preferenciasPorColor = new HashMap<>();
+
+        for (Object[] resultado : resultados) {
+            String color = (String) resultado[0];
+            Long cantidad = (Long) resultado[1];
+            preferenciasPorColor.put(color, cantidad);
+        }
+
+        return preferenciasPorColor;
+    }
 }

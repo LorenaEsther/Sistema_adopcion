@@ -57,4 +57,8 @@ public class GatitoService {
             throw new RuntimeException("Gatito no encontrado");
         }
     }
+    
+    public long contarGatosDisponibles() {
+        return gatitoRepository.countByEstado(Gatito.EstadoGatito.DISPONIBLE);
+    }
 }

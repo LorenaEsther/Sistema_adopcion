@@ -1,6 +1,8 @@
 package pe.edu.utp.Sistema_adopcion.services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.utp.Sistema_adopcion.models.SolicitudAdopcion;
@@ -54,4 +56,19 @@ public class SolicitudAdopcionService {
         }
     }
 
+    public long contarSolicitudesPendientes() {
+        return solicitudAdopcionRepository.countByEstado(SolicitudAdopcion.EstadoSolicitud.pendiente);
+    }
+
+    public Map<String, Long> contarSolicitudesPorEstado() {
+        List<Object[]> resultados = solicitudAdopcionRepository.contarSolicitudesPorEstado();
+        Map<String, Long> solicitudesPorEstado = new HashMap<>();
+
+        for (Object[] resultado : resultados) {
+            String estado = resultado[0].toString(); // Convertir el ENUM o el valor a String
+            Long cantidad = (Long) resultado[1];
+            solicitudesPorEstado.put(estado, cantidad);
+        }
+        return solicitudesPorEstado;
+    }
 }
