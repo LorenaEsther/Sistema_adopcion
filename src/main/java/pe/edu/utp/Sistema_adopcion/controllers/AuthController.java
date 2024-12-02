@@ -90,5 +90,46 @@ public class AuthController {
             return "login"; // Mantener en la página de login con el mensaje de error
         }
     }
+    // Mostrar formulario de "Olvidé mi contraseña"
+
+    @GetMapping("/forgot-password")
+    public String showForgotPasswordForm() {
+        return "forgot-password"; // Redirige a forgot-password.html
+    }
+
+// Manejar la verificación de correo
+    @PostMapping("/forgot-password")
+    public String verifyEmail(@ModelAttribute("email") String email, Model model) {
+        Usuarios usuario = usuarioService.findByEmail(email);
+        if (usuario != null) {
+            model.addAttribute("email", email);
+            return "reset-password"; // Redirige al formulario de restablecimiento de contraseña
+        } else {
+            model.addAttribute("error", "El correo no está registrado.");
+            return "forgot-password"; // Mantiene en la página con el mensaje de error
+        }
+    }
+
+// Mostrar formulario de restablecimiento de contraseña
+    @GetMapping("/reset-password")
+    public String showResetPasswordForm(@ModelAttribute("email") String email, Model model) {
+        model.addAttribute("email", email);
+        return "reset-password"; // Redirige a reset-password.html
+    }
+
+// Manejar el restablecimiento de contraseña
+    @PostMapping("/reset-password")
+    public String resetPassword(@ModelAttribute("email") String email, @ModelAttribute("newPassword") String newPassword, Model model) {
+        Usuarios usuario = usuarioService.findByEmail(email);
+        if (usuario != null) {
+            usuario.setPassword(passwordEncoder.encode(newPassword));
+            usuarioService.save(usuario);
+            // Redirigir al login con el mensaje de éxito
+            return "redirect:/login?passwordReset=true";
+        } else {
+            model.addAttribute("error", "Ocurrió un error al actualizar la contraseña.");
+            return "reset-password"; // Mantiene en la página con el mensaje de error
+        }
+    }
 
 }
