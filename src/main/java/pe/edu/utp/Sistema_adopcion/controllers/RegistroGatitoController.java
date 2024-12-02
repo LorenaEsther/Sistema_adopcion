@@ -57,7 +57,7 @@ public class RegistroGatitoController {
         List<FotoGatito> fotoGatitos = fotoGatitoService.findAll();
         model.addAttribute("fotoGatitos", fotoGatitos);
 
-        List<HistorialMedico> historialMedico = historialMedicoService.findAll();
+        List<HistorialMedico> historialMedico = historialMedicoService.findAll(); 
         model.addAttribute("historialM", historialMedico);
 
         return "Admin/registergatito.html";
@@ -128,50 +128,42 @@ public class RegistroGatitoController {
     }
 
 // ACTUALIZAR GATITO
-    @GetMapping("/registergatito/editar/{id}")
-    public String editarGatito(@PathVariable int id, Model model, @ModelAttribute("gatito") FotoGatito foto) {
-        model.addAttribute("editarGato", gatitoService.obtenerGatitoPorId(id));
+    @PostMapping("/registergatito/editar/{id}")
+    public String editarGatito(@PathVariable int id, Model model, @ModelAttribute("gatito") Gatito gatito, @RequestParam("fotoGatito") MultipartFile[] fotoGatitosFiles) throws IOException {
         Gatito gatitoExistente = gatitoService.obtenerGatitoPorId(id);
-        gatitoExistente.setNombre(foto.getGatito().getNombre());
-        gatitoExistente.setColor(foto.getGatito().getColor());
-        gatitoExistente.setEdadAproximada(foto.getGatito().getEdadAproximada());
-        gatitoExistente.setEstado(foto.getGatito().getEstado());
-        gatitoExistente.setDescripcion(foto.getGatito().getDescripcion());        
+        gatitoExistente.setNombre(gatito.getNombre());
+        gatitoExistente.setColor(gatito.getColor());
+        gatitoExistente.setEdadAproximada(gatito.getEdadAproximada());
+        gatitoExistente.setEstado(gatito.getEstado());
+        gatitoExistente.setDescripcion(gatito.getDescripcion());
+        
+        FotoGatito fotoExistente = fotoGatitoService.obtenerFotoPorId(id);
+        
+        if (fotoGatitosFiles.length > 0 && !fotoGatitosFiles[0].isEmpty()) {
+        uploadDir = new File("src/main/resources/static/uploads").getAbsolutePath();
+        String storedFilename = fileStorageService.storeFile(fotoGatitosFiles[0],uploadDir);
+        fotoExistente.setUrlFoto(storedFilename);
+        fotoExistente.setGatito(gatitoExistente);
+        }
+        
+        fotoGatitoService.save(fotoExistente);
+        gatitoService.save(gatitoExistente);
         return "redirect:/admin/registergatito";
     }
 
 // ACTUALIZAR HISTORIAL DEL GATITO 
-    @GetMapping("/registergatito/historial/{id}")
-    public String editarHistorial(@PathVariable int id, Model model) {
-        model.addAttribute("editarHistorial", historialMedicoService.obtenerHistorial(id));
+    @PostMapping("/registergatito/historial/{id}")
+    public String editarHistorial(@PathVariable int id, Model model, @ModelAttribute("historialMedico") HistorialMedico historialMedico) {
+        HistorialMedico historialExistente = historialMedicoService.obtenerHistorial(id);
+        historialExistente.setDescripcionHistorial(historialMedico.getDescripcionHistorial());
+        historialExistente.setDosisVacunas(historialMedico.getDosisVacunas());
+        historialExistente.setNumeroVisitasVeterinario(historialMedico.getNumeroVisitasVeterinario());
+        historialExistente.setFecha(new Date());
+        
+        historialMedicoService.save(historialExistente);
         return "redirect:/admin/registergatito";
     }
-
-    @PostMapping("/registergatito/{id}")
-    public String actualizarHistorialMedico(@ModelAttribute("historialMedico") HistorialMedico historialMedico,
-            @PathVariable("id") int id, Model model) {
-        try {
-            Gatito gatito = gatitoService.obtenerGatitoPorId(id); // Obtiene el objeto Gatito
-            HistorialMedico historial = historialMedicoService.obtenerHistorial(id);
-
-            historial.setId(id);
-            historial.setDescripcion(historialMedico.getDescripcionHistorial());
-            historial.setDosisVacunas(historialMedico.getDosisVacunas());
-            historial.setNumeroVisitasVeterinario(historialMedico.getNumeroVisitasVeterinario());
-            historial.setFecha(new Date());
-            historialMedico.setGatito(gatito); // Asocia el historial médico al gatito
-            historialMedicoService.save(historial);
-            System.out.println("Historial médico guardado correctamente.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            model.addAttribute("errorMessage", "Error al guardar el historial médico: " + e.getMessage());
-            return "error"; // Manejo de errores en caso de fallo en la subida del historial médico
-        }
-
-        // Redirigir a la página correspondiente o mostrar mensaje de éxito
-        return "redirect:/admin/registergatito"; // Cambia esto según tu lógica
-    }
-
+    
 // ELIMINAR GATITO
     @GetMapping("/registergatito/{id}")
     public String eliminarGatito(@PathVariable int id, Model model) {

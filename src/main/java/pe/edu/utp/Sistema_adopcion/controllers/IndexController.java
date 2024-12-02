@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import pe.edu.utp.Sistema_adopcion.models.FotoGatito;
 import pe.edu.utp.Sistema_adopcion.models.Gatito;
+import pe.edu.utp.Sistema_adopcion.models.HistorialMedico;
 import pe.edu.utp.Sistema_adopcion.services.FotoGatitoService;
 import pe.edu.utp.Sistema_adopcion.services.GatitoService;
+import pe.edu.utp.Sistema_adopcion.services.HistorialMedicoService;
 
 @Controller
 public class IndexController {
 
     @Autowired
     private GatitoService gatitoService;
+    
+    @Autowired
+    private HistorialMedicoService historialMedicoService;
 
     @Autowired
     private FotoGatitoService fotoGatitoService;
@@ -46,6 +51,8 @@ public class IndexController {
         model.addAttribute("gatito", gatitoOpt);*/
         FotoGatito fotoGatitos = fotoGatitoService.obtenerFotoPorId(id);
         model.addAttribute("fotoGatitos", fotoGatitos);
+        HistorialMedico HistorialMedico = historialMedicoService.obtenerHistorial(id);
+        model.addAttribute("historialGatitos", HistorialMedico);
         model.addAttribute("titulo","Detalles");
         return "detalles-gato"; // Thymeleaf buscará un archivo detalles-gato.html
     }

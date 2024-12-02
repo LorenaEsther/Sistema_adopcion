@@ -59,7 +59,7 @@ public class HistorialMedico {
         return descripcionHistorial;
     }
 
-    public void setDescripcion(String descripcionHistorial) {
+    public void setDescripcionHistorial(String descripcionHistorial) {
         this.descripcionHistorial = descripcionHistorial;
     }
 
