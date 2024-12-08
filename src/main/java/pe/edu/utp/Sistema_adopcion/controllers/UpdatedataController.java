@@ -1,5 +1,6 @@
 package pe.edu.utp.Sistema_adopcion.controllers;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,11 @@ public class UpdatedataController {
     @GetMapping("/updatedata")
     public String mostrarActualizarDatos(Model model) {
         model.addAttribute("usuario", new Usuarios()); // Objeto vacío para el formulario
+
+        // Obtener la lista de usuarios
+        List<Usuarios> usuarios = usuarioService.findAll();
+        model.addAttribute("usuarios", usuarios); // Agregar lista de usuarios al modelo
+        
         return "Admin/updatedata"; // Vista del formulario
     }
 

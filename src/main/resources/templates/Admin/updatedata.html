@@ -46,6 +46,26 @@
                                 </button>
                             </div>
                         </form>
+
+                        <!-- Tabla de correos y nombres de todos los usuarios -->
+                        <div class="mt-5">
+                            <h3 class="text-center" style="color: #919CD9;">Lista de Correos y Nombres Registrados</h3>
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Itera sobre la lista de usuarios -->
+                                    <tr th:each="usuario : ${usuarios}">
+                                        <td th:text="${usuario.email}"></td> <!-- Muestra el correo del usuario -->
+                                        <td th:text="${usuario.persona.nombre}"></td> <!-- Muestra el nombre del usuario -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
