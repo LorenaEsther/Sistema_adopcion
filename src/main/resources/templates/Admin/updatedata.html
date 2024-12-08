@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{Admin/adminTemplate :: header}">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div th:replace="~{Admin/adminTemplate :: background}"></div>
+        <aside th:replace="~{Admin/adminTemplate :: sidebar}"></aside>
+
+        <div class="main p-3">
+            <div class="m-2 mx-4">
+                <aside th:replace="~{Admin/adminTemplate :: nav-menu}"></aside>
+
+                <!-- Contenedor principal con fondo y bordes redondeados -->
+                <div class="container-fluid mt-4 d-flex justify-content-center">
+                    <div class="p-4 bg-white rounded shadow-lg" style="width: 100%; max-width: 800px;">
+                        <h1 class="text-center mb-4" style="color: #919CD9;">Actualizar Datos</h1>
+
+                        <!-- Mensajes de éxito o error -->
+                        <p th:if="${success}" th:text="${success}" style="color: green; text-align: center;"></p>
+                        <p th:if="${error}" th:text="${error}" style="color: red; text-align: center;"></p>
+
+                        <form th:action="@{/admin/updatedata}" th:object="${usuario}" method="post">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Correo Electrónico" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" id="nombre" th:field="*{persona.nombre}" class="form-control" placeholder="Nombre" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Nueva Contraseña (opcional)</label>
+                                <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Nueva Contraseña">
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn rounded-pill" style="background-color: #919CD9; border-color: #919CD9; color: #fff;">
+                                    Actualizar Datos
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
